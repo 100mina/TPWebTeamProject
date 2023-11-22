@@ -36,7 +36,7 @@ public class FreeBoardDAO {
 		Connection conn;
 		try {
 			conn = dataSource.getConnection();
-			tring sql="SELECT * FROM FREE_BOARD ORDER BY BOARD_NO DESC";
+			String sql="SELECT * FROM FREE_BOARD ORDER BY BOARD_NO DESC";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
 			ResultSet rs= pstmt.executeQuery();
