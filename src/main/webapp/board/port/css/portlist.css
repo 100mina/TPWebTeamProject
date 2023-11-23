@@ -1,0 +1,63 @@
+@charset "EUC-KR";
+
+@font-face{
+	font-family: 'KoPubWorld Batang Bold';
+	src: url("../../../font/KoPubWorld\ Batang\ Bold.ttf");
+}
+
+body{
+	font-family: 'KoPubWorld Batang Bold','Times New Roman', Times, serif; padding: 3em;
+	padding: 30px;
+	background-color: white;
+}
+
+*{margin-right: auto; margin-left: auto;}
+
+header{
+	padding: 5px 5px;
+}
+aside.left{
+	float: left;
+	width: 10em;
+	margin-right: 1em;
+}
+aside.right{
+	float: right;
+	width: 12em;
+	padding: 10px;
+}
+
+.search{
+	float: right;
+	position: relative;
+	width: 300px;
+	
+}
+
+.search input{
+	width: 100%;
+	border: 1px solid #bbb;
+	border-radius: 8px;
+	padding: 10px 12px;
+	font-size: 14px;
+	text-align: center;
+}
+
+
+.search img{
+	position: absolute;
+	width: 17px;
+	top: 10px;
+	left: 12px;
+	margin: 0;
+}
+
+.user_image{
+	border-radius: 50%; 
+}
+.product img{
+	border-radius: 30%;
+}
+.user_id{
+	
+}
