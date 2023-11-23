@@ -11,7 +11,9 @@ body{
 	background-color: white;
 }
 
-*{margin-right: auto; margin-left: auto;}
+*{
+	margin-right: auto; margin-left: auto;
+}
 
 header{
 	padding: 5px 5px;
@@ -56,8 +58,8 @@ aside.right{
 	border-radius: 50%; 
 }
 .product img{
-	border-radius: 30%;
+	border-radius: 10%;
 }
-.user_id{
+footer{
 	
 }

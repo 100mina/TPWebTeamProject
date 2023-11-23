@@ -1,5 +1,25 @@
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
+<%
+ 	int totalCount = 30;
+
+	java.util.List<java.util.Map> portList = new ArrayList<>();
+	for (int i = 1; i < totalCount; i++) {
+		java.util.Map<String, Object> toMap = new java.util.HashMap<String, Object>();
+		toMap.put("user_id", "userId_" + i);
+		toMap.put("view_count", i);
+		toMap.put("like_count", i * 2);
+		portList.add(toMap);
+	}
+%>
+<c:set var="portList" value="<%= portList %>" />
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,52 +30,83 @@
 </head>
 <body>
 	<header>
-		<div class="search">
+		<div class="search" style="margin-right: 450px">
 			<input type="text" placeholder="검색어를 입력하세요.">
 			<img alt="" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
 		</div>
 	</header>
 	
 	<nav>
-		<div>
-				<select class="port">
+		
+		<div>		
+				<select class="port" style="margin-left: 300px;">
 					<option value="1">최신순</option>
 					<option value="2">조회수순</option>
 					<option value="3">좋아요순</option>
 				</select>
 		</div>
+		
 	
 	</nav>
 
-	<aside class="left" >
 	
-	</aside>   
-	
-	<section>
+	<section style="text-align: center;">
+	<div style="margin: 40px; padding: 10px; overflow: hidden;">
+	<c:forEach var="port" items="${portList}">
+		
+		<div style="margin: 10px; float: left;">
+		
 		<a href="#" class="product">
-        	<img alt="이미지" src="../../image/portimage1.png" width="350">
+        	<img alt="이미지" src="../../image/portimage1.png" width="230">
   		</a>
+  		
     
+     
     	<div>
     		<a href="#" class="user_id">
+    		
     			<img class="user_image" alt="이미지" src="../../image/portimage1.png" width="25">
-    		userId	
+    			${port.user_id}	
     		</a>
-    			<img alt="이미지" src="../../image/eye.png">
+    			<img alt="이미지" src="../../image/eye.png" style="margin-left: 20px">${port.view_count}
     		
-    			<img alt="이미지" src="../../image/favo.png">
+    			<img alt="이미지" src="../../image/favo.png" style="margin-left: 10px">${port.like_count}
     		
+    	</div>
+    	
+    	
+    	</div>
+    	</c:forEach>
     	</div>
     	
 	
 	</section>
 	
-	<aside class="right">
-	
-	</aside> 
     
-	<footer>
+	<!-- <aside class="right">
 	
+	</aside> -->
+    
+	<footer style="margin-top: 20px; text-align: center;">
+	<div style="margin-top: 20px;">
+	<p>
+    		<input type="button" value="1" onclick="#">
+    		<input type="button" value="2" onclick="#">
+    		<input type="button" value="3" onclick="#">
+    		<input type="button" value="4" onclick="#">
+    		<input type="button" value="5" onclick="#">
+    		<input type="button" value="6" onclick="#">
+    		<input type="button" value="7" onclick="#">
+    		<input type="button" value="글쓰기" onclick="#" style="margin-left: 70px;">
+    </p>
+		<div>
+			<a href="#">회원가입</a>&nbsp;또는&nbsp;<a href="#">로그인</a>을 통해 00만개 이상의 크리에이티브를 발견하고 수집해보세요.
+		</div>
+		<div>
+			<input type="button" value="회원가입" onclick="#">&nbsp;또는&nbsp;
+			<input type="button" value="로그인" onclick="#">
+		</div>
+		</div>
 	</footer>
 	
 	
