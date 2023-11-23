@@ -18,4 +18,5 @@ table {
 }
 table th:first-child{ width: 100%; text-align: left;}
 .message{display: inline-block; text-align: right; border: 1px solid black; padding: 10px; width: 50px; margin-left: 1243px; margin-top: 10px;}
+p{display: inline-block;}
 
