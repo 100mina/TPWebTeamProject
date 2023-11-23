@@ -106,7 +106,18 @@ textarea {
 	resize: none;
 }
 
-.input_button{ padding: 5px 10px; background-color: lightgray; border: none; border-radius: 10%;}
+.input_button{ 
+	position: relative;
+	text-align: center;
+	background-color: #88888888;
+	padding: 8px;
+	border-radius: 12px;
+	font-size: 10px;
+	color: white;
+	width: 8em;
+	border: none;
+	margin: 10px, 0, 10px, 0;
+}
 
 .input_button:hover{cursor: pointer;}
 
