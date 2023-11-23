@@ -78,6 +78,22 @@ public class UserDAO {
 		return user;
 	}// getUser Methods----------------------------------------------------------------------------
 	
+	public void updateUserProfile(UserVO vo) {
+		try {
+			Connection conn = dataSource.getConnection();
+			String sql = "UPDATE USER_INFO SET PROFILE_PATH=? WHERE=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getUserLevel());
+			pstmt.setString(2, vo.getId());
+	
+			pstmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}// updateUserProfile..-------------------------------------------------------------------------
+	
 	
 	
 	

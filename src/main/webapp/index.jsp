@@ -1,16 +1,26 @@
 <%@ page language="java" contentType="text/html; UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+	isELIgnored="false"
+%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>취업의 신</title>
+    <link>
 
 
 </head>
 <body>
 <header>
+	<span>
+    	<a>
+    		<img alt="icon" src="./image/icon.png">
+    	</a>
+    </span>
     <div><a href="user/loginForm.jsp">로그인</a></div>
     <div><a href="user/signupForm.jsp">회원가입</a></div>
     <div>
@@ -28,6 +38,11 @@
     		</li>
     	</ul>
     </div>
+    <span>
+    	<a>
+    		<img alt="프로필 사진이 로드되지 않았습니다." src="./user/default_profile/profile.png">
+    	</a>
+    </span>
 </header>
     
     

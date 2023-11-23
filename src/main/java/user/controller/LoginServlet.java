@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet{
 			wt.println("<html>");
 			wt.println("<head>");
 			wt.println("<script>");
-			wt.println("location.href='TPWebTeamProject/index.jsp';");
+			wt.println("location.href='./index.jsp';");
 			wt.println("</script>");
 			wt.println("</head>");
 			wt.println("</html>");
