@@ -9,7 +9,7 @@
 
 body{ margin-left: 100px; margin-right: 100px; position: relative;}
 
-#user{ height: 60px; float: left; width: 40%; position: relative; left: 100px;}
+#user{ height: 60px; float: left; width: 40%; position: relative; left: 100px; margin-top: 10px;}
 
 #profile{
 	border-radius: 50%;
@@ -21,7 +21,7 @@ body{ margin-left: 100px; margin-right: 100px; position: relative;}
 	margin-right: 10px;
 }
 
-#buttons{ float: right; position: absolute; right: 100px;}
+#buttons{ float: right; position: absolute; right: 100px; margin-top: 7px;}
 
 .button{
 	width: 40px;
@@ -30,6 +30,17 @@ body{ margin-left: 100px; margin-right: 100px; position: relative;}
 	border: 1px solid rgb(192, 192, 192);
 	margin: 0px 8px;
 }
+
+.button:hover{
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+.button_text{font-size: 10px; position: relative; top: -10px; }
+
+.image-container{ text-align: center; display: inline-block; position: relative;}
+
+
 
 #top{
 	position: fixed;
@@ -40,9 +51,6 @@ body{ margin-left: 100px; margin-right: 100px; position: relative;}
     left: 0px;
     border-bottom: 1px solid rgb(192, 192, 192);
 }
-
-#top *{ margin-top: 5px;}
-
 
 a{ text-decoration: none; color: gray;}
 
@@ -58,18 +66,52 @@ p{ text-align: center; letter-spacing: .1em;}
 #port_all_container{ overflow-x: auto; display: flex;}
 
 .port_all {
-      flex: 0 0 auto;
-      width: 30%;
+      flex: 0 0 15vh;
+      height: 150px;
       box-sizing: border-box;
       margin: 10px;
       border: 1px solid black;
       border-radius: 4px;
     }
     
-#bottom{ margin-top: 50px; margin-bottom: 50px;}
+#bottom{ margin-top: 100px; margin-bottom: 100px;}
 
 
+#comment_container{border: 1px solid lightgray; margin-bottom: 100px; border-radius: 10px;}
 
+#comment_profile{
+	border-radius: 50%;
+	border: 1px solid black;
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin-right: 10px;
+}
 
+#date{ font-size: 10px;}
+
+#comment_item{padding: 40px 20px; border-bottom: 1px solid lightgrey;}
+
+#comment{ font-size: 14px; text-align: left; letter-spacing: 0; margin-top: 10px;}
+
+#input_container{ display: inline-block; text-align: right; width: 100%; }
+
+textarea { 
+	width: 100%;
+	box-sizing: border-box;
+	padding: 20px; 
+	margin-bottom: 10px; 
+	border: 1px solid lightgray; 
+	border-radius: 10px; 
+	resize: none;
+}
+
+.input_button{ padding: 5px 10px; background-color: lightgray; border: none; border-radius: 10%;}
+
+.input_button:hover{cursor: pointer;}
+
+/*프로필 이미지들 호버*/
+#profile:hover{ cursor: pointer;}
+#comment_profile:hover{ cursor: pointer;}
 
 
