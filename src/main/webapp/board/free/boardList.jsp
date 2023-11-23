@@ -9,42 +9,62 @@
 <head>
 <meta charset="UTF-8">
 <title>자유게시판</title>
+
+<!-- 외부스티일시트 -->
+<link type="text/css" rel="stylesheet" href="./board/free/css/freeList.css">
+
 </head>
 <body>
 	
 	<!-- 게시판 화면 디자인 -->
 	<table>
 		<tr>
-			<td>카테고리</td><br>
-			<td>제목</td><br>
-			<td>글내용</td><br>
-			<td>닉네임</td><br>
-			<td>조회수 코멘트수 좋아요수</td>
+			<th>&nbsp; 최신글 &nbsp; | &nbsp; 댓글 많은 글 &nbsp; | &nbsp; 인기글 </th>
 		</tr>
 		
+		
 		<c:choose>
-			<c:when test="${empty freeBoardList }">
+		
+    		<c:when test="${empty freeBoardList }">
 				<tr>
 					<td colspan="5">등록된 글이 없습니다.</td>
 				</tr>
 			</c:when>
-			
-			<c:otherwise>
-				<c:forEach var="board" items="${freeBoardList }">
+    		
+   			 <c:otherwise>
+    				<c:forEach var="board" items="${freeBoardList }">
 					<tr>
-						<td>${board.freeCategory }</td>
-						<td><a href=".../freeBoard?board_no=${board.freeNo }">${board.freeTitle }</a></td>
-						<td>${board.freeContent }</td>
-						<td>${board.userNickname }</td>
-						<td>${board.freeView } </td>
+						<td style="padding-top: 30px">${board.freeCategory }</td>
 					</tr>
-				</c:forEach>			
-			</c:otherwise>			
+					<tr>
+						<td><h2>${board.freeTitle }</h2></td>				
+					</tr>
+					<tr id="content">	
+						<td>${board.freeContent }</td>
+					</tr>
+					<tr>
+						<td>${board.userNickname }</td>		
+					</tr>
+					<tr>	 
+						 	<td> 
+						 		<img src="./board/free/image/viewicon.png" alt="Comment Icon" style="width: 17px"> ${board.freeView }
+						 		<img src="./board/free/image/comment.png" alt="Comment Icon" class="listicon"> ${board.freeView }
+						 		<img src="./board/free/image/recommend.png" alt="recommend Icon" class="listicon"> ${board.freeView }
+						 		<span id="date">${board.freeDate }</span>
+						 		
+						 	</td>
+					</tr>
+        		</c:forEach>
+    		 </c:otherwise>
+    		
 		</c:choose>
+		
+		
+		
 	</table>
 	
 	<div class="message">
-		<a href="boardForm.jsp">글쓰기</a>
+		<a href="./board/free/boardForm.jsp">글쓰기</a>
 	</div>
 	
 

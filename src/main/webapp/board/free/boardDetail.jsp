@@ -17,10 +17,10 @@
 	뒤로가기 버튼<br>
 	<table>
 		<tr>
-			<td><h1>${freeboard.freeTitle }</h1></td>
+			<td><h1>${freeboard.freeTitle }이직을 준비중입니다</h1></td>
 		</tr><br>
 		<tr>
-			<td>${freeboard.userNickname }</td>
+			<td>${freeboard.userNickname }고급스러운검정2103</td>
 		</tr><br>
 		<tr>
 			작성날짜 조회수 코멘트수

@@ -36,7 +36,7 @@ public class FreeBoardDAO {
 		Connection conn;
 		try {
 			conn = dataSource.getConnection();
-			String sql="SELECT * FROM FREE_BOARD ORDER BY BOARD_NO DESC";
+			String sql="SELECT * FROM FREE_BOARD ORDER BY FREE_NO DESC";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			
 			ResultSet rs= pstmt.executeQuery();
@@ -101,6 +101,7 @@ public class FreeBoardDAO {
 		return board;
 	}//...........................................................................
 	
+	//조회수 증가 기능
 	public void increaseView(FreeBoardVO vo) {
 		
 		try {
