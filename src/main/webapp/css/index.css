@@ -1,0 +1,148 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'webfont';
+	src: url(./font/notosans.ttf), format('truetype');
+}
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'webfont';
+	box-sizing: border-box;
+}
+#profile {
+	width: 25px;
+	height: 25px;
+}
+html {
+	background-color: #FCFEFC;
+
+}
+header {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+}
+
+#icon {
+	width: 120px;
+	text-align: left;
+}
+a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 13px;
+}
+.wraper {
+	display: grid;
+	grid-template-columns: 1fr 800px 1fr;
+	gap: 12px;
+	position: relative;
+}
+
+.first {
+	display: flex;
+	list-style: none;
+	justify-content: space-around;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+ul.first {
+	align-self: center;
+}
+.first>li {
+	position: relative;
+	flex: none;
+}
+#login {
+	position: relative;
+	align-self: center;
+}
+#category {
+	align-self: center;
+	letter-spacing: 0.3em;
+}
+.first>li {
+	position: relative;
+	overflow: visible;
+}
+.second li {
+	border: 0.5px solid #888888;
+	padding: 8px;
+}
+.first:nth-child(3) {
+	position: relative;
+}
+.second {
+	list-style:none;
+	position: absolute;
+	background-color: #FCFEFC;
+	border: 0.5px solid #888888;
+	text-align: center;
+	top: 25px;
+	right: 8px;
+	
+}
+#hr {
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+html {
+	background-color: #FCFEFC;
+
+}
+header {
+	text-align: center;
+}
+#icon {
+	width: 100px;
+	padding: 8px;
+	justify-self: left;
+}
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'webfont';
+}
+a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 12px;
+}
+ul{
+	list-style: none;
+	display: flex;
+	align-items: center;
+}
+
+#board {
+	display: flex;
+	flex-direction: column;
+}
+#board li {
+	opacity: 0;
+	transition: 0.3 ease;
+}
+#info>li:hover{
+	opacity: 1;
+}*/
+

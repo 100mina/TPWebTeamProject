@@ -1,0 +1,54 @@
+@charset "UTF-8";
+@charset "UTF-8";
+@font-face {
+	font-family: 'webfont';
+	src: url(../../font/notosans.ttf), format('truetype');
+}
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'webfont';
+	box-sizing: border-box;
+}
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 24px;
+}
+#item {
+	width: auto;
+	height: auto;
+	min-width: auto;
+	min-height: auto;
+}
+#item2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+form>input{
+	display: block;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+a {
+	text-decoration: none;
+	color: black;
+	font-size: 10px;
+}
+p {
+	display: flex;
+	justify-content: space-between;
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+}
+h2 {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.aa{
+	position: absolute;
+}

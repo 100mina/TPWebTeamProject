@@ -3,6 +3,11 @@
 	font-family: 'webfont';
 	src: url(../../font/notosans.ttf), format('truetype');
 }
+html {
+	display: flex;
+}
+
+
 * {
 	margin: 0;
 	padding: 0;
