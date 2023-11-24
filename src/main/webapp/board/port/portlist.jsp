@@ -29,25 +29,27 @@
  <link type="text/css" rel="stylesheet" href="css/portlist.css">
 </head>
 <body>
+	
 	<header>
-		<div class="search" style="margin-right: 450px">
+		<div class="search">
 			<input type="text" placeholder="검색어를 입력하세요.">
 			<img alt="" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
 		</div>
 	</header>
 	
 	<nav>
-		
-		<div>		
-				<select class="port" style="margin-left: 300px;">
+	
+		<div class="portp">		
+				<select class="port" >
 					<option value="1">최신순</option>
 					<option value="2">조회수순</option>
 					<option value="3">좋아요순</option>
 				</select>
 		</div>
-		
+
 	
 	</nav>
+	
 
 	
 	<section style="text-align: center;">
@@ -87,8 +89,8 @@
 	
 	</aside> -->
     
-	<footer style="margin-top: 20px; text-align: center;">
-	<div style="margin-top: 20px;">
+	<footer style="margin-top: 40px; text-align: center;">
+	<div style="margin-top: 40px;">
 	<p>
     		<input type="button" value="1" onclick="#">
     		<input type="button" value="2" onclick="#">
@@ -99,13 +101,7 @@
     		<input type="button" value="7" onclick="#">
     		<input type="button" value="글쓰기" onclick="#" style="margin-left: 70px;">
     </p>
-		<div>
-			<a href="#">회원가입</a>&nbsp;또는&nbsp;<a href="#">로그인</a>을 통해 00만개 이상의 크리에이티브를 발견하고 수집해보세요.
-		</div>
-		<div>
-			<input type="button" value="회원가입" onclick="#">&nbsp;또는&nbsp;
-			<input type="button" value="로그인" onclick="#">
-		</div>
+	
 		</div>
 	</footer>
 	

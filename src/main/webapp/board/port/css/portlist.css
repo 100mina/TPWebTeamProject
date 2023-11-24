@@ -12,12 +12,20 @@ body{
 }
 
 *{
-	margin-right: auto; margin-left: auto;
+	margin-right: 0; margin-left: 0;
 }
 
 header{
-	padding: 5px 5px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
 }
+
+.port{
+	text-align: center;
+	align-items: center;
+}
+
 aside.left{
 	float: left;
 	width: 10em;
@@ -60,6 +68,8 @@ aside.right{
 .product img{
 	border-radius: 10%;
 }
-footer{
-	
+nav{
+	margin-left: 95px;
+	position: fixed;
 }
+
