@@ -5,18 +5,62 @@
 	font-family: 'notosans';
 	src: url("../../font/notosans.ttf"); 
 }
+
 body{ font-family: 'notosans', 'Times New Roman', Times, serif; padding: 3em;}
+
 #content{height: 7em; text-align: start; vertical-align: text-top;} 
-th{border: 1px solid rgb(192, 192, 192); padding: 10px; border-collapse: collapse;}
+
+th{border: 1px solid rgb(192, 192, 192); 
+   padding: 10px; 
+   border-collapse: collapse; 
+   width: 33%; 
+   text-align: center;
+}
+
 td{padding: 10px; padding-left: 25px;}
-#date{display: inline-block; text-align: right; padding-left: 600px;}
+
+#date{display: inline-block; text-align: right; padding-left: 600px; font-size: 13px;}
+
 table {
   border-collapse: collapse; /* 테두리가 겹치지 않도록 설정 */
   border: 1px solid rgb(192, 192, 192);   /* 원하는 스타일로 변경 가능 */
-  width: 50%;
+  width: 700px;
   margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
 }
-table th:first-child{ width: 100%; text-align: left;}
-.message{display: inline-block; text-align: right; border: 1px solid black; padding: 10px; width: 50px; margin-left: 1243px; margin-top: 10px;}
-p{display: inline-block;}
 
+.message{
+	display: inline-block;
+	text-align: right;
+	border: 1px solid black;
+	margin-left: 1290px; margin-top: 10px;
+	position: fixed; bottom: 20px; right: 685px;
+	text-align: center;
+    background-color: #88888888;
+    padding: 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    color: white;
+    width: 8em;
+    border: none;
+}
+
+.message a {
+    text-decoration: none; /* 밑줄 제거 */
+    color: white; /* 링크 색상 설정 */
+}
+
+p{
+	display: inline-block;
+	position: relative;
+    top: -3px; /* 원하는 만큼의 음수 값으로 조절 */
+    margin-left: 2px;
+
+}
+.board-link {
+    text-decoration: none; /* 밑줄 제거 */
+    color: #000; /* 링크 색상 설정 */
+}
+
+.board-link:hover {
+    color: rgb(0, 0, 0); /* 마우스 오버 시 색상 변경 */
+}

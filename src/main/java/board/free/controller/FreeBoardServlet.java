@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 import board.free.model.FreeBoardDAO;
 import board.free.model.FreeBoardService;
 import board.free.model.FreeBoardVO;
-import board.model.BoardVO;
 
 public class FreeBoardServlet extends HttpServlet{
 	
@@ -39,14 +38,14 @@ public class FreeBoardServlet extends HttpServlet{
 		
 		//1. 요청 파라미터 확인 - RESTful 기법을 위한 데이터들..
 		String method= req.getParameter("method");
-		String boardNo= req.getParameter("board_no");
+		String freeNo= req.getParameter("free_no");
 		System.out.println("method : " + method);
-		System.out.println("boardNo: " + boardNo);
+		System.out.println("boardNo: " + freeNo);
 		
 		FreeBoardService freeBoardService= new FreeBoardService();
 		
 		if(method==null || method.equals("GET")) { //글 검색 요청
-			if(boardNo==null) {
+			if(freeNo==null) {
 				System.out.println("전체 게시글 리스트 검색을 요청하셨습니다.");
 				
 				List<FreeBoardVO> freeBoardList= freeBoardService.getFreeBoardList();
@@ -62,13 +61,13 @@ public class FreeBoardServlet extends HttpServlet{
 				
 				//전달받은 게시글 번호를 통해 상세글 요청..
 				FreeBoardVO vo= new FreeBoardVO();
-				vo.setFreeNo(Integer.parseInt(boardNo));
+				vo.setFreeNo(Integer.parseInt(freeNo));
 				
-				FreeBoardVO board= freeBoardService.getFreeBoard(vo);
+				FreeBoardVO freeBoard= freeBoardService.getFreeBoard(vo);
 				
 				//리다이렉트될 화면에 게시글 정보를 사용하기 위해 세션에 저장
 				HttpSession session= req.getSession();
-				session.setAttribute("board", board);
+				session.setAttribute("freeBoard", freeBoard);
 				
 				resp.sendRedirect("board/free/boardDetail.jsp"); //상세글 화면으로 이동				
 			}
@@ -93,9 +92,9 @@ public class FreeBoardServlet extends HttpServlet{
 			System.out.println("게시글 삭제를 요청하셨습니다.");
 			
 			FreeBoardVO vo= new FreeBoardVO();
-			vo.setFreeNo(Integer.parseInt(boardNo));
+			vo.setFreeNo(Integer.parseInt(freeNo));
 			
-			List<FreeBoardVO> boardList= freeBoardService.deleteBoard(vo); //삭제 후 갱신된 게시글 리스트를 리턴해 줌
+			List<FreeBoardVO> boardList= freeBoardService.deleteFreeBoard(vo); //삭제 후 갱신된 게시글 리스트를 리턴해 줌
 			
 			HttpSession session= req.getSession();
 			session.setAttribute("freeBoardList", boardList);

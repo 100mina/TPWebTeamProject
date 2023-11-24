@@ -37,10 +37,9 @@
 		</tr>
 	</table>
 	
-	<div class="button">
-		<input type="submit" value="등록하기" >
-		<input type="reset" value="다시작성">
-	</div>
+	<input type="submit" value="작성완료" class="buttons">
+	<input type="reset" value="다시작성" class="buttons">
+	
 	
 	
 

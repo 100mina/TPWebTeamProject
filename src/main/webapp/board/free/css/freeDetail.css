@@ -1,0 +1,56 @@
+@charset "UTF-8";
+.listicon{width: 20px; margin-left: 20px;}	
+table{
+	width: 700px;
+	border: 1px solid rgb(192, 192, 192);
+	border-collapse: collapse; /* 테두리가 겹치지 않도록 설정 */
+	margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
+}
+h4{text-align: center;}
+
+.buttons{
+   position: relative;
+   text-align: center;
+   background-color: #88888888;
+   padding: 8px;
+   border-radius: 12px;
+   font-size: 10px;
+   color: white;
+   width: 8em;
+   border: none;
+   margin: 10px 0 10px 0;
+   left: 623px;	
+}
+th,td{
+	padding-left: 15px;
+}
+.middleicon{width: 50px; height: 50px;}
+p{
+	display: inline-block;
+	position: relative;
+    top: -2px; /* 원하는 만큼의 음수 값으로 조절 */
+    margin-left: 2px;
+}
+
+.p2{
+	display: inline-block; font-size: 30px;
+	position: relative;
+    top: -13px; /* 원하는 만큼의 음수 값으로 조절 */
+    margin-left: 2px;
+}
+textarea{
+	width: 685px;
+	height: 8em;
+	margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
+    display: block; /* 블록 레벨 요소로 설정 */
+    padding: 7px;
+    
+}
+hr{
+	width: 700px;
+	margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	
+}

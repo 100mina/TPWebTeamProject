@@ -73,7 +73,7 @@ public class FreeBoardDAO {
 		try {
 			Connection conn= dataSource.getConnection();
 			
-			String sql="SELECT * FROW FREE_BOARD WHERE FREE_NO=?";
+			String sql="SELECT * FROM FREE_BOARD WHERE FREE_NO=?";
 			PreparedStatement pstmt= conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getFreeNo());
 			

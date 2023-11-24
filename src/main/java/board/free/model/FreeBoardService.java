@@ -35,13 +35,13 @@ public class FreeBoardService {
 		}
 		
 		//#4. 게시글 수정 기능
-		public FreeBoardVO updateBoard(FreeBoardVO vo) {
+		public FreeBoardVO updateFreeBoard(FreeBoardVO vo) {
 			freeBoardDao.updateFreeBoard(vo);
 			return freeBoardDao.getFreeBoard(vo);  //게시글 수정 후 상세글 페이지로 다시 이동하여 그 결과를 보기 위해.. 리턴
 		}
 		
 		//#5. 게시글 삭제 기능
-		public List<FreeBoardVO> deleteBoard(FreeBoardVO vo){
+		public List<FreeBoardVO> deleteFreeBoard(FreeBoardVO vo){
 			freeBoardDao.deleteFreeBoard(vo);
 			return freeBoardDao.getFreeBoardList(); //삭제된 후 전체 게시글 리턴..
 		}
