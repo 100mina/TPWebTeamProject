@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("nl","\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,9 +16,9 @@
 	<!-- 사용자 정보? 칸? -->
 	<div id="top">
 		<div id="user">
-			<img alt="img" src="img/profile.png" id="profile">
+			<a href=""><img alt="img" src="img/profile.png" id="profile"></a>
 			<h3>사용자 닉네임</h3>
-			<a href="" >사용자 아이디</a>
+			<a href="" >${port.userId }</a>
 		</div>
 	
 		<div id="buttons" >
@@ -51,16 +53,16 @@
 	
 	<!-- 콘텐츠 시작 -->
 	<div id="content">
-		<p> 글 내용 칸.. <br> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi natus labore laudantium voluptate cum reprehenderit, ea deleniti corporis! Corrupti ea consequatur, molestiae incidunt dolor rem aliquam! Dolorum, magni? Laudantium, explicabo?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi natus labore laudantium voluptate cum reprehenderit, ea deleniti corporis! Corrupti ea consequatur, molestiae incidunt dolor rem aliquam! Dolorum, magni? Laudantium, explicabo?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi natus labore laudantium voluptate cum reprehenderit, ea deleniti corporis! Corrupti ea consequatur, molestiae incidunt dolor rem aliquam! Dolorum, magni? Laudantium, explicabo? </p>
+		<p id="content_text">${fn:replace(port.portContent, nl, "<br>") }</p>
 		
 		<!-- 디비에서 이미지 -->
-		<c:forEach  var="i" begin="0" end="2" step="1" >
-				<img alt="" src="img/bgimg.png" class="content_img">
+		<c:forEach  var="img" items="${port.portImgList }" >
+			<img alt="img" src="../../getImg?img_no=${img.imgNo}" class="content_img">
 		</c:forEach>
 	
 	
 	</div>
-	
+
 	
 	
 	<!-- 하단부분 사용자 정보 칸.. -->
@@ -69,8 +71,11 @@
 		
 		<div id="port_all_container">
 		
-			<c:forEach  var="i" begin="0" end="5" step="1" >
-				<img src="img/bgimg.png" alt="Image 1" class="port_all">
+			<c:forEach  var="port" items="${userPort }" >
+				<div style="text-align: center; margin: 20px 10px;">
+					<a href=""><img src="../../getImg?img_no=${port.portImg.imgNo}" alt="" class="port_all"></a><br>
+					${port.portTitle }
+				</div>
 			</c:forEach>
 			
 		</div>
@@ -83,7 +88,7 @@
 		
 		<c:forEach  var="i" begin="0" end="5" step="1" >
 			<div id="comment_item">
-				<img alt="img" src="img/profile.png" id="comment_profile">
+				<a href=""><img alt="img" src="img/profile.png" id="comment_profile"></a>
 				<h5>사용자 닉네임</h5>
 				<span id="date">2020.20.20 20:20:22</span>
 				<p id="comment">댓글내용 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi natus labore laudantium voluptate cum reprehend</p>

@@ -10,17 +10,17 @@
 <body>
 
 	<h2>포트폴리오 업로드</h2><br>
-	<p>자신의 포트폴리오를 업로드해서 자랑하거나, 다른사람의 의견을 구할 수 있습니다!</p>
+	<p>자신의 포트폴리오를 업로드해서 자랑하거나, 다른 사람의 의견을 구할 수 있습니다!</p>
 	
 	<br><br>
 	
-	<form action="" method="post" enctype="multipart/form-data">
+	<form action="../../insertPortBoard" method="post" enctype="multipart/form-data">
 	
-		<input class="input" id="input_title" type="text" placeholder="제목을 입력하세요." required="required" maxlength="100"><br>
+		<input class="input" id="input_title" type="text" placeholder="제목을 입력하세요." required="required" maxlength="100" name="port_title"><br>
 		
-		<textarea rows="15" id="input_content" placeholder="내용을 입력하세요." class="input" maxlength="4000"></textarea><br>
+		<textarea rows="15" id="input_content" placeholder="내용을 입력하세요." class="input" maxlength="4000" name="port_content"></textarea><br>
 		
-		<input type="file" id="input_file" accept="image/*" multiple name="imgs">
+		<input type="file" id="input_file" accept="image/*" multiple name="imgs" required="required" >
 		<div id="previewContainer"></div>
 		<br><br>
 		<div id="button_container">

@@ -9,5 +9,46 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  
+  <!-- 포트폴리오 게시물 업로드 서블릿 -->
+   <servlet>
+  	<servlet-name>insertPortBoard</servlet-name>
+  	<servlet-class>board.port.controller.InsertPortBoard</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>insertPortBoard</servlet-name>
+  	<url-pattern>/insertPortBoard</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 게시물 상세보기 서블릿 -->
+  <servlet>
+  	<servlet-name>getPortDetail</servlet-name>
+  	<servlet-class>board.port.controller.GetPortDetail</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>getPortDetail</servlet-name>
+  	<url-pattern>/getPortDetail</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 해당 게시물의 이미지 불러오기 서블릿 -->
+  <servlet>
+  	<servlet-name>getImg</servlet-name>
+  	<servlet-class>board.port.controller.GetImg</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>getImg</servlet-name>
+  	<url-pattern>/getImg</url-pattern>
+  </servlet-mapping>
+  
+
+  
 </web-app>
+
+
 
