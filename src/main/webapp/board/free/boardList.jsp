@@ -11,7 +11,7 @@
 <title>자유게시판</title>
 
 <!-- 외부스티일시트 -->
-<link type="text/css" rel="stylesheet" href="./board/free/css/freeList.css">
+<link type="text/css" rel="stylesheet" href="css/freeList.css">
 
 </head>
 <body>
@@ -47,9 +47,9 @@
 					</tr>
 					<tr>	 
 						 	<td> 
-						 		<img src="./board/free/image/viewicon.png" alt="Comment Icon" style="width: 17px"> ${board.freeView }
-						 		<img src="./board/free/image/comment.png" alt="Comment Icon" class="listicon"> ${board.freeView }
-						 		<img src="./board/free/image/recommend.png" alt="recommend Icon" class="listicon"> ${board.freeView }
+						 		<img src="./image/viewicon.png" alt="Comment Icon" style="width: 17px"> ${board.freeView }
+						 		<img src="./image/comment.png" alt="Comment Icon" class="listicon"> ${board.freeView }
+						 		<img src="./image/recommend.png" alt="recommend Icon" class="listicon"> ${board.freeView }
 						 		<span id="date">${board.freeDate }</span>
 						 		
 						 	</td>
@@ -64,7 +64,7 @@
 	</table>
 	
 	<div class="message">
-		<a href="./board/free/boardForm.jsp">글쓰기</a>
+		<a href="boardForm.jsp">글쓰기</a>
 	</div>
 	
 
