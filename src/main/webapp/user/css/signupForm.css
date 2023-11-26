@@ -2,6 +2,7 @@
 @font-face {
 	font-family: 'webfont';
 	src: url(../../font/notosans.ttf), format('truetype');
+	
 }
 @font-face {
 	font-family: 'titlefont';
@@ -43,6 +44,7 @@ h2 {
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
+	padding-left: 10px;
 }
 .aa{
 	width: auto;
@@ -80,6 +82,7 @@ div>h3 {
 form>p{
 	margin-left: 12%;
 	font-size: 12px;
+	padding-left: 15px;
 }
 h2 {
 	margin-bottom: 20px;
@@ -103,7 +106,15 @@ input {
 	padding-left: 10px;
 	padding-right: 10px;
 }
-
+#bnav {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	margin-top: 10px;
+}
+#bnav a:nth-child(2), #bnav a:nth-child(3){
+	margin-left: 3em;	
+}
 
 
 

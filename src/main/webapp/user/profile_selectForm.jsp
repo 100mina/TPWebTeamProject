@@ -51,7 +51,7 @@
 			<hr>
 	
 		<footer>
-			<img alt="" src="./image/bg_profile_selectForm.png" width="100%">
+			<img alt="" src="./image/bg_profile_selectForm.png" style="width: 100%; height: auto;">
 		</footer>
 	</body>
 </html>
