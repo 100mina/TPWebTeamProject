@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import board.free.model.FreeBoardDAO;
 import board.free.model.FreeBoardService;
 import board.free.model.FreeBoardVO;
+import board.free.model.FreeCommentVO;
 
 public class FreeBoardServlet extends HttpServlet{
 	
@@ -61,14 +62,23 @@ public class FreeBoardServlet extends HttpServlet{
 				
 				//전달받은 게시글 번호를 통해 상세글 요청..
 				FreeBoardVO vo= new FreeBoardVO();
+				FreeCommentVO vo2= new FreeCommentVO();
+				
 				vo.setFreeNo(Integer.parseInt(freeNo));
+				vo2.setFreeNo(Integer.parseInt(freeNo));
 				
 				FreeBoardVO freeBoard= freeBoardService.getFreeBoard(vo);
+				List<FreeCommentVO> freeCmtList = freeBoardService.getFreeCmtList(vo2);
 				
+				int size = freeCmtList.size();
+				System.out.println("freeCmtList의 크기: " + size);
+				System.out.println(vo2.getFreeNo());
+
 				//리다이렉트될 화면에 게시글 정보를 사용하기 위해 세션에 저장
 				HttpSession session= req.getSession();
 				session.setAttribute("freeBoard", freeBoard);
-				
+				session.setAttribute("freeCmtList", freeCmtList);
+	
 				resp.sendRedirect("board/free/boardDetail.jsp"); //상세글 화면으로 이동				
 			}
 			

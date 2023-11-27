@@ -46,4 +46,7 @@ public class FreeBoardService {
 			return freeBoardDao.getFreeBoardList(); //삭제된 후 전체 게시글 리턴..
 		}
 		
+		public List<FreeCommentVO> getFreeCmtList(FreeCommentVO vo){
+			return freeBoardDao.getFreeCmtList(vo);
+		}
 }

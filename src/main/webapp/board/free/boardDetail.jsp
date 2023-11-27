@@ -46,10 +46,43 @@
 			</td>
 		</tr>
 		
-	</table>
-		<hr>
+	</table><br>
+		
+			<c:choose>
+                <c:when test="${empty freeCmtList}">
+                    <tr>
+                        <td colspan="5">등록된 댓글이 없습니다.</td>
+                    </tr>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach var="comment" items="${freeCmtList}">
+                    
+                    <table>
+                    	        
+                        <tr>
+                            <td>${comment.userNickname }</td>                
+                        </tr>
+                        
+                        <tr id="content">   
+                            <td>${comment.freeCmtContent }</td>
+                        </tr>
+                        
+                        <
+                        <tr>     
+                            <td> 
+                                <img src="./image/comment.png" alt="Comment Icon" class="listicon"> <p>${comment.freeCmtDate}</p>
+                                <img src="./image/recommend.png" alt="recommend Icon" class="listicon"> <p>${board.freeView}좋아요</p>
+                            </td>
+                        </tr>
+                        
+					   </table>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+            
+            <br>
 	
-		<textarea rows="5" name="free_cmt"></textarea>
+		<textarea rows="5" name="free_cmt" placeholder="함께 이야기를 나눠보세요"></textarea>
 	
 			<input type="submit" value="댓글등록" class="buttons">
 			<input type="reset" value="다시작성" class="buttons">

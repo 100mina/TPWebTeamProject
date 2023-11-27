@@ -191,7 +191,45 @@ public class FreeBoardDAO {
 			e.printStackTrace();
 		}
 		
-	}
+	}//...............................................................
+	
+	public List<FreeCommentVO> getFreeCmtList(FreeCommentVO vo){
+		List<FreeCommentVO> freeCmtList= new ArrayList<FreeCommentVO>();
+		
+		Connection conn;
+		try {
+			conn = dataSource.getConnection();
+			String sql = "SELECT * FROM FREE_COMMENT WHERE FREE_NO = ? ORDER BY FREE_CMT_NO DESC";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getFreeNo());
+			ResultSet rs= pstmt.executeQuery();
+			
+			
+			while(rs.next()) {
+				FreeCommentVO board= new FreeCommentVO();
+				
+				board.setFreeCmtNo(rs.getInt("FREE_CMT_NO"));
+				board.setFreeNo(rs.getInt("FREE_NO"));
+				board.setUserNickname(rs.getString("USER_NICKNAME"));
+				board.setFreeCmtContent(rs.getString("FREE_CMT_CONTENT"));
+				board.setFreeCmtDate(rs.getDate("FREE_CMT_DATE"));
+			   
+				freeCmtList.add(board);
+				
+			} //while 끝
+			
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return freeCmtList;
+	
+	}//.......................................................
 	
 	
 
