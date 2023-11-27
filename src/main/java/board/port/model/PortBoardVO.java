@@ -14,8 +14,24 @@ public class PortBoardVO {
 	
 	private List<PortBoardImgVO> portImgList;
 	
+	private List<PortBoardVO> userPort;
+	
 	private PortBoardImgVO portImg;
 	
+	private List<PortCmtVO> portCmtList;
+	
+	public List<PortBoardVO> getUserPort() {
+		return userPort;
+	}
+	public void setUserPort(List<PortBoardVO> userPort) {
+		this.userPort = userPort;
+	}
+	public List<PortCmtVO> getPortCmtList() {
+		return portCmtList;
+	}
+	public void setPortCmtList(List<PortCmtVO> portCmtList) {
+		this.portCmtList = portCmtList;
+	}
 	public PortBoardImgVO getPortImg() {
 		return portImg;
 	}

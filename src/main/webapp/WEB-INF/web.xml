@@ -46,6 +46,30 @@
   	<url-pattern>/getImg</url-pattern>
   </servlet-mapping>
   
+  
+  <!-- 포트폴리오 댓글 작성 서블릿 -->
+  <servlet>
+  	<servlet-name>insertPortCmt</servlet-name>
+  	<servlet-class>board.port.controller.InsertPortCmt</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>insertPortCmt</servlet-name>
+  	<url-pattern>/insertPortCmt</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 댓글 삭제 서블릿 -->
+  <servlet>
+  	<servlet-name>deletePortCmt</servlet-name>
+  	<servlet-class>board.port.controller.DeletePortCmt</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>deletePortCmt</servlet-name>
+  	<url-pattern>/deletePortCmt</url-pattern>
+  </servlet-mapping>
+  
 
   
 </web-app>

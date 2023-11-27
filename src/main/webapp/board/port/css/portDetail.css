@@ -40,7 +40,7 @@ body{ margin-left: 100px; margin-right: 100px; position: relative;}
 
 .image-container{ text-align: center; display: inline-block; position: relative;}
 
-
+#cmt_title,#bottom_title{ margin: 20px; }
 
 #top{
 	position: fixed;
@@ -49,7 +49,8 @@ body{ margin-left: 100px; margin-right: 100px; position: relative;}
     width: 100%;
     top: 0px;
     left: 0px;
-    border-bottom: 1px solid rgb(192, 192, 192);
+    z-index: 1;
+    border-bottom: 1px solid lightgray;
 }
 
 a{ text-decoration: none; color: gray;}
@@ -60,11 +61,11 @@ a:hover { color: black;}
 
 p{ text-align: center; letter-spacing: .1em;}
 
-.content_img{ width: 100%; margin-top: 20px; }
+.content_img{ width: 100%; margin-top: 20px; border: 1px solid lightgray; border-radius: 10px; }
 
 #content_text{ margin-top: 20px; margin-bottom: 20px; }
 
-#port_all_container{ overflow-x: auto; display: flex;}
+#port_all_container{ overflow-x: auto; display: flex; border: 1px solid lightgray; border-radius: 10px; }
 
 .port_all {
       flex: 0 0 15vh;
@@ -91,7 +92,7 @@ p{ text-align: center; letter-spacing: .1em;}
 
 #date{ font-size: 10px;}
 
-#comment_item{padding: 40px 20px; border-bottom: 1px solid lightgrey;}
+#comment_item{padding: 40px 20px; border-bottom: 1px solid lightgrey; position: relative;}
 
 #comment{ font-size: 14px; text-align: left; letter-spacing: 0; margin-top: 10px;}
 
@@ -124,5 +125,20 @@ textarea {
 
 #profile:hover{ border: 1px solid black; }
 #comment_profile:hover{ border: 1px solid black; }
+
+#cmt_button a{ font-size: 12px; }
+
+#cmt_button{ position: absolute; right: 0px; top: 0px; margin: 30px; display: none; }
+
+#comment_item:hover #cmt_button{ display: inline-block;}
+
+
+
+
+
+
+
+
+
 
 

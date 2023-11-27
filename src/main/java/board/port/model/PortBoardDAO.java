@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class PortBoardDAO {
 			e.printStackTrace();
 		}
 	}// 생성자 //
+	
 	
 	// 게시물 추가
 	public void insertPort(PortBoardVO vo) {
@@ -279,6 +281,92 @@ public class PortBoardDAO {
 		return img;
 	}// 해당 이미지 가져오기 //
 	
+	
+	// 댓글 작성 //
+	//TODO: 파라미터 회원정보VO로 변경
+	public void insertPortCmt(PortCmtVO vo) {
+		
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql= "INSERT INTO PORT_COMMENT(PORT_CMT_NO ,PORT_NO, USER_ID, PORT_CMT_CONTENT) VALUES(SEQ_PORT_CMT_NO.NEXTVAL,?,?,?)";
+			
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getPortNo());
+			pstmt.setString(2, vo.getUserId());
+			pstmt.setString(3, vo.getPortCmtContent());
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	//댓글 삭제 - TODO: 본인일 경우 삭제 버튼 ..
+	public void deletePortCmt(PortCmtVO vo) {
+		
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql= "DELETE FROM PORT_COMMENT WHERE PORT_CMT_NO=?";
+			
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getPortCmtNo());
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	//현재 게시물의 댓글 내역 불러오기
+	public List<PortCmtVO> getPortCmtList(PortBoardVO vo) {
+		
+		List<PortCmtVO> portCmtList= new ArrayList<PortCmtVO>();
+		
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql= "SELECT * FROM PORT_COMMENT WHERE PORT_NO=? ORDER BY PORT_CMT_NO";
+			
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getPortNo());
+			
+			ResultSet rs= pstmt.executeQuery();
+			while(rs.next()) {
+				PortCmtVO vo1= new PortCmtVO();
+				vo1.setPortCmtNo(rs.getInt("PORT_CMT_NO"));
+				vo1.setPortNo(rs.getInt("PORT_NO"));
+				vo1.setUserId(rs.getString("USER_ID"));
+				vo1.setPortCmtContent(rs.getString("PORT_CMT_CONTENT"));
+				
+				vo1.setPortCmtDate(new SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(rs.getDate("PORT_CMT_DATE")));
+				
+				portCmtList.add(vo1);			
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return portCmtList;
+	}
 	
 	
 	
