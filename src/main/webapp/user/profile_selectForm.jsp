@@ -32,7 +32,7 @@
 		<c:set var="vo" scope="session"/>
 	</head>
 	<body onload="init()">
-	<a href="../index.jsp"><img alt="icon" src="../image/icon.png" id="home"></a>
+		<a href="../index.jsp"><img alt="icon" src="../image/icon.png" id="home"></a>
 		<header>
 			<div id="text_div">	
 				<h2>취업의 신 가입을 환영합니다!</h2>
@@ -41,16 +41,15 @@
 			
 			<img alt="" src="./default_profile/profile.png" id="profile" style="border: 0.3px solid #B09090; border-radius: 50%; height: 150px; width: 150px">
 			<button id="btn">이미지 선택</button>
-			<hr>
 			</div>
+			<hr>
 			<form action="../updateProfile" method="post" enctype="multipart/form-data">
 				<input type="file" value="" accept="image/*" onchange="changeImg()" id="input" style="display: none" name="profileImg">
 				<input type="submit" value="설정하기" id="input_next">
 			</form>
 		</header>
-			<hr>
-	
 		<footer>
+			<hr id="hr">	
 			<img alt="" src="./image/bg_profile_selectForm.png" style="width: 100%; height: auto;">
 		</footer>
 	</body>

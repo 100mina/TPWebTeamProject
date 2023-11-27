@@ -7,17 +7,22 @@
 	margin: 0;
 	padding: 0;
 	font-family: 'webfont', serif;
-	box-sizing: border-box;
 }
+body {
+	height: 970px;	
+}
+
+
 header {
-	border: 1px dotted red;
 	display: inline-block;
 	margin-left: 40%;
 	margin-right: auto;
+	padding-top: 100px;
 }
 
 header #text_div {
 	position: relative;
+	padding-bottom: 16px;
 }
 header #text_div h2, h5, h3 {
 	position: relative;
@@ -47,6 +52,31 @@ header form{
 	text-align: right;
 	margin: 10px, 0, 10px, 0;
 }
+footer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+}
+#btn {
+   position: relative;
+   text-align: center;
+   background-color: #88888888;
+   padding: 8px;
+   border-radius: 12px;
+   font-size: 10px;
+   color: white;
+   width: 8em;
+   border: none;
+   margin: 10px, 0, 10px, 0;
+}
+hr {
+	
+}
+form {
+	padding-top: 16px;
+}
+
+
 
 
 
