@@ -193,13 +193,14 @@ public class FreeBoardDAO {
 		
 	}//...............................................................
 	
+	//댓글 읽어오기
 	public List<FreeCommentVO> getFreeCmtList(FreeCommentVO vo){
 		List<FreeCommentVO> freeCmtList= new ArrayList<FreeCommentVO>();
 		
 		Connection conn;
 		try {
 			conn = dataSource.getConnection();
-			String sql = "SELECT * FROM FREE_COMMENT WHERE FREE_NO = ? ORDER BY FREE_CMT_NO DESC";
+			String sql = "SELECT * FROM FREE_COMMENT WHERE FREE_NO = ?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getFreeNo());
 			ResultSet rs= pstmt.executeQuery();
@@ -212,7 +213,7 @@ public class FreeBoardDAO {
 				board.setFreeNo(rs.getInt("FREE_NO"));
 				board.setUserNickname(rs.getString("USER_NICKNAME"));
 				board.setFreeCmtContent(rs.getString("FREE_CMT_CONTENT"));
-				board.setFreeCmtDate(rs.getDate("FREE_CMT_DATE"));
+				board.setFreeCmtDate(rs.getTimestamp("FREE_CMT_DATE"));
 			   
 				freeCmtList.add(board);
 				
@@ -231,6 +232,32 @@ public class FreeBoardDAO {
 	
 	}//.......................................................
 	
-	
+	// 댓글 등록 메소드
+    public void insertFreeComment(FreeCommentVO vo) {
+        Connection conn = null;
+        try {
+            conn = dataSource.getConnection();
+            String sql = "INSERT INTO FREE_COMMENT (FREE_CMT_NO, FREE_NO, USER_NICKNAME, FREE_CMT_CONTENT, FREE_CMT_DATE)"
+            		+ " VALUES (SEQ_FREE_CMT_NO.NEXTVAL"
+            		+ ", ?, ?, ?, SYSDATE)";
+            PreparedStatement pstmt = conn.prepareStatement(sql, new String[]{"FREE_CMT_NO"});
+            pstmt.setInt(1, vo.getFreeNo());
+            pstmt.setString(2, vo.getUserNickname());
+            pstmt.setString(3, vo.getFreeCmtContent());
+            pstmt.executeUpdate();
+
+            pstmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }//......................................................
 
 }

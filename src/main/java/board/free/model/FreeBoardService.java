@@ -49,4 +49,9 @@ public class FreeBoardService {
 		public List<FreeCommentVO> getFreeCmtList(FreeCommentVO vo){
 			return freeBoardDao.getFreeCmtList(vo);
 		}
+		
+		public void addComment(FreeCommentVO vo) {
+	        FreeBoardDAO freeBoardDAO = new FreeBoardDAO();
+	        freeBoardDAO.insertFreeComment(vo);
+	    }
 }

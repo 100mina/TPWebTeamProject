@@ -46,7 +46,7 @@
 			</td>
 		</tr>
 		
-	</table><br>
+	</table>
 		
 			<c:choose>
                 <c:when test="${empty freeCmtList}">
@@ -57,21 +57,20 @@
                 <c:otherwise>
                     <c:forEach var="comment" items="${freeCmtList}">
                     
-                    <table>
+                    <table class="cmt">
                     	        
                         <tr>
-                            <td>${comment.userNickname }</td>                
+                            <td id="nickname"><b>${comment.userNickname }</b></td>                
                         </tr>
                         
-                        <tr id="content">   
-                            <td>${comment.freeCmtContent }</td>
-                        </tr>
+                        <tr>   
+                            <td id="content">${comment.freeCmtContent }</td>
+                        </tr><br>
                         
-                        <
                         <tr>     
                             <td> 
-                                <img src="./image/comment.png" alt="Comment Icon" class="listicon"> <p>${comment.freeCmtDate}</p>
-                                <img src="./image/recommend.png" alt="recommend Icon" class="listicon"> <p>${board.freeView}좋아요</p>
+								<img src="./image/comment.png" alt="Comment Icon" class="listicon"> <p><p>${comment.freeCmtDate.toString().replace('.0', '')}</p>
+</p>
                             </td>
                         </tr>
                         
@@ -82,10 +81,14 @@
             
             <br>
 	
-		<textarea rows="5" name="free_cmt" placeholder="함께 이야기를 나눠보세요"></textarea>
-	
-			<input type="submit" value="댓글등록" class="buttons">
-			<input type="reset" value="다시작성" class="buttons">
+		<form action="../../addFreeCmt" method="post">
+        <input type="hidden" name="free_no" value="${freeBoard.freeNo}">
+        <input type="hidden" name="user_nickname" value="EXNICKNAME">
+        <textarea rows="5" name="free_cmt_content" placeholder="함께 이야기를 나눠보세요" id="cmtarea"></textarea>
+        <input type="submit" value="댓글등록" class="buttons">
+        <input type="reset" value="다시작성" class="buttons">
+        
+    </form>
 
 </body>
 </html>
