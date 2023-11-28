@@ -156,6 +156,30 @@ public class PortBoardDAO {
 	}// 상세 게시물 검색 //
 	
 	
+	
+	// 상세 게시물 클릭 시 조회수 오르기
+	public void view(PortBoardVO vo) {
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			//기존 조회수를 검색하고 1을 더해서 조회수를 갱신
+			String sql= "UPDATE PORT_BOARD SET PORT_VIEW=(SELECT PORT_VIEW FROM PORT_BOARD WHERE PORT_NO=?)+1 WHERE PORT_NO=?";
+			
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getPortNo());
+			pstmt.setInt(2, vo.getPortNo());
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}// 상세 게시물 클릭 시 조회수 오르기//
+	
+	
 	// 특정 회원의 게시물만 가져오기
 	public List<PortBoardVO> getUserPort(PortBoardVO vo){
 		
@@ -282,7 +306,78 @@ public class PortBoardDAO {
 	}// 해당 이미지 가져오기 //
 	
 	
-	// 댓글 작성 //
+	//게시물 수정
+	public void updatePortBoard(PortBoardVO vo) {
+		
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql= "UPDATE PORT_BOARD SET PORT_TITLE=?, PORT_CONTENT=? WHERE PORT_NO=?";
+			
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getPortTitle());
+			pstmt.setString(2, vo.getPortContent());
+			pstmt.setInt(3, vo.getPortNo());
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}//게시물 수정//
+	
+	
+	
+	// 게시물 이미지 수정 - 원래 있던 이미지들 삭제 -> 삽입
+	public void deletePortImg(PortBoardVO vo) {
+		
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql= "DELETE FROM PORT_BOARD_IMG WHERE PORT_NO=?";
+			
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getPortNo());
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+	        conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} // 게시물 이미지 수정 //
+	
+	
+	
+	// 게시물 삭제
+	public void deletePortBoard(PortBoardVO vo) {
+		
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql= "DELETE FROM PORT_BOARD WHERE PORT_NO=?";
+				
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getPortNo());
+				
+			pstmt.executeUpdate();
+			pstmt.close();
+	        conn.close();
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} // 게시물 삭제 //
+	
+	
+	
+	// 댓글 작성
 	//TODO: 파라미터 회원정보VO로 변경
 	public void insertPortCmt(PortCmtVO vo) {
 		
@@ -305,10 +400,9 @@ public class PortBoardDAO {
 			e.printStackTrace();
 		}
 		
-	}
+	}//댓글 작성//
 	
-	
-	//댓글 삭제 - TODO: 본인일 경우 삭제 버튼 ..
+	//댓글 삭제
 	public void deletePortCmt(PortCmtVO vo) {
 		
 		try {
@@ -327,7 +421,7 @@ public class PortBoardDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}//댓글 삭제//
 	
 	
 	
@@ -366,7 +460,56 @@ public class PortBoardDAO {
 		}
 		
 		return portCmtList;
-	}
+	}//현재 게시물의 댓글 내역 불러오기//
+	
+	
+	//댓글 수정
+	public void updatePortCmt(PortCmtVO vo) {
+		
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql= "UPDATE PORT_COMMENT SET PORT_CMT_CONTENT=? WHERE PORT_CMT_NO=?";
+			
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getPortCmtContent());
+			pstmt.setInt(2, vo.getPortCmtNo());
+			
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}//댓글 수정//
+	
+	
+	//댓글 개수.. 
+	public int countCmt(PortBoardVO vo) {
+		int countCmt=0;
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql= "SELECT COUNT(*) FROM PORT_COMMENT WHERE PORT_NO=?";
+			
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getPortNo());
+			
+			ResultSet rs= pstmt.executeQuery();
+			countCmt= rs.getInt(1);
+			
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return countCmt;
+	}//댓글 갯수 카운트//
+	
 	
 	
 	

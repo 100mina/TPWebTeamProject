@@ -12,14 +12,26 @@ public class PortBoardVO {
 	private Date portDate;
 	private int portView;
 	
+	//해당 게시물의 첨부파일 리스트
 	private List<PortBoardImgVO> portImgList;
 	
+	//해당 게시물 작성자의 모든 게시글 리스트
 	private List<PortBoardVO> userPort;
 	
+	//해당 게시물의 첨부파일 1개
 	private PortBoardImgVO portImg;
 	
+	//해당 게시물의 댓글 리스트
 	private List<PortCmtVO> portCmtList;
+	int countCmt;
+
 	
+	public int getCountCmt() {
+		return countCmt;
+	}
+	public void setCountCmt(int countCmt) {
+		this.countCmt = countCmt;
+	}
 	public List<PortBoardVO> getUserPort() {
 		return userPort;
 	}
@@ -31,6 +43,7 @@ public class PortBoardVO {
 	}
 	public void setPortCmtList(List<PortCmtVO> portCmtList) {
 		this.portCmtList = portCmtList;
+		this.countCmt = portCmtList.size();
 	}
 	public PortBoardImgVO getPortImg() {
 		return portImg;

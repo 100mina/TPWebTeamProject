@@ -32,7 +32,9 @@ public class InsertPortCmt extends HttpServlet{
 		PortBoardService service= new PortBoardService();
 		service.insertPortCmt(vo);
 		
-		//TODO: 화면구현.. -> 새 댓글이 업데이트 된 현재 상세화면
+		System.out.println(portNo + " / " + nickname+ " : "+content);
+		
+		//화면구현.. -> 새 댓글이 업데이트 된 현재 상세화면
 		resp.sendRedirect("getPortDetail?port_no="+vo.getPortNo());
 		
 	}

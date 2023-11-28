@@ -63,3 +63,13 @@ body{
 
 .button:hover{ cursor: pointer; }
 #input_file::-webkit-file-upload-button:hover{ cursor: pointer; }
+
+a{ text-decoration: none; color: gray; font-size: 13px;}
+
+a:hover { color: black;}
+
+#title{ display: inline-block;}
+
+#img{ margin: 20px; border: 1px solid lightgray; height: 250px;}
+
+h6{ text-align: right;}

@@ -14,6 +14,56 @@
 <title>포트폴리오</title>
 
 <link type="text/css" rel="stylesheet" href="/TPWebTeamProject/board/port/css/portDetail.css">
+
+
+	<script type="text/javascript">
+		//댓글 수정 함수
+		function updateCmt(portCmtNo, userId, portCmtContent, portNo) { //TODO: 댓글 작성자랑 현재 사용자 비교하는 조건문 걸기
+			// 다이얼로그 요소 가져오기
+			var dialog= document.getElementById("updateCmtDialog");
+			var textarea= document.getElementById("updateCmtContent");
+			var submit= document.getElementById("updateCmtSubmit");
+			var cancel= document.getElementById("updateCmtCancel");
+
+			textarea.value= portCmtContent.replace(/<br>/g, '\r\n');
+				
+			// 다이얼로그 표시
+			dialog.style.display= "block";
+
+			// 확인 버튼 클릭
+			submit.onclick = function() {
+				var content = textarea.value;
+				console.log(content);
+				//입력받은 데이터 서버로 전송 -> 디비작업
+				var xhr = new XMLHttpRequest();
+				xhr.open("POST", "updatePortCmt", true);
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				
+				xhr.onreadystatechange= function(){
+	                if(xhr.readyState==4 && xhr.status==200){
+	                    location.reload();
+	                }
+	            }
+
+				// 서버로 보낼 데이터
+				var data = "port_cmt_no=" + portCmtNo + "&port_cmt_content=" + content + "&port_no=" + portNo;
+
+				// 데이터 전송
+				xhr.send(data);
+					
+				dialog.style.display= "none";
+			};
+
+			// 취소 버튼 클릭
+			cancel.onclick = function() {
+				dialog.style.display= "none";
+			};
+		}
+		
+	</script>
+
+
+
 </head>
 <body>
 
@@ -38,8 +88,13 @@
 			</div>
 			<div class="image-container">
   				<img alt="img" src="/TPWebTeamProject/board/port/img/cmt.png" class="button" id="comment_button"><br>
-  				<span id="comment_text" class="button_text">000개</span>
+  				<span id="comment_text" class="button_text">${port.countCmt}개</span>
 			</div>
+			
+			<a href="/TPWebTeamProject/board/port/portUpdate.jsp" id="btn_update">수정</a>
+			<a href="/TPWebTeamProject/deletePortBoard?port_no=${port.portNo }" id="btn_delete">삭제</a>
+
+			
 		</div>
 	
 	</div>
@@ -95,13 +150,16 @@
 				<h5>${cmt.userId }</h5>
         		<span id="date">${cmt.portCmtDate }</span>
         		
+        		<!-- 콘텐츠 내용 줄바꿈 치환 -->
+        		<c:set var="formattedCmtContent" value="${fn:replace(cmt.portCmtContent, nl, '<br>')}" />
+        		
         		<!-- 본인일 경우 수정 / 삭제 기능 -->
         		<div id="cmt_button">
-        			<a href="/TPWebTeamProject/updatePortCmt">수정</a>&nbsp;&nbsp;&nbsp;
+        			<a href="javascript:updateCmt('${cmt.portCmtNo }','${cmt.userId }','${formattedCmtContent}',${cmt.portNo })">수정</a>&nbsp;&nbsp;&nbsp;
         			<a class="deleteLink" href="/TPWebTeamProject/deletePortCmt?port_cmt_no=${cmt.portCmtNo }&port_no=${cmt.portNo }">삭제</a>
         		</div>
         		
-				<p id="comment">${fn:replace(cmt.portCmtContent, nl, "<br>") }</p>
+				<p id="comment">${formattedCmtContent}</p>
 			</div>
 		</c:forEach>
 		
@@ -115,23 +173,32 @@
 		</div>
 		
 		<script>
-    	// 삭제 링크 클릭 시 다이얼로그 표시
-   		var deleteLinks = document.querySelectorAll('.deleteLink');
-    	deleteLinks.forEach(function (deleteLink) {
-        	deleteLink.addEventListener('click', function (event) {
-            	event.preventDefault(); // 링크의 기본 동작(페이지 이동)을 막음
-            	console.log('링크 클릭됨');
-            	// 다이얼로그 표시
-            	var result = confirm('정말 삭제하시겠습니까?');
+    		// 삭제 링크 클릭 시 다이얼로그 표시
+   			var deleteLinks = document.querySelectorAll('.deleteLink');
+    		deleteLinks.forEach(function (deleteLink) {
+        		deleteLink.addEventListener('click', function (event) {
+            		event.preventDefault(); // 링크의 기본 동작(페이지 이동)을 막음
+            		// 다이얼로그 표시
+            		var result = confirm('정말 삭제하시겠습니까?');
 
-            	// 확인 버튼을 눌렀을 때 링크 실행
-            	if (result) {
-                	window.location.href = this.href;
-            	}
-        	});
-    	});
+            		// 확인 버튼을 눌렀을 때 링크 실행
+            		if (result) {
+                		window.location.href = this.href;
+            		}
+        		});
+    		});
 		</script>
 		
+		<!-- 댓글 수정 다이얼로그 모양 -->
+		<div id="updateCmtDialog" style="display: none;">
+			<p id="cmt_title"><strong>댓글 수정</strong></p>
+			<textarea rows="5" placeholder="댓글 수정" maxlength="1000" name="port_cmt_content" id="updateCmtContent"></textarea><br>
+			<button id="updateCmtSubmit" class="input_button">확인</button>&nbsp;&nbsp;&nbsp;
+  			<button id="updateCmtCancel" class="input_button">취소</button>
+		</div>
+		
+		
+	</div>
 	
 	
 	
