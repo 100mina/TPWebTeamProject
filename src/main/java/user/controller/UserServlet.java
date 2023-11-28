@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import user.model.UserVO;
+
 public class UserServlet extends HttpServlet{
 	
 	// user/signup
@@ -27,7 +29,10 @@ public class UserServlet extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=utf-8");
 		
-		String method = req.getParameter("");
+		UserVO user = (UserVO)req.getSession().getAttribute("user");
+		// BoardVO bVO;
+		// BoardDAO bDAO; bDAO.getUserPosting
+		
 		
 		
 		

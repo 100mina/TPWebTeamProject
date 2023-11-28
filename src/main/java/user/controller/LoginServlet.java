@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet{
 		
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
-
+		System.out.println("user : " + id +","+ pw);
 		
 		UserVO vo = new UserVO();
 		vo.setId(id);
@@ -35,19 +35,11 @@ public class LoginServlet extends HttpServlet{
 		
 		if(user!=null) {
 			HttpSession session = req.getSession();
-//			session.setAttribute("user", user);
-//			
-//			resp.sendRedirect("index.jsp");
-			PrintWriter wt = resp.getWriter();
-			wt.println("<!DOCTYPE html>");
-			wt.println("<html>");
-			wt.println("<head>");
-			wt.println("<script>");
-			wt.println("location.href='./index.jsp';");
-			wt.println("</script>");
-			wt.println("</head>");
-			wt.println("</html>");
+			session.setAttribute("user", user);
+			System.out.println("user : " + user.getId() + "," + user.getNickName() + "," + user.getProfilePath());
 			
+			resp.sendRedirect("./index.jsp");
+			PrintWriter wt = resp.getWriter();			
 		}else {
 			PrintWriter wt = resp.getWriter();
 			wt.println("<!DOCTYPE html>");
