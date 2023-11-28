@@ -13,16 +13,16 @@ table {
   border-collapse: collapse; /* 테두리가 겹치지 않도록 설정 */
   border: 1px solid rgb(192, 192, 192);   /* 원하는 스타일로 변경 가능 */
   width: 800px;
-  height: 800px;
+  height: 900px;
   margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
   text-align: center;
-  padding: 10px;
+  padding: 15px;
 }
 
 #title{width: 700px; height: 5em; padding: 15px;}
 #content{width: 700px; padding: 15px;}
 
-.align-left{text-align: left; margin-left: 45px;}
+.align-left{text-align: left; margin-left: 35px;}
 
 .buttons{
    position: relative;
@@ -40,6 +40,18 @@ table {
 
 .button input{height: 3em; margin: 5px;}
 
-p{margin-left: 45px;}
+p{margin-left: 35px;}
 
 .message{text-align: center; line-height: 3em;}
+
+select{
+	margin-left: 33px;
+	margin-bottom: 3px;
+	height: 3em;
+	padding: 5px;
+}
+
+.moditable{
+	height: 700px;
+}
+

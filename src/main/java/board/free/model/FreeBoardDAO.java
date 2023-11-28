@@ -155,11 +155,12 @@ public class FreeBoardDAO {
 		try {
 			Connection conn= dataSource.getConnection();
 			
-			String sql="UPDATE FREE_BOARD SET FREE_TITLE=?, FREE_CONTENT=? WHERE FREE_NO=?";
+			String sql="UPDATE FREE_BOARD SET FREE_TITLE=?, FREE_CONTENT=?, FREE_CATEGORY=? WHERE FREE_NO=?";
 			PreparedStatement pstmt= conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getFreeTitle());
 			pstmt.setString(2, vo.getFreeContent());
-			pstmt.setInt(3, vo.getFreeNo());
+			pstmt.setString(3, vo.getFreeCategory());
+			pstmt.setInt(4, vo.getFreeNo());
 			
 			pstmt.executeUpdate();
 			

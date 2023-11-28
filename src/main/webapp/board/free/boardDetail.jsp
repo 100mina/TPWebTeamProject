@@ -22,7 +22,10 @@
 	<h4 class="message"><a href="../../freeBoard">게시판으로 돌아가기</a></h4>
 	<table>
 		<tr>
-			<td><h1>${freeBoard.freeTitle }</h1></td>
+			<td>
+				<h1>${freeBoard.freeTitle }</h1>
+			</td>
+				
 		</tr>
 		<tr>
 			<td>${freeBoard.userNickname }</td>
@@ -32,17 +35,25 @@
                 <img src="./image/viewicon.png" alt="Comment Icon" style="width: 16px"> <p>${freeBoard.freeView}</p>
                 <img src="./image/comment.png" alt="Comment Icon" class="listicon"> <p>${freeBoard.freeView}</p>
                 <img src="./image/recommend.png" alt="recommend Icon" class="listicon"> <p>${freeBoard.freeView}</p>
-                <span id="date">${board.freeDate}</span>
+                <span id="date">${freeBoard.freeDate}</span>
             </td>
 		</tr>
 		<tr>
-			<td style="padding: 1em; height:20em; vertical-align: top" colspan="3">${ fn:replace(freeboard.freeContent, nl,"<br>") }</td>
+			<td style="padding: 1em; height:20em; vertical-align: top" colspan="3">${ fn:replace(freeBoard.freeContent, nl,"<br>") }</td>
 		</tr>
 		
 		<tr>
 			<td>
 			    <img src="./image/recommend.png" alt="recommend Icon" class="middleicon"> <p class="p2">추천</p>&nbsp;&nbsp;
-				<img src="./image/comment.png" alt="Comment Icon" class="middleicon"> <p class="p2">${board.freeView}0<p>
+				<img src="./image/comment.png" alt="Comment Icon" class="middleicon"> <p class="p2">${freeBoard.freeView}<p>
+				
+				<%-- <c:if test="${member.userId == board.userId }"> --%>
+				 	<p class="list-buttons">
+						<span class="update list-button" onclick="mod()">수정</span>
+						<span class="delete list-button" onclick="del(${freeBoard.freeNo})">삭제</span>
+				 	</p>
+				<%-- </c:if> --%>
+				
 			</td>
 		</tr>
 		
@@ -54,29 +65,36 @@
                         <td colspan="5">등록된 댓글이 없습니다.</td>
                     </tr>
                 </c:when>
+                
+                
                 <c:otherwise>
                     <c:forEach var="comment" items="${freeCmtList}">
-                    
-                    <table class="cmt">
-                    	        
-                        <tr>
-                            <td id="nickname"><b>${comment.userNickname }</b></td>                
-                        </tr>
-                        
-                        <tr>   
-                            <td id="content">${comment.freeCmtContent }</td>
-                        </tr><br>
-                        
-                        <tr>     
-                            <td> 
-								<img src="./image/comment.png" alt="Comment Icon" class="listicon"> <p><p>${comment.freeCmtDate.toString().replace('.0', '')}</p>
-</p>
-                            </td>
-                        </tr>
-                        
-					   </table>
-                    </c:forEach>
+					    <div class="comment-item">
+					        <table class="cmt">
+					            <tr>
+					                <td class="comment-info">
+					                    <b>${comment.userNickname }</b>
+					                    <p class="cmt-buttons">
+					                        <span class="update cmt-button">수정</span>
+					                        <span class="delete cmt-button">삭제</span>
+					                    </p>
+					                </td>
+					            </tr>
+					            <tr>
+					                <td class="content">${comment.freeCmtContent }</td>
+					            </tr>
+					            <tr>
+					                <td class="comment-date">
+					                    <img src="./image/comment.png" alt="Comment Icon" class="listicon">
+					                    <p>${comment.freeCmtDate.toString().replace('.0', '')}</p>
+					                </td>
+					            </tr>
+					        </table>
+					    </div>
+					</c:forEach>
                 </c:otherwise>
+                
+                
             </c:choose>
             
             <br>
@@ -89,6 +107,21 @@
         <input type="reset" value="다시작성" class="buttons">
         
     </form>
+    
+    	
+    
+    <script type="text/javascript">
+			
+			function mod(){
+				location.href="modifyForm.jsp";
+			}
+			
+			function del(freeNo){
+				var answer= confirm("정말로 삭제하시겠습니까?");
+				
+				if(answer) location.href="../../freeBoard?method=DELETE&free_no=" + freeNo;
+			}
+		</script>
 
 </body>
 </html>

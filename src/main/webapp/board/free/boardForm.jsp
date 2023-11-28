@@ -26,8 +26,13 @@
 			
 		<tr>
 			<td class="align-left">
-				<p>카테고리 선택</p>
-			</td>
+        	   <p>카테고리 선택 (필수)</p>
+        	   <select name="category" required="required">
+            	  <option value="자유">자유게시판</option>
+            	  <option value="취업">면접/취업</option>
+            	  <option value="자기소개서">자기소개서/이력서</option>
+       		   </select>
+    		</td>
 		</tr>
 		<tr>
 			<td><input type="text" placeholder="제목을 입력해주세요" id="title" name="free_title" required="required"></td>
@@ -40,7 +45,7 @@
 	<input type="submit" value="작성완료" class="buttons">
 	<input type="reset" value="다시작성" class="buttons">
 	
-	
+	</form>
 	
 
 </body>

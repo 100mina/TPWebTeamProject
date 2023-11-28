@@ -49,34 +49,39 @@
                     </tr>
                 </c:when>
                 <c:otherwise>
-                    <c:forEach var="board" items="${freeBoardList}">
+                    <c:forEach var="freeBoard" items="${freeBoardList}">
                     
-                   <a href="../../freeBoard?free_no=${board.freeNo}" class="board-link">     
+                   <a href="../../freeBoard?free_no=${freeBoard.freeNo}" class="board-link">     
                     <table>
                     	
                         <tr>
-                            <td style="padding-top: 30px">${board.freeCategory}</td>
+                            <td style="padding-top: 30px">${freeBoard.freeCategory}</td>
                         </tr>
+                        
                         <tr>
-                            <td><h2>${board.freeTitle}</h2></td>                
+                            <td><h2>${freeBoard.freeTitle}</h2></td>                
                         </tr>
+                        
                         <tr id="content">   
-                            <td>${board.freeContent}</td>
+                            <td>${freeBoard.freeContent}</td>
                         </tr>
+                        
                         <tr>
-                            <td>${board.userNickname}</td>        
+                            <td>${freeBoard.userNickname}</td>        
                         </tr>
+                        
                         <tr>     
                             <td> 
-                                <img src="./image/viewicon.png" alt="Comment Icon" style="width: 17px"> <p>${board.freeView}</p>
-                                <img src="./image/comment.png" alt="Comment Icon" class="listicon"> <p>${board.freeView}</p>
-                                <img src="./image/recommend.png" alt="recommend Icon" class="listicon"> <p>${board.freeView}</p>
-                                <span id="date">${board.freeDate}</span>
+                                <img src="./image/viewicon.png" alt="Comment Icon" style="width: 17px"> <p>${freeBoard.freeView}</p>
+                                <img src="./image/comment.png" alt="Comment Icon" class="listicon"> <p>${freeBoard.freeView}</p>
+                                <img src="./image/recommend.png" alt="recommend Icon" class="listicon"> <p>${freeBoard.freeView}</p>
+                                <span id="date">${freeBoard.freeDate}</span>
                             </td>
                         </tr>
                         
 					   </table>
 					  </a>
+					  <br>
                     </c:forEach>
                 </c:otherwise>
             </c:choose>

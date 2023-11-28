@@ -100,10 +100,10 @@ public class FreeBoardServlet extends HttpServlet{
 			FreeBoardVO vo= new FreeBoardVO();
 			vo.setFreeNo(Integer.parseInt(freeNo));
 			
-			List<FreeBoardVO> boardList= freeBoardService.deleteFreeBoard(vo); //삭제 후 갱신된 게시글 리스트를 리턴해 줌
+			List<FreeBoardVO> freeBoardList= freeBoardService.deleteFreeBoard(vo); //삭제 후 갱신된 게시글 리스트를 리턴해 줌
 			
 			HttpSession session= req.getSession();
-			session.setAttribute("freeBoardList", boardList);
+			session.setAttribute("freeBoardList", freeBoardList);
 			resp.sendRedirect("board/free/boardList.jsp");				
 			
 		}	

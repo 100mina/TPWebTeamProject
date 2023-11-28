@@ -30,25 +30,22 @@ public class FreeBoardModifyServlet extends HttpServlet{
 		String freeNo= req.getParameter("free_no");
 		String freeTitle= req.getParameter("free_title");
 		String freeContent= req.getParameter("free_content");		
-		
-		// 여기까지 데이터 확인!!
-		System.out.println(freeTitle);
-		System.out.println(freeContent);
-		System.out.println(freeNo);
-				
+		String freeCategory= req.getParameter("free_category");
+						
 		// insert 에 필요한 데이터들을 VO 객체로 묶기
 		FreeBoardVO vo= new FreeBoardVO();
 		vo.setFreeNo(Integer.parseInt(freeNo));  //글번호
 		vo.setFreeTitle(freeTitle);              //제목
 		vo.setFreeContent(freeContent);          //내용
+		vo.setFreeCategory(freeCategory);        //카테고리
 				
 		//2. 비니지스 로직
 		FreeBoardService freeBoardService= new FreeBoardService();
-		FreeBoardVO board= freeBoardService.updateFreeBoard(vo);  //수정된 글 정보를 리턴받기
+		FreeBoardVO freeBoard= freeBoardService.updateFreeBoard(vo);  //수정된 글 정보를 리턴받기
 				
 		//3. 화면 구현
 		HttpSession session= req.getSession();
-		session.setAttribute("board", board); //갱신된 게시글을 세션에 저장
+		session.setAttribute("freeBoard", freeBoard); //갱신된 게시글을 세션에 저장
 				
 		resp.sendRedirect("board/free/boardDetail.jsp"); //게시글 상세 화면으로 이동.
 		
