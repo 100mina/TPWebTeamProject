@@ -79,8 +79,8 @@ public class InsertPortBoard extends HttpServlet{
 		
 		System.out.println(portTitle+":"+portContent+"/"+vo.getUserId()+" 완료 "+boardList.get(0).getPortNo());
 		
-		//TODO: 화면구현 작업 - 받아온 게시물 리스트 주면서 게시물 목록으로 돌아가기..
-
+		//화면구현 작업 - 업로드한 게시물의 상세 화면
+		resp.sendRedirect("getPortDetail?port_no=" + boardList.get(0).getPortNo());
 	}
 	
 }

@@ -486,19 +486,43 @@ public class PortBoardDAO {
 	}//댓글 수정//
 	
 	
-	//댓글 개수.. 
-	public int countCmt(PortBoardVO vo) {
-		int countCmt=0;
+	//게시물 좋아요
+	public void likeOn(PortBoardVO vo) {
 		try {
 			Connection conn= dataSource.getConnection();
 			
-			String sql= "SELECT COUNT(*) FROM PORT_COMMENT WHERE PORT_NO=?";
+			String sql= "INSERT INTO PORT_FAVORITE VALUES(SEQ_FAV_NO.NEXTVAL, ?, ?)";
+				
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getPortNo());
+			pstmt.setString(2, vo.getUserId());
+				
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}//게시물 좋아요//
+	
+	
+	//좋아요 갯수 카운트
+	public int countFav(PortBoardVO vo) {
+		int countFav=0;
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql= "SELECT COUNT(*) FROM PORT_FAVORITE WHERE PORT_NO=?";
 			
 			PreparedStatement pstmt= conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getPortNo());
 			
 			ResultSet rs= pstmt.executeQuery();
-			countCmt= rs.getInt(1);
+			 if (rs.next()) {
+                 countFav = rs.getInt(1);
+             }
 			
 			pstmt.close();
 			conn.close();
@@ -507,12 +531,8 @@ public class PortBoardDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		return countCmt;
-	}//댓글 갯수 카운트//
-	
-	
-	
-	
+		return countFav;
+	}
 	
 	
 	

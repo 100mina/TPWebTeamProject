@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>포트폴리오</title>
+<title>포트폴리오 - ${port.portTitle }</title>
 
 <link type="text/css" rel="stylesheet" href="/TPWebTeamProject/board/port/css/portDetail.css">
 
@@ -49,8 +49,7 @@
 				var data = "port_cmt_no=" + portCmtNo + "&port_cmt_content=" + content + "&port_no=" + portNo;
 
 				// 데이터 전송
-				xhr.send(data);
-					
+				xhr.send(data);	
 				dialog.style.display= "none";
 			};
 
@@ -59,7 +58,6 @@
 				dialog.style.display= "none";
 			};
 		}
-		
 	</script>
 
 
@@ -83,30 +81,54 @@
   				<span id="follow_text" class="button_text">0000명</span>
 			</div>
 			<div class="image-container">
-  				<img alt="img" src="/TPWebTeamProject/board/port/img/like_off.png" class="button"><br>
-  				<span id="like_text" class="button_text">00개</span>
+  				<img alt="img" src="/TPWebTeamProject/board/port/img/like_off.png" class="button" id="like_button"><br>
+  				<span id="like_text" class="button_text">${port.countFav}개</span>
 			</div>
 			<div class="image-container">
   				<img alt="img" src="/TPWebTeamProject/board/port/img/cmt.png" class="button" id="comment_button"><br>
   				<span id="comment_text" class="button_text">${port.countCmt}개</span>
 			</div>
 			
-			<a href="/TPWebTeamProject/board/port/portUpdate.jsp" id="btn_update">수정</a>
-			<a href="/TPWebTeamProject/deletePortBoard?port_no=${port.portNo }" id="btn_delete">삭제</a>
-
-			
+			<div id="btn">
+				<a href="/TPWebTeamProject/board/port/portUpdate.jsp" id="btn_update">수정</a>
+				<a href="/TPWebTeamProject/deletePortBoard?port_no=${port.portNo }" id="btn_delete">삭제</a>
+			</div>
 		</div>
 	
 	</div>
 	
 	<script>
-    // 이미지를 클릭하면 스크롤을 가장 아래로 내리는 함수
-    function scrollToBottom() {
-      window.scrollTo(0, document.body.scrollHeight);
-    }
-    // 이미지에 클릭 이벤트 리스너 등록
-    document.getElementById('comment_button').addEventListener('click', scrollToBottom);
-  </script>
+		// 이미지를 클릭하면 스크롤을 가장 아래로 내리는 함수
+    	function scrollToBottom() {
+     		window.scrollTo(0, document.body.scrollHeight);
+    	}
+    	// 이미지에 클릭 이벤트 리스너 등록
+    	document.getElementById('comment_button').addEventListener('click', scrollToBottom);
+	</script>
+  
+	<script type="text/javascript">
+		// 이미지 클릭 시 좋아요 on 기능
+		//TODO: 회원정보VO 받으면 유저 아이디 보내는 칸 user.userId 로 변경해야 함
+		function likeOn() {
+			var likeBtn= document.getElementById("like_button");
+			
+        	var xhr = new XMLHttpRequest();
+        	xhr.open("GET", "likePortBoard?user_id=${port.userId}&port_no=${port.portNo}", true);
+        	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        	xhr.onreadystatechange = function () {
+            	if (xhr.readyState == 4 && xhr.status == 200) {
+            		location.reload();
+            		likeBtn.src= "/TPWebTeamProject/board/port/img/like_on.png";
+            	}
+        	}
+
+        	// 데이터 전송
+        	xhr.send();
+    	}
+
+    	// 이미지에 클릭 이벤트 리스너 등록
+    	document.getElementById('like_button').addEventListener('click', likeOn);
+	</script>
 	
 	
 
@@ -119,8 +141,6 @@
 		<c:forEach  var="img" items="${port.portImgList }" >
 			<img alt="img" src="/TPWebTeamProject/getImg?img_no=${img.imgNo}" class="content_img">
 		</c:forEach>
-	
-	
 	</div>
 
 	
@@ -196,8 +216,6 @@
 			<button id="updateCmtSubmit" class="input_button">확인</button>&nbsp;&nbsp;&nbsp;
   			<button id="updateCmtCancel" class="input_button">취소</button>
 		</div>
-		
-		
 	</div>
 	
 	

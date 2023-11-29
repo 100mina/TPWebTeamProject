@@ -51,6 +51,9 @@ public class PortBoardService {
 		List<PortCmtVO> cmtList= dao.getPortCmtList(port);
 		port.setPortCmtList(cmtList);
 		
+		//좋아요 개수
+		port.setCountFav(dao.countFav(vo));
+		
 		return port;
 	}
 	
@@ -97,5 +100,10 @@ public class PortBoardService {
 	//댓글 수정 -> 댓글 업데이트된 상세보기 화면
 	public void updatePortCmt(PortCmtVO cmtvo) {
 		dao.updatePortCmt(cmtvo);
+	}
+	
+	//게시물 좋아요 on
+	public void likeOn(PortBoardVO vo) {
+		dao.likeOn(vo);
 	}
 }

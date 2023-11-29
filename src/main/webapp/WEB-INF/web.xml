@@ -106,6 +106,18 @@
   	<url-pattern>/updatePortCmt</url-pattern>
   </servlet-mapping>
   
+  
+  <!-- 포트폴리오 좋아요 서블릿 -->
+  <servlet>
+  	<servlet-name>likePortBoard</servlet-name>
+  	<servlet-class>board.port.controller.LikePortBoard</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>likePortBoard</servlet-name>
+  	<url-pattern>/likePortBoard</url-pattern>
+  </servlet-mapping>
+  
 
   
 </web-app>

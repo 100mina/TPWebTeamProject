@@ -9,19 +9,18 @@
 
 body{ margin-left: 100px; margin-right: 100px; position: relative;}
 
-#user{ height: 60px; float: left; width: 40%; position: relative; left: 100px; margin-top: 10px;}
+#user{ height: 60px; width: 180px; position: relative; left: 120px; margin-top: 10px;}
 
 #profile{
 	border-radius: 50%;
 	border: 1px solid lightgray;
 	width: 50px;
 	height: 50px;
-	float: left;
-	margin-left: 20px;
+	float: inline-start;
 	margin-right: 10px;
 }
 
-#buttons{ float: right; position: absolute; right: 100px; margin-top: 7px;}
+#buttons{ float: right; position: absolute; top: 7px; right: 100px; display: flex;}
 
 .button{
 	width: 40px;
@@ -148,21 +147,25 @@ textarea {
 	border: 1px solid black;
 }
 
-
-#btn_update{
-	position: absolute;
-	top: 10px;
-	right: 5px;
-	font-size: 0.8em;
+#btn {
+  display: inline-flex;
+  flex-direction: column;
 }
 
-#btn_delete{
-	position: relative;
-	bottom: 15px;
-	margin-right: 5px; 
-	font-size: 0.8em;
+#btn a{ font-size: 0.8em; margin: 5px; }
+
+
+
+
+/*반응형 웹*/
+@media(max-width: 620px){
+	body{ margin-left: 60px; margin-right: 60px; }
+	#user{ left: 50px; font-size: 0.8em; margin-top: 15px;}
+	#profile{ width: 40px; height: 40px; }
+	#buttons{ right: 50px; }
+	.button{ width: 30px; height: 30px; margin: 5px 8px 0px 8px; }
+	.button_text{ font-size: 9px; }
+	#btn a{ font-size: 0.7em; margin: 5px;}
 }
-
-
 
 

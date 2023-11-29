@@ -23,9 +23,18 @@ public class PortBoardVO {
 	
 	//해당 게시물의 댓글 리스트
 	private List<PortCmtVO> portCmtList;
-	int countCmt;
-
+	int countCmt; //댓글 수
 	
+	//해당 게시물의 좋아요 수
+	private int countFav;
+	
+	
+	public int getCountFav() {
+		return countFav;
+	}
+	public void setCountFav(int countFav) {
+		this.countFav = countFav;
+	}
 	public int getCountCmt() {
 		return countCmt;
 	}

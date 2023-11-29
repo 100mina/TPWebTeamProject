@@ -10,7 +10,7 @@
 <body>
 
 	<h2>포트폴리오 업로드</h2><br>
-	<p>자신의 포트폴리오를 업로드해서 자랑하거나, 다른 사람의 의견을 구할 수 있습니다!</p>
+	<p id="text">자신의 포트폴리오를 업로드해서 자랑하거나, 다른 사람의 의견을 구할 수 있습니다!</p>
 	
 	<br><br>
 	
@@ -60,10 +60,10 @@
 	        img.style.height = '250px';
 	        
 	        
-	        img.style.marginTop = '20px';
-	        img.style.marginBottom = '20px';
-	        img.style.marginLeft = '20px';
-	        img.style.marginRight = '20px';
+	        img.style.marginTop = '10px';
+	        img.style.marginBottom = '10px';
+	        img.style.marginLeft = '10px';
+	        img.style.marginRight = '10px';
 	        
 	        img.style.border = '1px solid lightgray';
 
