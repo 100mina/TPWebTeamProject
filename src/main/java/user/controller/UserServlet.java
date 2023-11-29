@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import user.model.UserVO;
 
-@WebServlet("userPage")
+
 
 public class UserServlet extends HttpServlet{
 	// user/signup
@@ -25,11 +25,12 @@ public class UserServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doHandle(req, resp);
 	}
-	
-	
 	void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=utf-8");
+		
+		String s = req.getPathInfo();
+		// s.split();
 		
 		UserVO user = (UserVO)req.getSession().getAttribute("user");
 		// PortBoardVO pbVO;

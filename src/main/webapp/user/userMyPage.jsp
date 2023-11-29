@@ -66,27 +66,27 @@
 		<span id="posthead"><h2>포트폴리오</h2></span>
 		<div id="postBody">
 			<script>
+				var k;
 				function changePage(pageNo) {
-					var itemCount = pageNo * 8
-					var k;
+					var itemCount = pageNo * 8	
 					switch (pageNo) {
-					case 1 : k=0
+					case 1 : k=0;
 					break;
-					case 2 : k=8
+					case 2 : k=8;
 					break;
-					case 3 : k=16
+					case 3 : k=16;
 					break;
-					case 4 : k=24
+					case 4 : k=24;
 					break;
-					case 5 : k=32
+					case 5 : k=32;
 					break;
-					case 6 : k=40
+					case 6 : k=40;
 					break;
-					case 7 : k=48
+					case 7 : k=48;
 					break;
-					case 8 : k=56
+					case 8 : k=56;
 					break;
-					case 9 : k=64
+					case 9 : k=64;
 					break;
 					case 10: k=72
 					break;
@@ -109,23 +109,17 @@
 			<script>
 				  var s = ${param.size};
 				  var size = s + 1;
-				  var maxPageNo = Math.ceil(size / pageSize); // 3
+				  var maxPageNo = Math.ceil(size / 8); // 3
 				  for (var i = 0; i < pageNo ; i++) {
 			</script>
 				<a onclick="changePage(${i+1})">${i+1}</a>
 			<script>
 				  }
 			</script>
-				
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
 </body>
 </html>
+
+
