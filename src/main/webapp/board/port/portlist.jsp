@@ -33,7 +33,7 @@
 	<header>
 		<div class="search">
 			<input type="text" placeholder="검색어를 입력하세요.">
-			<img alt="" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+			<img alt="이미지" src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
 		</div>
 	</header>
 	
@@ -66,13 +66,12 @@
      
     	<div>
     		<a href="#" class="user_id">
-    		
-    			<img class="user_image" alt="이미지" src="../../image/portimage1.png" width="25">
-    			${port.user_id}	
+    			<img class="user_image" alt="이미지" src="../../image/portimage1.png" width="30">
+    			 ${port.user_id}	
     		</a>
-    			<img alt="이미지" src="../../image/eye.png" style="margin-left: 20px">${port.view_count}
+    			<img alt="이미지" src="../../image/eye.png" style="margin-left: 20px" width="20px" > ${port.view_count}
     		
-    			<img alt="이미지" src="../../image/favo.png" style="margin-left: 10px">${port.like_count}
+    			<img alt="이미지" src="../../image/favo.png" style="margin-left: 10px" width="20px"> ${port.like_count}
     		
     	</div>
     	
@@ -99,7 +98,7 @@
     		<input type="button" value="5" onclick="#">
     		<input type="button" value="6" onclick="#">
     		<input type="button" value="7" onclick="#">
-    		<input type="button" value="글쓰기" onclick="#" style="margin-left: 70px;">
+    		<input type="button" value="글쓰기" onclick="#" style="margin-left: 70px; padding: 0.5em">
     </p>
 	
 		</div>
