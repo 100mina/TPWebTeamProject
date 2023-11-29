@@ -17,7 +17,15 @@ public class FreeBoardService {
 		
 		//#1. 전체 게시글 검색기능
 		public List<FreeBoardVO> getFreeBoardList(){
-			return freeBoardDao.getFreeBoardList();
+		    List<FreeBoardVO> freeBoardList = freeBoardDao.getFreeBoardList();
+		    
+		    for (FreeBoardVO board : freeBoardList) {
+		        int freeNo = board.getFreeNo();
+		        int commentCount = freeBoardDao.getCommentCountForBoard(freeNo);
+		        board.setCommentCount(commentCount);
+		    }
+
+			return freeBoardList;
 		}
 		
 		//#2. 게시글 상세 검색기능 - [ 게시글 검색 쿼리와 조회수 증가 쿼리를 실행해야 함 ]
@@ -46,12 +54,28 @@ public class FreeBoardService {
 			return freeBoardDao.getFreeBoardList(); //삭제된 후 전체 게시글 리턴..
 		}
 		
+		//#6. 댓글 읽어오기 기능
 		public List<FreeCommentVO> getFreeCmtList(FreeCommentVO vo){
 			return freeBoardDao.getFreeCmtList(vo);
 		}
 		
+		//#7. 댓글 저장 기능
 		public void addComment(FreeCommentVO vo) {
 	        FreeBoardDAO freeBoardDAO = new FreeBoardDAO();
 	        freeBoardDAO.insertFreeComment(vo);
 	    }
+		
+		//#8. 댓글 수정 기능
+		public FreeCommentVO updateFreeCmt(FreeCommentVO vo) {
+			freeBoardDao.updateFreeComment(vo);
+		    return vo;
+			
+		}
+		
+		//#9. 댓글 삭제 기능
+		public List<FreeCommentVO> deleteFreeCmt(FreeCommentVO vo){
+			freeBoardDao.deleteFreeComment(vo);
+			return freeBoardDao.getFreeCmtList(vo);
+		}
+		
 }

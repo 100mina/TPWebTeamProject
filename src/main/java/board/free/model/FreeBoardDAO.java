@@ -89,6 +89,7 @@ public class FreeBoardDAO {
 				board.setFreeCategory(rs.getString("FREE_CATEGORY"));			
 			}
 			
+			
 			rs.close();
 			pstmt.close();
 			conn.close();
@@ -260,5 +261,73 @@ public class FreeBoardDAO {
             }
         }
     }//......................................................
+    
+    //댓글 수정
+    public void updateFreeComment(FreeCommentVO vo) {
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql="UPDATE FREE_COMMENT SET FREE_CMT_CONTENT=?, FREE_CMT_DATE=? WHERE FREE_CMT_NO=?";
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getFreeCmtContent());
+			pstmt.setTimestamp(2, vo.getFreeCmtDate());
+			pstmt.setInt(3, vo.getFreeCmtNo());
+			
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}//.............................................................
+	
+	//댓글 삭제
+	public void deleteFreeComment(FreeCommentVO vo) {
+		try {
+			Connection conn= dataSource.getConnection();
+			
+			String sql="DELETE FROM FREE_COMMENT WHERE FREE_CMT_NO=?";
+			PreparedStatement pstmt= conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getFreeCmtNo());
+			
+			pstmt.executeUpdate();
+			
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}//...............................................................
+	
+	public int getCommentCountForBoard(int freeNo) {
+	    int commentCount = 0;
+
+	    try {
+	        Connection conn = dataSource.getConnection();
+	        String sql = "SELECT COUNT(*) FROM FREE_COMMENT WHERE FREE_NO = ?";
+	        PreparedStatement pstmt = conn.prepareStatement(sql);
+	        pstmt.setInt(1, freeNo);
+
+	        ResultSet rs = pstmt.executeQuery();
+	        if (rs.next()) {
+	            commentCount = rs.getInt(1);
+	        }
+
+	        rs.close();
+	        pstmt.close();
+	        conn.close();
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return commentCount;
+	}
 
 }

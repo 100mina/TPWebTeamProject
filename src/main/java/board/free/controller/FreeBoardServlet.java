@@ -48,10 +48,12 @@ public class FreeBoardServlet extends HttpServlet{
 				System.out.println("전체 게시글 리스트 검색을 요청하셨습니다.");
 				
 				List<FreeBoardVO> freeBoardList= freeBoardService.getFreeBoardList();
-				
+									
 				//리다이렉트될 화면에서 게시글 리스트를 사용하기 위해 session 객체를 활용
 				HttpSession session= req.getSession();
-				session.setAttribute("freeBoardList", freeBoardList);				
+
+				session.setAttribute("freeBoardList", freeBoardList);
+
 				
 				//화면구현은 별도의 JSP 이동
 				resp.sendRedirect("board/free/boardList.jsp");
@@ -63,6 +65,7 @@ public class FreeBoardServlet extends HttpServlet{
 				FreeCommentVO vo2= new FreeCommentVO();
 				
 				vo.setFreeNo(Integer.parseInt(freeNo));
+				
 				vo2.setFreeNo(Integer.parseInt(freeNo));
 				
 				FreeBoardVO freeBoard= freeBoardService.getFreeBoard(vo);
@@ -70,9 +73,10 @@ public class FreeBoardServlet extends HttpServlet{
 				
 				int size = freeCmtList.size();
 
-				//리다이렉트될 화면에 게시글 정보를 사용하기 위해 세션에 저장
-				HttpSession session= req.getSession();
+				// 새로운 댓글이 추가되었을 때 세션을 갱신
+				HttpSession session = req.getSession();
 				session.setAttribute("freeBoard", freeBoard);
+				
 				session.setAttribute("freeCmtList", freeCmtList);
 	
 				resp.sendRedirect("board/free/boardDetail.jsp"); //상세글 화면으로 이동				

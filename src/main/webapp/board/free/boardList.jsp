@@ -73,7 +73,7 @@
                         <tr>     
                             <td> 
                                 <img src="./image/viewicon.png" alt="Comment Icon" style="width: 17px"> <p>${freeBoard.freeView}</p>
-                                <img src="./image/comment.png" alt="Comment Icon" class="listicon"> <p>${freeBoard.freeView}</p>
+                                <img src="./image/comment.png" alt="Comment Icon" class="listicon"> <p>${freeBoard.commentCount}</p>
                                 <img src="./image/recommend.png" alt="recommend Icon" class="listicon"> <p>${freeBoard.freeView}</p>
                                 <span id="date">${freeBoard.freeDate}</span>
                             </td>

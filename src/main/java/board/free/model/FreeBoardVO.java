@@ -1,6 +1,7 @@
 package board.free.model;
 
 import java.sql.Date;
+import java.util.List;
 
 public class FreeBoardVO {
 	
@@ -11,8 +12,16 @@ public class FreeBoardVO {
 	private Date freeDate;         //작성일
 	private int freeView;          //조회수
 	private String freeCategory;       //카테고리
-	
-	
+	private int commentCount;
+
+    // getter 및 setter 추가
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
+    }
 	//getter & setter
 	
 	public int getFreeNo() {

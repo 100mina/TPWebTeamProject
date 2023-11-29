@@ -14,7 +14,7 @@ import board.free.model.FreeBoardService;
 import board.free.model.FreeCommentVO;
 
 @WebServlet("/addFreeCmt")
-public class AddFreeCmtServlet extends HttpServlet{
+public class FreeCmtAddServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

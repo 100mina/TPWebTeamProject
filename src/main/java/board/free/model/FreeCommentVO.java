@@ -39,8 +39,8 @@ public class FreeCommentVO {
 		
 		return freeCmtDate;
 	}
-	public void setFreeCmtDate(Timestamp freeCmtDate) {
-		this.freeCmtDate = freeCmtDate;
+	public void setFreeCmtDate(Timestamp parsedDate) {
+		this.freeCmtDate = parsedDate;
 	}
 	
 	

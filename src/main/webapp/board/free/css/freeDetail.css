@@ -1,6 +1,7 @@
 @charset "UTF-8";
 .listicon {width: 20px; margin-left: 20px;}  
-body {margin: 0px;}
+body {margin: 0px;
+}
 table {
     width: 700px;
     border: 1px solid rgb(192, 192, 192);
@@ -65,10 +66,56 @@ hr {
     overflow-x: hidden; /* 가로 스크롤 비활성화 */
 }
 
+#date {
+	position: relative;
+	left: 370px;
+}
+
+#empty {
+	text-align: center;	
+	width: 700px;
+    display: inline-block; /* 블록 레벨 요소로 설정 */
+    height: 3em;
+    margin-top: 50px; /* 예시로 50px로 지정 */
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 700px;
+    left: 410px;
+    border: solid 1px black;
+
+}
+
 #nickname {
     padding-top: 10px;
     height: 10px;
     max-width: 120px;
+}
+
+#updateCmtDialog {
+	margin: auto; /* 가운데 정렬을 위한 margin 속성 추가 */
+    width: 680px; /* 적절한 폭을 설정하세요 */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+    
+}
+
+#updateCmtContent {
+    max-width: 90%;
+    box-sizing: border-box;
+    overflow: hidden; /* 스크롤을 사용하지 않도록 설정 */
+}
+
+/* 다이얼로그가 나오면 테이블의 크기를 늘리고 싶다면, 아래와 같이 설정 */
+.updateCmtDialog {
+    width: 700px; /* 가로 크기 700px로 고정 */
+    max-height: 80vh; /* 세로 크기를 화면 높이의 80%로 설정 (자동으로 조절됨) */
+	padding: 10px;
 }
 
 .comment-item {
@@ -89,7 +136,7 @@ hr {
     margin-top: 10px;
     margin-bottom: 10px;
     width: 700px;
-    max-height: 150px;
+    max-height: 180px;
 }
 
 .comment-item {
