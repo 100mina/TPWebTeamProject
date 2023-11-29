@@ -37,7 +37,7 @@ public class SignupServlet extends HttpServlet{
 			
 		HttpSession session = req.getSession();
 		session.setAttribute("user", vo);
-		resp.sendRedirect("user/profile_selectForm.jsp");
+		resp.sendRedirect("user/profileselectForm.jsp");
 		}
 	}
 

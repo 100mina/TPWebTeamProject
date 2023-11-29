@@ -62,7 +62,7 @@
 	    	</div>
 	    <c:if test="${not empty sessionScope.user}">
 	    	<div id="user">
-	    		<a href="/user"><img alt="" src="./fileLoad" id="profile"></a>&nbsp;&nbsp;
+	    		<a href="userPage?userId=${sessionScope.user.id}"><img alt="" src="./fileLoad" id="profile"></a>&nbsp;&nbsp;
 	    		  <p>${sessionScope.user.nickName}님</p>&nbsp;환영합니다!
 	    		  
 	    		  <script type="text/javascript">

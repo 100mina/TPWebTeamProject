@@ -23,7 +23,7 @@ import user.model.UserVO;
 		   maxRequestSize = 1024 * 1024 * 5 * 5  // 25 MB
 		)
 @WebServlet("/updateProfile")
-public class UserProfileUpdateServlet extends HttpServlet{
+public class UserProfileselectServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
