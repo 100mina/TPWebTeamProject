@@ -19,13 +19,13 @@
 	
 				<div id="category">
 					<ul class="first">
-						<li><a href="">포트폴리오</a></li>
+						<li><a href="portBoardList">포트폴리오</a></li>
 					</ul>
 					<ul class="first">
 						<li><a href="">취업신</a></li>
 					</ul>
 					<ul id="info">
-						<li><a href="">정보마당</a></li>
+						<li><a href="./board/free/boardList.jsp">정보마당</a></li>
 					</ul>
 				</div>
 				<ul class="second">

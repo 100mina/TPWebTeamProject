@@ -33,12 +33,11 @@ public class UserDAO {
 	public void insertMember(UserVO vo) {
 		try {
 			Connection conn = dataSource.getConnection();
-			String sql = "INSERT INTO USER_INFO(ID, PW, NICKNAME, PROFILE_PATH) VALUES(?,?,?,?)";
+			String sql = "INSERT INTO USERS(USER_ID, USER_PW, USER_NICKNAME) VALUES(?,?,?)";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPw());
 			pstmt.setString(3, vo.getNickName());
-			pstmt.setString(4, vo.getProfilePath());
 			
 			pstmt.executeUpdate();
 			
@@ -53,7 +52,7 @@ public class UserDAO {
 		UserVO user = null;
 		try {
 			Connection conn = dataSource.getConnection();
-			String sql = "SELECT * FROM USER_INFO WHERE ID=? AND PW=?";
+			String sql = "SELECT * FROM USERS WHERE ID=? AND PW=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPw());
@@ -80,7 +79,7 @@ public class UserDAO {
 	public void updateUserProfile(UserVO vo) {
 		try {
 			Connection conn = dataSource.getConnection();
-			String sql = "UPDATE USER_INFO SET PROFILE_PATH=? WHERE=?";
+			String sql = "UPDATE USERS SET USER_PROFILE_PATH=? WHERE=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getUserLevel());
 			pstmt.setString(2, vo.getId());

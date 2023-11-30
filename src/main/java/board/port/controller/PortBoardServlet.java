@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import board.port.model.PortBoardDAO;
+import board.port.model.PortBoardService;
 import board.port.model.PortBoardVO;
 @WebServlet("/portBoardList")
 public class PortBoardServlet extends HttpServlet{
@@ -19,14 +20,10 @@ public class PortBoardServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		super.doGet(req, resp);
 		doHandle(req,resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		super.doPost(req, resp);
 		doHandle(req,resp);
 	}
 	
@@ -35,18 +32,26 @@ public class PortBoardServlet extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
 		
-		String portNo=req.getParameter("port_no");
-		String portTitle=req.getParameter("port_title");
-		String portContent=req.getParameter("port_content");
-		String userId=req.getParameter("user_id");
-		String portDate=req.getParameter("port_date");
-		String portView=req.getParameter("port_view");
-		String imgPath=req.getParameter("img_path");
+		PortBoardService portBoardService = new PortBoardService();
+		List<PortBoardVO> portBoardList = portBoardService.getPortList();
 		
-		PortBoardVO vo=new PortBoardVO();
-		vo.setPortTitle(portTitle);
-		vo.setUserId(userId);
-	
+		req.setAttribute("portList" , portBoardList );
+		resp.sendRedirect("./board/port/portlist.jsp");
+		
+		
+		
+		/*
+		 * String portNo=req.getParameter("port_no"); String
+		 * portTitle=req.getParameter("port_title"); String
+		 * portContent=req.getParameter("port_content"); String
+		 * userId=req.getParameter("user_id"); String
+		 * portDate=req.getParameter("port_date"); String
+		 * portView=req.getParameter("port_view"); String
+		 * imgPath=req.getParameter("img_path");
+		 * 
+		 * PortBoardVO vo=new PortBoardVO(); vo.setPortTitle(portTitle);
+		 * vo.setUserId(userId);
+		 */	
 	}
 
 }

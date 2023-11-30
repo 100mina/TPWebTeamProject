@@ -26,7 +26,7 @@ import user.model.UserVO;
 public class UserProfileselectServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		// D:/TeamProject/default/profile.png
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=utf-8");
 		

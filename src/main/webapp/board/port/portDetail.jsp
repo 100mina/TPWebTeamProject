@@ -70,7 +70,7 @@
 	<!-- 사용자 정보? 칸? TODO: 회원정보VO 받으면 이미지, 닉네임 넣기-->
 	<div id="top">
 		<div id="user">
-			<a href=""><img alt="img" src="/TPWebTeamProject/board/port/img/profile.png" id="profile"></a>
+			<a href="../../userPage"><img alt="img" src="/TPWebTeamProject/board/port/img/profile.png" id="profile"></a>
 			<h3>사용자 닉네임</h3>
 			<a href="" >${port.userId }</a>
 		</div>
