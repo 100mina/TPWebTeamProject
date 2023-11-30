@@ -12,7 +12,8 @@
 <link rel="stylesheet" href="./css/userMyPage.css">
 	<c:set var="userPostList" value="${ requestScope.userPostList }"></c:set>
 	<c:set var="pageSize" value="8"></c:set>
-	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	
 	
 </head>
 <body>
