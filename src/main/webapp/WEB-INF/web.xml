@@ -9,7 +9,7 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
-  
+ <!-- 정훈 Servlet Mapping -->
   <servlet>
   	<servlet-name>userPage</servlet-name>
   	<servlet-class>user.controller.UserServlet</servlet-class>
@@ -19,6 +19,22 @@
   	<url-pattern>/userPage/*</url-pattern>
   </servlet-mapping>
     
+  <!-- 승조 Servlet Mapping -->
+  <servlet>
+  	<servlet-name>freeBoard</servlet-name>
+  	<servlet-class>board.free.controller.FreeBoardServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>freeBoard</servlet-name>
+  	<url-pattern>/freeBoard</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
+  
 </web-app>
 
 
