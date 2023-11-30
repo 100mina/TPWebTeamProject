@@ -9,4 +9,118 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  
+  <!-- 포트폴리오 게시물 업로드 서블릿 -->
+   <servlet>
+  	<servlet-name>insertPortBoard</servlet-name>
+  	<servlet-class>board.port.controller.InsertPortBoard</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>insertPortBoard</servlet-name>
+  	<url-pattern>/insertPortBoard</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 게시물 수정 서블릿 -->
+   <servlet>
+  	<servlet-name>updatePortBoard</servlet-name>
+  	<servlet-class>board.port.controller.UpdatePortBoard</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>updatePortBoard</servlet-name>
+  	<url-pattern>/updatePortBoard</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 게시물 삭제 서블릿 -->
+   <servlet>
+  	<servlet-name>deletePortBoard</servlet-name>
+  	<servlet-class>board.port.controller.DeletePortBoard</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>deletePortBoard</servlet-name>
+  	<url-pattern>/deletePortBoard</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 게시물 상세보기 서블릿 -->
+  <servlet>
+  	<servlet-name>getPortDetail</servlet-name>
+  	<servlet-class>board.port.controller.GetPortDetail</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>getPortDetail</servlet-name>
+  	<url-pattern>/getPortDetail</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 해당 게시물의 이미지 불러오기 서블릿 -->
+  <servlet>
+  	<servlet-name>getImg</servlet-name>
+  	<servlet-class>board.port.controller.GetImg</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>getImg</servlet-name>
+  	<url-pattern>/getImg</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 댓글 작성 서블릿 -->
+  <servlet>
+  	<servlet-name>insertPortCmt</servlet-name>
+  	<servlet-class>board.port.controller.InsertPortCmt</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>insertPortCmt</servlet-name>
+  	<url-pattern>/insertPortCmt</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 댓글 삭제 서블릿 -->
+  <servlet>
+  	<servlet-name>deletePortCmt</servlet-name>
+  	<servlet-class>board.port.controller.DeletePortCmt</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>deletePortCmt</servlet-name>
+  	<url-pattern>/deletePortCmt</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 댓글 수정 서블릿 -->
+  <servlet>
+  	<servlet-name>updatePortCmt</servlet-name>
+  	<servlet-class>board.port.controller.UpdatePortCmt</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>updatePortCmt</servlet-name>
+  	<url-pattern>/updatePortCmt</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- 포트폴리오 좋아요 서블릿 -->
+  <servlet>
+  	<servlet-name>likePortBoard</servlet-name>
+  	<servlet-class>board.port.controller.LikePortBoard</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>likePortBoard</servlet-name>
+  	<url-pattern>/likePortBoard</url-pattern>
+  </servlet-mapping>
+  
+
+  
 </web-app>
+
+
+
