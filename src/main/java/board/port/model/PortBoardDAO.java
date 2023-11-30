@@ -589,145 +589,105 @@ public class PortBoardDAO {
  * 
  * 
  */		
-		try {
-			Connection conn=dataSource.getConnection();
-			String sql="SELECT IMG_PATH FROM PORT_BOARD_IMG WHERE PORT_NO=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-				
-				pstmt.setInt(1, vo.getPortNo());
-				ResultSet rs=pstmt.executeQuery();
-
-				if(rs.next()) {
-					imagePath=new PortBoardVO();
-					imagePath.setImgPath(rs.getString("IMG_PATH"));
-					
-					}
-				rs.close();
-				pstmt.close();
-				conn.close();
-	
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return imagePath;
-	}
-	
-	//사용자 아이디 가져오기
-	public PortBoardVO selectUserId(PortBoardVO vo){
-		
-		PortBoardVO board=null;
-		
-		
-		try {
-			Connection conn=dataSource.getConnection();
-			String sql="SELECT USER_ID FROM PORT_BOARD WHERE PORT_NO=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, vo.getPortNo());
-			
-			ResultSet rs=pstmt.executeQuery();
-			
-			if(rs.next()) {
-				board=new PortBoardVO();
-				board.setUserId(rs.getString("USER_ID"));
-			}
-			
-			rs.close();
-			pstmt.close();
-			conn.close();
-		
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		return null;
-	}
-	
-	//사용자 프로필 이미지 조회// 테이블 아직 안함
-	public String selectUserProfileImage(String userId) {
-		
-		String profileImagePath=null;
-		String sql="SELECT PROFILE_IMAGE_PATH FROM USER_PROFILE WHERE USER_ID=?";
-		
-		try {
-			Connection conn=dataSource.getConnection();
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			
-			pstmt.setString(1, userId);
-			
-			try(ResultSet rs=pstmt.executeQuery()){
-				
-				if(rs.next()) {
-					profileImagePath=rs.getString("PROFILE_IMAGE_PATH");
-				}
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		return profileImagePath;
-		
-	}
-	
-	//조회수 증가//
-	public void increaseViewCount(PortBoardVO vo) {
-		
-		
-		try {
-			Connection conn=dataSource.getConnection();
-			String sql="UPDATE PORT_BOARD SET PORT_VIEW= (SELECT PORT_VIEW FROM PORT_BOARD WHERE PORT_NO=?)+1 WHERE PORT_NO=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, vo.getPortNo());
-			pstmt.setInt(2, vo.getPortNo());
-			pstmt.executeUpdate();
-			
-			pstmt.close();
-			conn.close();
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-	}
-	//좋아요 수 조회
-	public int selectLikeCount(int portNo) {
-		
-		int likeCount=0;
-		String sql="SELECT COUNT(*) AS LIKE_COUNT FROM PORT_FAVORITE WHERE PORT_NO=?";
-		
-		try {
-			Connection conn=dataSource.getConnection();
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, portNo);
-			
-			try(ResultSet rs=pstmt.executeQuery()){
-				if(rs.next()) {
-					likeCount=rs.getInt("LIKE_COUNT");
-				}
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		return likeCount;
-		
-		
-	}
-
+/*
+ * try { Connection conn=dataSource.getConnection(); String
+ * sql="SELECT IMG_PATH FROM PORT_BOARD_IMG WHERE PORT_NO=?"; PreparedStatement
+ * pstmt=conn.prepareStatement(sql);
+ * 
+ * pstmt.setInt(1, vo.getPortNo()); ResultSet rs=pstmt.executeQuery();
+ * 
+ * if(rs.next()) { imagePath=new PortBoardVO();
+ * imagePath.setImgPath(rs.getString("IMG_PATH"));
+ * 
+ * } rs.close(); pstmt.close(); conn.close();
+ * 
+ * 
+ * } catch (SQLException e) { // TODO Auto-generated catch block
+ * e.printStackTrace(); }
+ * 
+ * return imagePath; }
+ * 
+ * //사용자 아이디 가져오기 public PortBoardVO selectUserId(PortBoardVO vo){
+ * 
+ * PortBoardVO board=null;
+ * 
+ * 
+ * try { Connection conn=dataSource.getConnection(); String
+ * sql="SELECT USER_ID FROM PORT_BOARD WHERE PORT_NO=?"; PreparedStatement
+ * pstmt=conn.prepareStatement(sql); pstmt.setInt(1, vo.getPortNo());
+ * 
+ * ResultSet rs=pstmt.executeQuery();
+ * 
+ * if(rs.next()) { board=new PortBoardVO();
+ * board.setUserId(rs.getString("USER_ID")); }
+ * 
+ * rs.close(); pstmt.close(); conn.close();
+ * 
+ * 
+ * 
+ * } catch (SQLException e) { // TODO Auto-generated catch block
+ * e.printStackTrace(); }
+ * 
+ * 
+ * return null; }
+ * 
+ * //사용자 프로필 이미지 조회// 테이블 아직 안함 public String selectUserProfileImage(String
+ * userId) {
+ * 
+ * String profileImagePath=null; String
+ * sql="SELECT PROFILE_IMAGE_PATH FROM USER_PROFILE WHERE USER_ID=?";
+ * 
+ * try { Connection conn=dataSource.getConnection(); PreparedStatement
+ * pstmt=conn.prepareStatement(sql);
+ * 
+ * pstmt.setString(1, userId);
+ * 
+ * try(ResultSet rs=pstmt.executeQuery()){
+ * 
+ * if(rs.next()) { profileImagePath=rs.getString("PROFILE_IMAGE_PATH"); } }
+ * 
+ * } catch (SQLException e) { // TODO Auto-generated catch block
+ * e.printStackTrace(); }
+ * 
+ * 
+ * return profileImagePath;
+ * 
+ * }
+ * 
+ * //조회수 증가// public void increaseViewCount(PortBoardVO vo) {
+ * 
+ * 
+ * try { Connection conn=dataSource.getConnection(); String
+ * sql="UPDATE PORT_BOARD SET PORT_VIEW= (SELECT PORT_VIEW FROM PORT_BOARD WHERE PORT_NO=?)+1 WHERE PORT_NO=?"
+ * ; PreparedStatement pstmt=conn.prepareStatement(sql);
+ * 
+ * pstmt.setInt(1, vo.getPortNo()); pstmt.setInt(2, vo.getPortNo());
+ * pstmt.executeUpdate();
+ * 
+ * pstmt.close(); conn.close();
+ * 
+ * } catch (SQLException e) { // TODO Auto-generated catch block
+ * e.printStackTrace(); }
+ * 
+ * 
+ * } //좋아요 수 조회 public int selectLikeCount(int portNo) {
+ * 
+ * int likeCount=0; String
+ * sql="SELECT COUNT(*) AS LIKE_COUNT FROM PORT_FAVORITE WHERE PORT_NO=?";
+ * 
+ * try { Connection conn=dataSource.getConnection(); PreparedStatement
+ * pstmt=conn.prepareStatement(sql); pstmt.setInt(1, portNo);
+ * 
+ * try(ResultSet rs=pstmt.executeQuery()){ if(rs.next()) {
+ * likeCount=rs.getInt("LIKE_COUNT"); } } } catch (SQLException e) { // TODO
+ * Auto-generated catch block e.printStackTrace(); }
+ * 
+ * 
+ * return likeCount;
+ * 
+ * 
+ * }
+ */
 
 
 
