@@ -6,7 +6,11 @@
 	src: url("../../font/notosans.ttf"); 
 }
 
-body{ font-family: 'notosans', 'Times New Roman', Times, serif; padding: 3em;}
+body{
+	 font-family: 'notosans', 'Times New Roman', Times, serif; padding: 3em;
+	 margin: 0 auto;
+
+	 }
 
 #content{height: 7em; text-align: start; vertical-align: text-top;} 
 
@@ -28,6 +32,29 @@ table {
   margin: 0 auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
 }
 
+
+.category tr {
+	border: solid 1px rgb(192, 192, 192);
+}
+
+
+.index {
+    width: 200px;
+    float: left;
+    bottom: 1200px;
+    left: 50px;
+    position: relative;
+}
+
+.index th{
+	text-align: left;
+}
+
+.index th p{
+	left: 14px;
+}
+
+
 .message{
 	display: inline-block;
 	text-align: right;
@@ -42,6 +69,16 @@ table {
     color: white;
     width: 8em;
     border: none;
+}
+
+.content {
+  display: none;
+  background-color: #f1f1f1;
+  border: 1px solid rgb(192, 192, 192);
+}
+
+.category:hover .content {
+  display: table-row;
 }
 
 .message a {
@@ -63,4 +100,11 @@ p{
 
 .board-link:hover {
     color: rgb(0, 0, 0); /* 마우스 오버 시 색상 변경 */
+}
+
+#table-container{
+	display: inline-block;
+	width: 700px;
+	position: relative;
+	left: 163px;
 }

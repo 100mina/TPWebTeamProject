@@ -223,7 +223,13 @@
                         console.log("댓글이 성공적으로 삭제되었습니다.");
 
                         // 여기서 화면을 갱신하거나 필요한 작업을 수행
-                        location.reload(); // 페이지 리로드 (댓글 목록 갱신)
+                         $("#updateCmtDialog_" + freeCmtNo).closest(".comment-item").remove();
+
+	                    // 남은 댓글이 없다면 메시지 표시
+	                     if ($(".comment-item").length === 0) {
+	                         $("#empty").show();
+	                     }
+                    
                     } else {
                         // 삭제에 실패했을 때의 처리
                         console.log("댓글 삭제에 실패했습니다.");

@@ -87,10 +87,55 @@
             </c:choose>
 			</div>
 			
+			<table class="index">
+			
+				<tr>
+			      <th><p>홈</p></th>
+			    </tr>
+			    
+			    <tr>
+			      <th><p>포트폴리오</p></th>
+			    </tr>
+			
+				<tr class="category" id="community">
+			      <th><p>커뮤니티</p></th>
+			    </tr>
+			    
+			    <tr class="content" id="allPosts">
+			      </a><td><p>전체게시판</p></td>
+			    </tr>
+			    
+			    <tr class="content" id="freePosts">
+			      <td><p>자유게시판</p></td>
+			    </tr>
+			    
+			    <tr class="content" id="resume">
+			      <td><p>이력서/자기소개서</p></td>
+			    </tr>
+			    
+			    <tr class="content" id="interview">
+			      <td><p>면접/취업</p></td>
+			    </tr>
+							
+			</table>
+			
 	
 	<a href="boardForm.jsp"><div class="message">글쓰기</div></a>
 		
+	<script type="text/javascript">
 	
+		document.addEventListener('DOMContentLoaded', function () {
+		  const categoryRow = document.getElementById('community');
+		  categoryRow.addEventListener('click', function () {
+		    // Toggle the display of content rows
+		    const contentRows = document.getElementsByClassName('content');
+		    for (const row of contentRows) {
+		      row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+		    }
+		  });
+		});
+		
+	</script>
 
 
 </body>
