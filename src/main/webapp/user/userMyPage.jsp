@@ -4,13 +4,16 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>userID / 취업의 신</title>
+<title> ${ userPostList.userId } / 취업의 신</title>
 <link rel="stylesheet" href="./css/userMyPage.css">
+	<c:set var="userPostList" value="${ requestScope.userPostList }"></c:set>
+	<c:set var="pageSize" value="8"></c:set>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	
 </head>
 <body>
 <div id="wraper">
@@ -65,61 +68,16 @@
 	<div id="postWraper">
 		<span id="posthead"><h2>포트폴리오</h2></span>
 		<div id="postBody">
-			<script>
-				var k;
-				function changePage(pageNo) {
-					var itemCount = pageNo * 8	
-					switch (pageNo) {
-					case 1 : k=0;
-					break;
-					case 2 : k=8;
-					break;
-					case 3 : k=16;
-					break;
-					case 4 : k=24;
-					break;
-					case 5 : k=32;
-					break;
-					case 6 : k=40;
-					break;
-					case 7 : k=48;
-					break;
-					case 8 : k=56;
-					break;
-					case 9 : k=64;
-					break;
-					case 10: k=72
-					break;
-					}
-					for (var i = k; i < itemCount-1; i++) {
-			</script>
-				<div id="postItem">
-					<img alt="thumbnailIMG" src="./image/bg_myProfile.png"><br>
-					<h5>title</h5>
-				</div>						
-			<script>															
-					}
-				}
-			</script>
-			<script>
-				changePage(1)
-			</script>
-		</div>
-		<div id="postFooter">
-			<script>
-				  var s = ${param.size};
-				  var size = s + 1;
-				  var maxPageNo = Math.ceil(size / 8); // 3
-				  for (var i = 0; i < pageNo ; i++) {
-			</script>
-				<a onclick="changePage(${i+1})">${i+1}</a>
-			<script>
-				  }
-			</script>
+		
+		
+			<c:forEach var="i" begin="0" end="${(fn:length(userPostList)/8)+1 }">
+				<input type="button" value="${i+1}" style="margin-left: 0.5em; margin-right: 0.5em" id="pageBtn" onclick="changPage()">
+			</c:forEach>
 		</div>
 	</div>
 </div>
 </body>
 </html>
+<script type="text/javascript" src="./js/userMyPage.js"></script>
 
 

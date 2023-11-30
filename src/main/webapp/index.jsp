@@ -1,3 +1,7 @@
+<%@page import="java.util.Collections"%>
+<%@page import="board.port.model.PortBoardVO"%>
+<%@page import="java.util.List"%>
+<%@page import="board.port.model.PortBoardService"%>
 <%@ page language="java" contentType="text/html; UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,6 +14,13 @@
 	<title>취업의 신</title>
 	
 	<link href="./css/index.css" rel="stylesheet">
+	<%
+		PortBoardService pbService = new PortBoardService();
+		List<PortBoardVO> postList= pbService.getPortList();
+		Collections.shuffle(postList);
+		pageContext.setAttribute("postList", postList);
+	%>
+	
 	</head>
 	<body>
 		<div>
@@ -107,13 +118,18 @@
 						신 가입하기</button></a>
 			</span>
 		</div>
-		<div class="postWraper">
-			<a href="#" class="user_id"> <img class="user_image" alt="이미지"
-				src="../../image/portimage1.png" width="25">id
-			</a> <img alt="이미지" src="../../image/eye.png" style="margin-left: 20px">view
-			count <img alt="이미지" src="../../image/favo.png"
-				style="margin-left: 10px">like count
-		</div>
+		<c:forEach var="post" items="${ postList }">
+			<div class="postWraper">
+				<div id="postImg">
+					<img alt="게시물 사진" src="">
+				</div>
+				 <div id="postInfo">
+				 	<span><a href="#"><img class="userProfile" alt="이미지" src="#" width="25">&nbsp;&nbsp;${ post.userNickName }</a></span>
+				 	<span><img alt="이미지" src="./image/favo.png"style="margin-left: 10px">&nbsp;&nbsp;${ post.countFav }</span>
+				 	<span><img alt="이미지" src="./image/eye.png" style="margin-left: 20px">&nbsp;&nbsp;${ post.portView }</span>
+				 </div>
+			</div>
+		</c:forEach>
 		<footer> </footer>
 	</body>
 </html>

@@ -8,8 +8,16 @@ public class UserVO {
 	private String nickName;
 	private String profilePath;
 	private String userLevel;
+	private int followerCount;
 	
 	
+	
+	public int getFollowerCount() {
+		return followerCount;
+	}
+	public void setFollowerCount(int followerCount) {
+		this.followerCount = followerCount;
+	}
 	public String getId() {
 		return id;
 	}

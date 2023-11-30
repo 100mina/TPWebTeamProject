@@ -27,6 +27,11 @@
 <link type="text/css" rel="stylesheet" href="css/portlist.css">
 </head>
 <body>
+	<jsp:include page="../../header.jsp"></jsp:include>
+
+
+
+
 	<header>
 		<div class="search">
 			<input type="text" placeholder="검색어를 입력하세요."> <img alt="이미지"

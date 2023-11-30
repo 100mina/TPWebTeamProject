@@ -11,12 +11,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import board.port.model.PortBoardService;
+import board.port.model.PortBoardVO;
+import user.model.FollowerVO;
+import user.model.UserDAO;
 import user.model.UserVO;
 
 
 
 public class UserServlet extends HttpServlet{
-	// user/signup
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doHandle(req, resp);
@@ -29,26 +32,27 @@ public class UserServlet extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=utf-8");
 		
+		// 파라미터로 요청된 데이터 "/" 분리하는 코드
 		String s = req.getPathInfo();
-		// s.split();
+		String[] originalPath = s.split("/");
 		
+		// reqUserId 로 요청된 id 로 DAO Select 문 실행
+		String reqUserId = originalPath[1];
+		
+		// 로그인한 유저의 정보
 		UserVO user = (UserVO)req.getSession().getAttribute("user");
-		// PortBoardVO pbVO;
-		// BoardDAO bDAO; bDAO.getUserPosting
-		class PBVO {
-			String userNickName= "홍길동";
-			String profilePath= user.getProfilePath();
-			int viewCount= 999;
-			int like = 999;
-			String thumbnailImgPath;
-		}
-		List<PBVO> pbvos = new ArrayList<PBVO>();
-		for(int i=0;i<20;i++){
-			pbvos.add(new PBVO());
-		}
 		
-		req.setAttribute("userPortPost", pbvos);
-		resp.sendRedirect("user/userMyPage.jsp?size="+pbvos.size());
+		PortBoardService pbService = new PortBoardService();
+		List<PortBoardVO> userPortList = pbService.getPortList();
 		
+		// 유저가 자신의 페이지를 눌렀을 때
+		if(reqUserId.equals(user.getId())) {
+			req.setAttribute("userPortList", userPortList);
+			resp.sendRedirect("user/userMyPage.jsp?size="+userPortList.size());
+		// 다른 유저의 페이지를 눌렀을 때	
+		}else {
+			req.setAttribute("userPortList", userPortList);
+			resp.sendRedirect("user/userMyPage.jsp?size="+userPortList.size());
+		}
 	}
 }
