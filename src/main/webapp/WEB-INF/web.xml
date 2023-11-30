@@ -9,4 +9,17 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <!-- 게시판의 시작점에 해당하는 서블릿 등록 -->
+  <servlet>
+  	<servlet-name>freeBoard</servlet-name>
+  	<servlet-class>board.free.controller.FreeBoardServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>freeBoard</servlet-name>
+  	<url-pattern>/freeBoard</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
+
