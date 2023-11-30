@@ -107,17 +107,16 @@
   </servlet-mapping>
   
   
-  <!-- 포트폴리오 좋아요 서블릿 -->
+  <!-- 포트폴리오 좋아요 기능 서블릿 -->
   <servlet>
-  	<servlet-name>likePortBoard</servlet-name>
-  	<servlet-class>board.port.controller.LikePortBoard</servlet-class>
+  	<servlet-name>portIsLike</servlet-name>
+  	<servlet-class>board.port.controller.PortIsLike</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>likePortBoard</servlet-name>
-  	<url-pattern>/likePortBoard</url-pattern>
+  	<servlet-name>portIsLike</servlet-name>
+  	<url-pattern>/portIsLike</url-pattern>
   </servlet-mapping>
-  
 
   
 </web-app>
