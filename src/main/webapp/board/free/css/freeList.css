@@ -8,8 +8,6 @@
 
 body{
 	 font-family: 'notosans', 'Times New Roman', Times, serif; padding: 3em;
-	 margin: 0 auto;
-
 	 }
 
 #content{height: 7em; text-align: start; vertical-align: text-top;} 
@@ -40,10 +38,10 @@ table {
 
 .index {
     width: 200px;
-    float: left;
-    bottom: 1200px;
-    left: 50px;
+    bottom: 750px;
     position: relative;
+    display: inline-block;
+    right: 400px;
 }
 
 .index th{
@@ -106,5 +104,19 @@ p{
 	display: inline-block;
 	width: 700px;
 	position: relative;
-	left: 163px;
+	left: 554px;
 }
+
+ div.pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    div.pagination a {
+        padding: 5px 10px;
+        margin: 0 5px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        color: #007bff;
+    }

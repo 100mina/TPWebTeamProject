@@ -2,6 +2,7 @@ package board.free.model;
 
 import java.net.http.HttpConnectTimeoutException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class FreeBoardDAO {
+	
 	
 	DataSource dataSource;
 	
@@ -305,6 +307,7 @@ public class FreeBoardDAO {
 		
 	}//...............................................................
 	
+	//댓글 수 읽어오기
 	public int getCommentCountForBoard(int freeNo) {
 	    int commentCount = 0;
 
@@ -329,5 +332,42 @@ public class FreeBoardDAO {
 
 	    return commentCount;
 	}
+	
 
+	
+	public List<FreeBoardVO> getFreeBoardListPaging(int pageNo, int pageSize) {
+	    List<FreeBoardVO> resultList = new ArrayList<>();
+
+	    try (Connection conn = dataSource.getConnection()) {
+	        // 쿼리 작성
+	        String query = "SELECT * FROM (SELECT ROWNUM AS rnum, f.* FROM free_board f ORDER BY FREE_NO DESC) WHERE rnum BETWEEN ? AND ?";
+	        int startRow = (pageNo - 1) * pageSize + 1;
+	        int endRow = pageNo * pageSize;
+
+	        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+	            pstmt.setInt(1, startRow);
+	            pstmt.setInt(2, endRow);
+
+	            try (ResultSet rs = pstmt.executeQuery()) {
+	                // 결과 처리
+	                while (rs.next()) {
+	                    FreeBoardVO board = new FreeBoardVO();
+	                    board.setFreeNo(rs.getInt("FREE_NO"));
+	                    board.setFreeTitle(rs.getString("FREE_TITLE"));
+	                    board.setFreeContent(rs.getString("FREE_CONTENT"));
+	    				board.setUserNickname(rs.getString("USER_NICKNAME"));
+	    				board.setFreeDate(rs.getDate("FREE_DATE"));
+	    				board.setFreeView(rs.getInt("FREE_VIEW"));
+	    				board.setFreeCategory(rs.getString("FREE_CATEGORY"));
+
+	                    resultList.add(board);
+	                }
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return resultList;
+	}
 }
