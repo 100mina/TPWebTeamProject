@@ -40,6 +40,8 @@ public class FreeBoardServlet extends HttpServlet{
 		//1. 요청 파라미터 확인 - RESTful 기법을 위한 데이터들..
 		String method= req.getParameter("method");
 		String freeNo= req.getParameter("free_no");
+		int pageNo = req.getParameter("pageNo") != null ? Integer.parseInt(req.getParameter("pageNo")) : 1;
+		int pageSize = 8;
 		
 		FreeBoardService freeBoardService= new FreeBoardService();
 		
@@ -47,8 +49,8 @@ public class FreeBoardServlet extends HttpServlet{
 			if(freeNo==null) {
 				System.out.println("전체 게시글 리스트 검색을 요청하셨습니다.");
 				
-				List<FreeBoardVO> freeBoardList= freeBoardService.getFreeBoardList();
-									
+                List<FreeBoardVO> freeBoardList = freeBoardService.getFreeBoardListPaging(pageNo, pageSize);
+		
 				//리다이렉트될 화면에서 게시글 리스트를 사용하기 위해 session 객체를 활용
 				HttpSession session= req.getSession();
 

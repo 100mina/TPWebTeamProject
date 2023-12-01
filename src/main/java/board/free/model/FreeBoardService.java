@@ -78,4 +78,9 @@ public class FreeBoardService {
 			return freeBoardDao.getFreeCmtList(vo);
 		}
 		
+		//#10. 페이지 설정 기능
+		public List<FreeBoardVO> getFreeBoardListPaging(int pageNo, int pageSize) {
+	        return freeBoardDao.getFreeBoardListPaging(pageNo, pageSize);
+	    }
+		
 }
