@@ -122,7 +122,7 @@ public class PortBoardDAO {
 		try {
 			Connection conn = dataSource.getConnection();
 
-			String sql = "SELECT * FROM PORT_BOARD WHERE PORT_NO=?";
+			String sql = "SELECT PB.*, U.USER_NICKNAME FROM PORT_BOARD PB JOIN USERS U ON PB.USER_ID=U.USER_ID WHERE PORT_NO=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getPortNo());
 
@@ -135,6 +135,7 @@ public class PortBoardDAO {
 				port.setUserId(rs.getString("USER_ID"));
 				port.setPortDate(rs.getDate("PORT_DATE"));
 				port.setPortView(rs.getInt("PORT_VIEW"));
+				port.setUserNickname(rs.getString("USER_NICKNAME"));
 
 			}
 			rs.close();
@@ -353,7 +354,6 @@ public class PortBoardDAO {
 	} // 게시물 삭제 //
 
 	// 댓글 작성
-	// TODO: 파라미터 회원정보VO로 변경
 	public void insertPortCmt(PortCmtVO vo) {
 
 		try {
@@ -406,7 +406,7 @@ public class PortBoardDAO {
 		try {
 			Connection conn = dataSource.getConnection();
 
-			String sql = "SELECT * FROM PORT_COMMENT WHERE PORT_NO=? ORDER BY PORT_CMT_NO";
+			String sql = "SELECT PC.*, U.USER_NICKNAME FROM PORT_COMMENT PC JOIN USERS U ON PC.USER_ID = U.USER_ID WHERE PC.PORT_NO=? ORDER BY PC.PORT_CMT_NO";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getPortNo());
@@ -418,6 +418,7 @@ public class PortBoardDAO {
 				vo1.setPortNo(rs.getInt("PORT_NO"));
 				vo1.setUserId(rs.getString("USER_ID"));
 				vo1.setPortCmtContent(rs.getString("PORT_CMT_CONTENT"));
+				vo1.setUserNickname(rs.getString("USER_NICKNAME"));
 
 				vo1.setPortCmtDate(new SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(rs.getDate("PORT_CMT_DATE")));
 
@@ -551,7 +552,8 @@ public class PortBoardDAO {
 		}
 		return isLike;
 	}
-
+	
+	
 	
 } // DAO Class...
 

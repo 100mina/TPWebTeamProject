@@ -10,6 +10,9 @@ public class PortBoardVO {
 	private String userId;
 	private Date portDate;
 	private int portView;
+	
+	private String userNickname;
+	
 
 	// 해당 게시물의 첨부파일 리스트
 	private List<PortBoardImgVO> portImgList;
@@ -26,12 +29,21 @@ public class PortBoardVO {
 	//댓글 수
 	private int countCmt; 
 
-	
 	// 로그인 중인 유저의 해당 게시물 좋아요 여부
 	private boolean isLike;
 	
 	// 해당 게시물의 좋아요 수
 	private int countFav;
+	
+	
+	
+	public String getUserNickname() {
+		return userNickname;
+	}
+
+	public void setUserNickname(String userNickname) {
+		this.userNickname = userNickname;
+	}
 
 	public boolean getIsLike() {
 		return isLike;

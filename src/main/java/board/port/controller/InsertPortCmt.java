@@ -19,20 +19,18 @@ public class InsertPortCmt extends HttpServlet{
 		
 		String content= req.getParameter("port_cmt_content");
 		int portNo= Integer.parseInt(req.getParameter("port_no"));
-		
-		//TODO: 회원 정보 VO 사용해서 회원아이디 전달.. 없어서 일단 임의로 데이터 넣음.
-		String nickname= "SAM";
+		String userId= req.getParameter("user_id");
 		
 		PortCmtVO vo= new PortCmtVO();
 		vo.setPortNo(portNo);
-		vo.setUserId(nickname);
+		vo.setUserId(userId);
 		vo.setPortCmtContent(content);
 		
 		//비지니스로직
 		PortBoardService service= new PortBoardService();
 		service.insertPortCmt(vo);
 		
-		System.out.println(portNo + " / " + nickname+ " : "+content);
+		System.out.println(portNo + " / " + userId+ " : "+content);
 		
 		//화면구현.. -> 새 댓글이 업데이트 된 현재 상세화면
 		resp.sendRedirect("getPortDetail?port_no="+vo.getPortNo());

@@ -25,9 +25,6 @@ public class GetPortDetail extends HttpServlet{
 		PortBoardVO vo= new PortBoardVO();
 		vo.setPortNo(Integer.parseInt(req.getParameter("port_no")));
 		
-		//TODO: 임의로 회원 아이디 설정 후 전송.. 회원정보VO 로 변경하기
-		vo.setUserId("SAM");
-		
 		
 		PortBoardService service= new PortBoardService();
 		PortBoardVO port= service.getPort(vo);
