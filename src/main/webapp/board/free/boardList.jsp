@@ -109,7 +109,7 @@
 			    </tr>
 			    
 			    <tr class="content" id="allPosts">
-			      <td><p>전체게시판</p></td>
+			      <td><a href="../../freeBoard"><p>전체게시판</p></a></td>
 			    </tr>
 			    
 			    <tr class="content" id="freePosts">

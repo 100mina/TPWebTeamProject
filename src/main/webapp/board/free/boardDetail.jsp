@@ -53,12 +53,12 @@
 			    <img src="./image/recommend.png" alt="recommend Icon" class="middleicon"> <p class="p2">추천</p>&nbsp;&nbsp;
 				<img src="./image/comment.png" alt="Comment Icon" class="middleicon"> <p class="p2">${fn:length(freeCmtList)}<p>
 				
-				<%-- <c:if test="${member.userId == board.userId }"> --%>
+				<c:if test="${user != null and user.id == freeBoard.userId }">
 				 	<p class="list-buttons">
 						<span class="update list-button" onclick="mod()">수정</span>
 						<span class="delete list-button" onclick="del(${freeBoard.freeNo})">삭제</span>
 				 	</p>
-				<%-- </c:if> --%>
+				</c:if>
 				
 			</td>
 		</tr>

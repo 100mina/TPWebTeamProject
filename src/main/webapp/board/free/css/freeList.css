@@ -38,7 +38,7 @@
 	
 	.index {
 	    width: 200px;
-	    bottom: 550px;
+	    bottom: 650px;	
 	    position: relative;
 	    display: inline-block;
 	    right: 400px;
@@ -104,7 +104,8 @@
 		display: inline-block;
 		width: 700px;
 		position: relative;
-		left: 554px;
+		left: 546px;
+		margin: 0 auto;
 	}
 	
 	 div.pagination {
