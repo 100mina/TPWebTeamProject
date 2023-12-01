@@ -20,13 +20,17 @@ public class FreeBoardInsertServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doHandle(req,resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doHandle(req,resp);
 	}
 	
 	void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
+		
+		System.out.println();
 		
 		HttpSession session= req.getSession();
 		UserVO user= (UserVO) session.getAttribute("user");
