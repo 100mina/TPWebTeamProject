@@ -29,29 +29,21 @@ public class FreeBoardInsertServlet extends HttpServlet{
 	}
 	
 	void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {		
-		
-		System.out.println();
-		
+				
 		HttpSession session= req.getSession();
 		UserVO user= (UserVO) session.getAttribute("user");
 		
 		String freeTitle= req.getParameter("free_title");
 		String freeContent= req.getParameter("free_content");
+		String freeId= user.getId();
 		String freeCategory= req.getParameter("free_category");
-		String freeNickname= user.getNickName();
-		
-		System.out.println(freeTitle);
-		System.out.println(freeContent);
-		System.out.println(freeCategory);
-		System.out.println(freeNickname);
-
-		
+	
 		FreeBoardVO vo= new FreeBoardVO();
 		vo.setFreeTitle(freeTitle);
 		vo.setFreeContent(freeContent);
-		vo.setUserNickname(freeNickname);
+		vo.setUserId(freeId);
 		vo.setFreeCategory(freeCategory);
-		
+
 		FreeBoardService freeBoardService= new FreeBoardService();
 		List<FreeBoardVO> freeBoardList= freeBoardService.insertFreeBoard(vo);
 		

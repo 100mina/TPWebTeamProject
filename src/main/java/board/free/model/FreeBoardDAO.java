@@ -47,7 +47,7 @@ public class FreeBoardDAO {
 				board.setFreeNo(rs.getInt("FREE_NO"));
 				board.setFreeTitle(rs.getString("FREE_TITLE"));
 				board.setFreeContent(rs.getString("FREE_CONTENT"));
-				board.setUserNickname(rs.getString("USER_NICKNAME"));
+				board.setUserId(rs.getString("USER_ID"));
 				board.setFreeDate(rs.getDate("FREE_DATE"));
 				board.setFreeView(rs.getInt("FREE_VIEW"));
 				board.setFreeCategory(rs.getString("FREE_CATEGORY"));
@@ -85,7 +85,7 @@ public class FreeBoardDAO {
 				board.setFreeNo(rs.getInt("FREE_NO"));
 				board.setFreeTitle(rs.getString("FREE_TITLE"));
 				board.setFreeContent(rs.getString("FREE_CONTENT"));
-				board.setUserNickname(rs.getString("USER_NICKNAME"));
+				board.setUserId(rs.getString("USER_ID"));
 				board.setFreeDate(rs.getDate("FREE_DATE"));
 				board.setFreeView(rs.getInt("FREE_VIEW"));
 				board.setFreeCategory(rs.getString("FREE_CATEGORY"));			
@@ -133,12 +133,12 @@ public class FreeBoardDAO {
 		try {
 			Connection conn= dataSource.getConnection();
 			
-			String sql="INSERT INTO FREE_BOARD(FREE_NO,FREE_TITLE,FREE_CONTENT,USER_NICKNAME,FREE_CATEGORY) VALUES(SEQ_FREE_BNO.NEXTVAL,?,?,?,?";
-			PreparedStatement pstmt= conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getFreeTitle());
-			pstmt.setString(2, vo.getFreeContent());
-			pstmt.setString(3, vo.getUserNickname());
-			pstmt.setString(4, vo.getFreeCategory());
+			String sql = "INSERT INTO FREE_BOARD(FREE_NO, FREE_TITLE, FREE_CONTENT, USER_ID, FREE_CATEGORY) VALUES(SEQ_FREE_NO.NEXTVAL, ?, ?, ?, ?)";
+	        PreparedStatement pstmt = conn.prepareStatement(sql);
+	        pstmt.setString(1, vo.getFreeTitle());
+	        pstmt.setString(2, vo.getFreeContent());
+	        pstmt.setString(3, vo.getUserId());
+	        pstmt.setString(4, vo.getFreeCategory());
 			
 			pstmt.executeUpdate();
 			
@@ -215,7 +215,7 @@ public class FreeBoardDAO {
 				
 				board.setFreeCmtNo(rs.getInt("FREE_CMT_NO"));
 				board.setFreeNo(rs.getInt("FREE_NO"));
-				board.setUserNickname(rs.getString("USER_NICKNAME"));
+				board.setUserId(rs.getString("USER_ID"));
 				board.setFreeCmtContent(rs.getString("FREE_CMT_CONTENT"));
 				board.setFreeCmtDate(rs.getTimestamp("FREE_CMT_DATE"));
 			   
@@ -241,12 +241,12 @@ public class FreeBoardDAO {
         Connection conn = null;
         try {
             conn = dataSource.getConnection();
-            String sql = "INSERT INTO FREE_COMMENT (FREE_CMT_NO, FREE_NO, USER_NICKNAME, FREE_CMT_CONTENT, FREE_CMT_DATE)"
+            String sql = "INSERT INTO FREE_COMMENT (FREE_CMT_NO, FREE_NO, USER_ID, FREE_CMT_CONTENT, FREE_CMT_DATE)"
             		+ " VALUES (SEQ_FREE_CMT_NO.NEXTVAL"
             		+ ", ?, ?, ?, SYSDATE)";
             PreparedStatement pstmt = conn.prepareStatement(sql, new String[]{"FREE_CMT_NO"});
             pstmt.setInt(1, vo.getFreeNo());
-            pstmt.setString(2, vo.getUserNickname());
+            pstmt.setString(2, vo.getUserId());
             pstmt.setString(3, vo.getFreeCmtContent());
             pstmt.executeUpdate();
 
@@ -355,7 +355,7 @@ public class FreeBoardDAO {
 	                    board.setFreeNo(rs.getInt("FREE_NO"));
 	                    board.setFreeTitle(rs.getString("FREE_TITLE"));
 	                    board.setFreeContent(rs.getString("FREE_CONTENT"));
-	    				board.setUserNickname(rs.getString("USER_NICKNAME"));
+	    				board.setUserId(rs.getString("USER_ID"));
 	    				board.setFreeDate(rs.getDate("FREE_DATE"));
 	    				board.setFreeView(rs.getInt("FREE_VIEW"));
 	    				board.setFreeCategory(rs.getString("FREE_CATEGORY"));

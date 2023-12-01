@@ -68,7 +68,7 @@
                         </tr>
                         
                         <tr>
-                            <td>${freeBoard.userNickname}</td>        
+                            <td>${freeBoard.userId}</td>        
                         </tr>
                         
                         <tr>     
@@ -97,7 +97,7 @@
 			<table class="index">
 			
 				<tr>
-			      <th><p>홈</p></th>
+			      <th><a href=../../><p>홈</p></a></th>
 			    </tr>
 			    
 			    <tr>

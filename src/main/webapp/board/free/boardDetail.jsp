@@ -34,7 +34,7 @@
 				
 		</tr>
 		<tr>
-			<td>${freeBoard.userNickname }</td>
+			<td>${freeBoard.userId }</td>
 		</tr>
 		<tr>
 			<td> 
@@ -84,7 +84,7 @@
 					        <table class="cmt">
 					            <tr>
 					                <td class="comment-info">
-					                    <b>${comment.userNickname }</b>
+					                    <b>${comment.userId }</b>
 					                    <p class="cmt-buttons">
 					                        <span class="update cmt-button" onclick="updateCmt('${comment.freeCmtNo}', '${comment.freeCmtContent}')">수정</span>
                         					<span class="delete cmt-button" onclick="deleteComment(${comment.freeCmtNo})">삭제</span>					                    
@@ -123,7 +123,6 @@
 	
 		<form action="../../addFreeCmt" method="post">
         <input type="hidden" name="free_no" value="${freeBoard.freeNo}">
-        <input type="hidden" name="user_nickname" value="EXNICKNAME">
         <textarea rows="5" name="free_cmt_content" placeholder="함께 이야기를 나눠보세요" id="cmtarea"></textarea>
         <input type="submit" value="댓글등록" class="buttons">
         <input type="reset" value="다시작성" class="buttons">
