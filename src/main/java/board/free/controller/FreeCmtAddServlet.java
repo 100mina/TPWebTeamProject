@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import board.free.model.FreeBoardService;
 import board.free.model.FreeCommentVO;
+import user.model.UserVO;
 
 @WebServlet("/addFreeCmt")
 public class FreeCmtAddServlet extends HttpServlet{
@@ -22,22 +23,24 @@ public class FreeCmtAddServlet extends HttpServlet{
 		
 		req.setCharacterEncoding("UTF-8");
 		
+		HttpSession session= req.getSession();
+		UserVO user= (UserVO) session.getAttribute("user");
+		
 		// 요청에서 댓글 내용과 게시글 번호 가져오기
         String freeNo = req.getParameter("free_no");
-        String userNickname = req.getParameter("user_nickname");
+        String userId = user.getId();
         String freeCmtContent = req.getParameter("free_cmt_content");
         
         // 가져온 데이터를 FreeCommentVO에 설정
         FreeCommentVO vo = new FreeCommentVO();
         vo.setFreeNo(Integer.parseInt(freeNo));
-        vo.setUserNickname(userNickname);
+        vo.setUserId(userId);
         vo.setFreeCmtContent(freeCmtContent);
 
         // FreeBoardService를 이용하여 댓글 추가
         FreeBoardService freeBoardService = new FreeBoardService();
         freeBoardService.addComment(vo);
         
-		HttpSession session= req.getSession();
 		List<FreeCommentVO> freeCmtList = freeBoardService.getFreeCmtList(vo);
 		session.setAttribute("freeCmtList", freeCmtList);
 

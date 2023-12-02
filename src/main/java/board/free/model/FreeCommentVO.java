@@ -7,7 +7,13 @@ public class FreeCommentVO {
 	
 	private int freeCmtNo;           //댓글번호
 	private int freeNo;              //댓글달린 게시글 번호
-	private String userNickname;	 //댓글단 유저 닉네임
+	private String userId;	 //댓글단 유저 닉네임
+	public String getUserId() {
+		return userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	private String freeCmtContent;   //댓글내용
 	private Timestamp freeCmtDate;      //댓글작성일자
 	
@@ -23,12 +29,7 @@ public class FreeCommentVO {
 	public void setFreeNo(int freeNo) {
 		this.freeNo = freeNo;
 	}
-	public String getUserNickname() {
-		return userNickname;
-	}
-	public void setUserNickname(String userNickname) {
-		this.userNickname = userNickname;
-	}
+	
 	public String getFreeCmtContent() {
 		return freeCmtContent;
 	}

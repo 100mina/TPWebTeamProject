@@ -1,0 +1,109 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'webfont';
+	src: url(../../font/notosans.ttf), format('truetype');
+}
+@font-face {
+	font-family: 'titlefont';
+	src: url(../../font/KoPubWorld\ Batang\ Bold.ttf), format('truetype')
+}
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'webfont';
+	box-sizing: border-box;
+}
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 24px;
+}
+#item {
+	position: relative;
+}
+#item2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+}
+
+form>input{
+	display: block;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+}
+a {
+	text-decoration: none;
+	color: black;
+	font-size: 10px;
+}
+h2 {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.aa{
+	width: auto;
+	height: 750px;
+}
+.bb{
+	position: absolute;
+	
+}
+#icon {
+	position: absolute;
+	z-index: 1;
+	left: 120px;
+	top:  150px;
+	width: 150px;
+}
+#msg {
+	position: absolute;
+}
+span {
+	display: flex;
+	justify-content: space-between;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+div>h3 {
+	position: absolute;
+	left: 100px;
+	top: 70px;
+	font-weight: bold;
+	font-family: 'titlefont';
+
+}
+form>p{
+	margin-left: 12%;
+	font-size: 12px;
+}
+h2 {
+	margin-bottom: 20px;
+}
+form{
+	padding-bottom: 16px;
+}
+form> p, input{
+	padding-top: 16px;
+	padding-bottom: 10px;
+}
+form>input{
+	border-radius: 16px;
+	border: 0.3px solid #888888;
+}
+#submit {
+	margin-top: 24px;
+	background-color: #F5FFF2;
+}
+input {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+
+

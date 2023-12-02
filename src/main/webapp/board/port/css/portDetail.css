@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+@font-face{
+	font-family: "notosans";
+	src: url("../../../font/notosans.ttf");
+}
+
+*{ margin: 0px; padding: 0; font-family: "notosans";}
+
+body{ margin-left: 100px; margin-right: 100px; position: relative;}
+
+#user{ height: 60px; width: 180px; position: relative; left: 120px; margin-top: 10px;}
+
+#profile{
+	border-radius: 50%;
+	border: 1px solid lightgray;
+	width: 50px;
+	height: 50px;
+	float: inline-start;
+	margin-right: 10px;
+}
+
+#buttons{ float: right; position: absolute; top: 7px; right: 100px; display: flex;}
+
+.button{
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 1px solid lightgray;
+	margin: 0px 8px;
+}
+
+.button:hover{
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+.button_text{font-size: 10px; position: relative; top: -10px; }
+
+.image-container{ text-align: center; display: inline-block; position: relative;}
+
+#cmt_title,#bottom_title{ margin: 20px; }
+
+#top{
+	position: fixed;
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    border-bottom: 1px solid lightgray;
+}
+
+a{ text-decoration: none; color: gray;}
+
+a:hover { color: black;}
+
+#content{ margin-top: 100px; margin-bottom: 10px; clear: both;}
+
+p{ text-align: center; letter-spacing: .1em;}
+
+.content_img{ width: 100%; margin-top: 20px; border: 1px solid lightgray; border-radius: 10px; }
+
+#content_text{ margin-top: 20px; margin-bottom: 20px; }
+
+#port_all_container{ overflow-x: auto; display: flex; border: 1px solid lightgray; border-radius: 10px; }
+
+.port_all {
+      flex: 0 0 15vh;
+      height: 150px;
+      box-sizing: border-box;
+      margin: 10px;
+      border: 1px solid lightgray;
+      border-radius: 4px;
+    }
+    
+#bottom{ margin-top: 100px; margin-bottom: 100px;}
+
+
+#comment_container{border: 1px solid lightgray; margin-bottom: 100px; border-radius: 10px;}
+
+#comment_profile{
+	border-radius: 50%;
+	border: 1px solid lightgray;
+	width: 40px;
+	height: 40px;
+	float: left;
+	margin-right: 10px;
+}
+
+#date{ font-size: 10px;}
+
+#comment_item{padding: 40px 20px; border-bottom: 1px solid lightgrey; position: relative;}
+
+#comment{ font-size: 14px; text-align: left; letter-spacing: 0; margin-top: 10px;}
+
+#input_container{ display: inline-block; text-align: right; width: 100%; }
+
+textarea { 
+	width: 100%;
+	box-sizing: border-box;
+	padding: 20px; 
+	margin-bottom: 10px; 
+	border: 1px solid lightgray; 
+	border-radius: 10px; 
+	resize: none;
+}
+
+.input_button{ 
+	position: relative;
+	text-align: center;
+	background-color: #88888888;
+	padding: 8px;
+	border-radius: 12px;
+	font-size: 10px;
+	color: white;
+	width: 8em;
+	border: none;
+	margin: 10px, 0, 10px, 0;
+}
+
+.input_button:hover{cursor: pointer; }
+
+#profile:hover{ border: 1px solid black; }
+#comment_profile:hover{ border: 1px solid black; }
+
+#cmt_button a{ font-size: 12px; }
+
+#cmt_button{ position: absolute; right: 0px; top: 0px; margin: 30px; display: none; }
+
+#comment_item:hover #cmt_button{ display: inline-block;}
+
+
+#updateCmtDialog{
+	display: none;
+	position: fixed;
+	text-align: right;
+	width: 75%;
+	background-color: whitesmoke;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+	border-radius: 5px;
+	border: 1px solid black;
+}
+
+#btn {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+#btn a{ font-size: 0.8em; margin: 5px; }
+
+
+
+
+/*반응형 웹*/
+@media(max-width: 620px){
+	body{ margin-left: 60px; margin-right: 60px; }
+	#user{ left: 50px; font-size: 0.8em; margin-top: 15px;}
+	#profile{ width: 40px; height: 40px; }
+	#buttons{ right: 50px; }
+	.button{ width: 30px; height: 30px; margin: 5px 8px 0px 8px; }
+	.button_text{ font-size: 9px; }
+	#btn a{ font-size: 0.7em; margin: 5px;}
+}
+
+

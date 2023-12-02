@@ -8,7 +8,7 @@ public class FreeBoardVO {
 	private int freeNo;            //게시글 번호
 	private String freeTitle;      //제목
 	private String freeContent;    //내용
-	private String userNickname;   //작성자 닉네임
+	private String userId;   //작성자 닉네임
 	private Date freeDate;         //작성일
 	private int freeView;          //조회수
 	private String freeCategory;       //카테고리
@@ -42,12 +42,15 @@ public class FreeBoardVO {
 	public void setFreeContent(String freeContent) {
 		this.freeContent = freeContent;
 	}
-	public String getUserNickname() {
-		return userNickname;
+	
+	public String getUserId() {
+		return userId;
 	}
-	public void setUserNickname(String userNickname) {
-		this.userNickname = userNickname;
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
+
 	public Date getFreeDate() {
 		return freeDate;
 	}

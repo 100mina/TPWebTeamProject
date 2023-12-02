@@ -51,8 +51,9 @@
                 <c:otherwise>
                     <c:forEach var="freeBoard" items="${freeBoardList}">
                     
-                   <a href="../../freeBoard?free_no=${freeBoard.freeNo}" class="board-link">     
-                    <table>
+                   <a href="../../freeBoard?free_no=${freeBoard.freeNo}" class="board-link"> 
+                       
+                    <table id="freelist">
                     	
                         <tr>
                             <td style="padding-top: 30px">${freeBoard.freeCategory}</td>
@@ -67,7 +68,7 @@
                         </tr>
                         
                         <tr>
-                            <td>${freeBoard.userNickname}</td>        
+                            <td>${freeBoard.userId}</td>        
                         </tr>
                         
                         <tr>     
@@ -87,10 +88,16 @@
             </c:choose>
 			</div>
 			
+			<div class="pagination">
+			    <c:forEach var="i" begin="1" end="${totalPages}">
+			        <a href="?pageNo=${i}">${i}</a>
+			    </c:forEach>
+			</div>
+			
 			<table class="index">
 			
 				<tr>
-			      <th><p>홈</p></th>
+			      <th><a href=../../><p>홈</p></a></th>
 			    </tr>
 			    
 			    <tr>
@@ -102,7 +109,7 @@
 			    </tr>
 			    
 			    <tr class="content" id="allPosts">
-			      </a><td><p>전체게시판</p></td>
+			      <td><a href="../../freeBoard"><p>전체게시판</p></a></td>
 			    </tr>
 			    
 			    <tr class="content" id="freePosts">
