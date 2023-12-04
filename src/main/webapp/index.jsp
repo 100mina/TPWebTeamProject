@@ -19,7 +19,7 @@
 	
 				<div id="category">
 					<ul class="first">
-						<li><a href="portBoardList">포트폴리오</a></li>
+						<li><a href="./board/port/portlist.jsp">포트폴리오</a></li>
 					</ul>
 					<ul class="first">
 						<li><a href="">취업신</a></li>
@@ -61,7 +61,7 @@
 				<c:if test="${not empty sessionScope.user}">
 					<div id="user">
 						<a href="userPage?userId=${sessionScope.user.id}"><img alt=""
-							src="./fileLoad" id="profile"></a>&nbsp;&nbsp;
+							src="./fileLoad?userId=${sessionScope.user.id}" id="profile"></a>&nbsp;&nbsp;
 						<p>${sessionScope.user.nickName}님</p>
 						&nbsp;환영합니다!
 	
@@ -83,11 +83,7 @@
 		</p>
 		<h2>인기 포트폴리오 게시물</h2>
 		<div class="portWraper">
-			<a href="#" class="user_id"> <img class="user_image" alt="이미지"
-				src="../../image/portimage1.png" width="25">id
-			</a> <img alt="이미지" src="../../image/eye.png" style="margin-left: 20px">view
-			count <img alt="이미지" src="../../image/favo.png"
-				style="margin-left: 10px">like count
+		
 		</div>
 	
 		<h2>인기 취업신 랭킹</h2>

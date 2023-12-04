@@ -11,9 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import board.port.model.PortBoardDAO;
+import board.port.model.PortBoardImgVO;
 import board.port.model.PortBoardService;
 import board.port.model.PortBoardVO;
+import user.model.UserDAO;
+import user.model.UserVO;
 @WebServlet("/portBoardList")
 public class PortBoardServlet extends HttpServlet{
 	private static final Date Date = null;
@@ -30,28 +35,28 @@ public class PortBoardServlet extends HttpServlet{
 	void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html; charset=utf-8");
+		resp.setContentType("application/json; charset=utf-8");
 		
 		PortBoardService portBoardService = new PortBoardService();
+		PortBoardDAO portBoardDAO = new PortBoardDAO();
+		UserDAO userDAO = new UserDAO();
 		List<PortBoardVO> portBoardList = portBoardService.getPortList();
+		for(int i=0;i<portBoardList.size();i++) {
+			UserVO userVO = new UserVO();
+			userVO.setId(portBoardList.get(i).getUserId());
+			List<PortBoardImgVO> imgVOs= portBoardDAO.getPortImgs(portBoardList.get(i));
+			PortBoardImgVO imgVO = portBoardDAO.getImg(imgVOs.get(0));
+			
+			portBoardList.get(i).setCountFav(portBoardDAO.countFav(portBoardList.get(i)));
+			portBoardList.get(i).setPortWriterProfilePathString(userDAO.getUser(userVO).getProfilePath());
+			portBoardList.get(i).setThumbnailImgPath(imgVO.getImgPath());
+			
+		}
 		
-		req.setAttribute("portList" , portBoardList );
-		resp.sendRedirect("./board/port/portlist.jsp");
+		Gson gson = new Gson();
+		String toJson = gson.toJson(portBoardList);
 		
-		
-		
-		/*
-		 * String portNo=req.getParameter("port_no"); String
-		 * portTitle=req.getParameter("port_title"); String
-		 * portContent=req.getParameter("port_content"); String
-		 * userId=req.getParameter("user_id"); String
-		 * portDate=req.getParameter("port_date"); String
-		 * portView=req.getParameter("port_view"); String
-		 * imgPath=req.getParameter("img_path");
-		 * 
-		 * PortBoardVO vo=new PortBoardVO(); vo.setPortTitle(portTitle);
-		 * vo.setUserId(userId);
-		 */	
+	    resp.getWriter().write(toJson);
 	}
 
 }
