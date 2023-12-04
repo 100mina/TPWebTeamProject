@@ -370,4 +370,40 @@ public class FreeBoardDAO {
 
 	    return resultList;
 	}
+	
+	//카테고리별로 글 가져오는 기능
+	public List<FreeBoardVO> getFreeBoardListByCategory(String category) {
+	    List<FreeBoardVO> freeBoardList = new ArrayList<>();
+
+	    try (Connection conn = dataSource.getConnection()) {
+	        // 쿼리 작성
+
+	        String query = "SELECT * FROM FREE_BOARD WHERE FREE_CATEGORY = ? ORDER BY FREE_NO DESC";
+
+	        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+	            pstmt.setString(1, category);
+
+	            try (ResultSet rs = pstmt.executeQuery()) {
+	                // 결과 처리
+	                while (rs.next()) {
+	                    FreeBoardVO board = new FreeBoardVO();
+	                    board.setFreeNo(rs.getInt("FREE_NO"));
+	                    board.setFreeTitle(rs.getString("FREE_TITLE"));
+	                    board.setFreeContent(rs.getString("FREE_CONTENT"));
+	                    board.setUserId(rs.getString("USER_ID"));
+	                    board.setFreeDate(rs.getDate("FREE_DATE"));
+	                    board.setFreeView(rs.getInt("FREE_VIEW"));
+	                    board.setFreeCategory(rs.getString("FREE_CATEGORY"));
+
+	                    freeBoardList.add(board);
+	                }
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    
+	    
+	    return freeBoardList;
+	}
 }

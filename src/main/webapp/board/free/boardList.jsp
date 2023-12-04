@@ -32,7 +32,8 @@
 	
 	 <!-- 각 게시물 전체에 대한 링크 -->
         <!-- 게시판 화면 디자인 -->
-        <table>
+        
+        <table class="head">
             <tr>
 				<th onclick="sortTable('latest')">최신글</th>
 	            <th onclick="sortTable('mostComments')">댓글 많은 글</th>
@@ -105,27 +106,26 @@
 			    </tr>
 			
 				<tr class="category" id="community">
-			      <th><p>커뮤니티</p></th>
-			    </tr>
-			    
+        			<th><p>커뮤니티</p></th>
+		    	</tr>
+		    	
 			    <tr class="content" id="allPosts">
-			      <td><a href="../../freeBoard"><p>전체게시판</p></a></td>
+			        <td><a href="../../freeBoard"><p>전체게시판</p></a></td>
 			    </tr>
 			    
 			    <tr class="content" id="freePosts">
-			      <td><p>자유게시판</p></td>
+			        <td><a href="#" onclick="selectCategory('자유게시판')"><p>자유게시판</p></a></td>
 			    </tr>
 			    
 			    <tr class="content" id="resume">
-			      <td><p>이력서/자기소개서</p></td>
+			        <td><a href="#" onclick="selectCategory('자기소개서/이력서')"><p>이력서/자기소개서</p></a></td>
 			    </tr>
 			    
 			    <tr class="content" id="interview">
-			      <td><p>면접/취업</p></td>
+			        <td><a href="#" onclick="selectCategory('면접/취업')"><p>면접/취업</p></a></td>
 			    </tr>
 							
 			</table>
-			
 	<!-- 로그인 여부 확인 -->
 	<div class="message">
     <c:if test="${empty user}">
@@ -141,6 +141,8 @@
 			
 	<script type="text/javascript">
 	
+	    var selectedCategory = "";
+	
 		document.addEventListener('DOMContentLoaded', function () {
 		  const categoryRow = document.getElementById('community');
 		  categoryRow.addEventListener('click', function () {
@@ -151,6 +153,23 @@
 		    }
 		  });
 		});
+		
+		 // 추가된 부분
+	    function selectCategory(category) {
+        // 선택한 카테고리 설정
+        selectedCategory = category;
+        // 서버에 선택한 카테고리에 대한 글 요청
+        $.get('../../getFreeBoardByCategory', { category: encodeURIComponent(category) }, function(data) {
+        	
+        	// 포워딩하기 전에 기존 테이블 삭제
+			$('.index').empty();
+            $('.head').empty();    
+            
+            // 서버에서 받은 데이터로 테이블 업데이트
+            $('#table-container').html(data);
+        });
+    }
+
 		
 	</script>
 

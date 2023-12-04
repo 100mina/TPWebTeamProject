@@ -8,6 +8,10 @@
 	
 	body{
 		 font-family: 'notosans', 'Times New Roman', Times, serif; padding: 3em;
+		 height: max-content;
+		 max-height: max-content;
+		 margin: 0;
+		 overflow: auto;
 		 }
 	
 	#content{height: 7em; text-align: start; vertical-align: text-top;} 
@@ -38,10 +42,9 @@
 	
 	.index {
 	    width: 200px;
-	    bottom: 650px;	
-	    position: relative;
+	    position: fixed;
 	    display: inline-block;
-	    right: 400px;
+	    right: 1400px;
 	}
 	
 	.index th{
@@ -103,9 +106,9 @@
 	#table-container{
 		display: inline-block;
 		width: 700px;
-		position: relative;
-		left: 546px;
+		position: fixed;
 		margin: 0 auto;
+		left: 717px;
 	}
 	
 	 div.pagination {
