@@ -1,0 +1,159 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'webfont';
+	src: url(../font/notosans.ttf), format('truetype');
+}
+@font-face {
+	font-family: 'titleFont';
+	src: url(../font/KoPubWorld\ Batang\ Bold.ttf), format('truetype');
+}
+@keyframes {
+	
+}
+
+
+html {
+	background-color: #FCFEFC;
+
+}
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'webfont';
+	box-sizing: border-box;
+}
+	
+#profile {
+	width: 35px;
+	height: 35px;
+}
+#user{
+	display: inline;	
+}
+body {
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+}
+ul {
+	list-style: none;
+}
+li {
+	list-style: none;
+}
+.wraper {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+}
+#aicon {
+	position: absolute;
+	top: 0;
+	left: 320px;
+}
+header {
+	display: flex;
+	position: relative;
+}
+#category {
+	position: absolute;
+	display: flex;
+	left: 300px;
+	top: 48px;
+	justify-content: space-between;
+}
+#logintext {
+	position: absolute;
+	right: 250px;
+	top: 48px;
+}
+#user {
+	display: flex;
+	position: absolute;
+	right: 0;
+	top: 48px;
+}
+#mainImg {
+	padding-top: 120px;
+	width: 100%;
+}
+#mainImg>img{
+	width: 100%;
+}
+a {
+	text-decoration: none;
+	color: black;
+	/*font-weight: bold;*/
+	font-size: 16px;
+}
+
+.second>:nth-child(2), .second>:nth-child(3), .second>:nth-child(4) {
+	margin-top: 1em;
+}
+#mainText {
+	position: absolute;
+	font-family: 'titleFont';
+	top: 25%;
+	left: 29%;
+	font-weight: bold;
+	line-height: 1.8em;
+	font-size: 18px;
+}
+#mainText>{
+	padding: 8px;
+	margin-top: 1em;
+}
+#bg {
+	background-color: #FFF7EC;
+	text-align: center;
+	padding: 32px;
+	width: 100%;
+	height: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.btn{
+	position: relative;
+   text-align: center;
+   background-color: #88888888;
+   padding: 8px;
+   border-radius: 12px;
+   font-size: 12px;
+   color: white;
+   width: 16em;
+   height: 4em;
+   border: none;
+   margin: 10px, 0, 10px, 0;
+}
+.second {
+    list-style: none;
+    position: absolute;
+    background-color: #FCFEFC;
+    border: 0.5px solid #888888;
+    text-align: center;
+    top: 80px;
+    left: 570px;
+    padding: 8px;
+    display: none;
+}
+
+p {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+	font-size: 16px;
+}
+.first {
+	margin: 0 1.5em 0 1.5em;
+}
+#info {
+	margin-left: 1em;
+}
+
+
+
+
+
+
+	

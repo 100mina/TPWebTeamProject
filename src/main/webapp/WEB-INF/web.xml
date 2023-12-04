@@ -10,6 +10,29 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   
+ <!-- 정훈 Servlet Mapping -->
+  <servlet>
+  	<servlet-name>userPage</servlet-name>
+  	<servlet-class>user.controller.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>userPage</servlet-name>
+  	<url-pattern>/userPage/*</url-pattern>
+  </servlet-mapping>
+    
+  <!-- 승조 Servlet Mapping -->
+  <servlet>
+  	<servlet-name>freeBoard</servlet-name>
+  	<servlet-class>board.free.controller.FreeBoardServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>freeBoard</servlet-name>
+  	<url-pattern>/freeBoard</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 민아 Servlet Mapping -->
+  
   
   <!-- 포트폴리오 게시물 업로드 서블릿 -->
    <servlet>
@@ -107,20 +130,20 @@
   </servlet-mapping>
   
   
-  <!-- 포트폴리오 좋아요 서블릿 -->
+  <!-- 포트폴리오 좋아요 기능 서블릿 -->
   <servlet>
-  	<servlet-name>likePortBoard</servlet-name>
-  	<servlet-class>board.port.controller.LikePortBoard</servlet-class>
+  	<servlet-name>portIsLike</servlet-name>
+  	<servlet-class>board.port.controller.PortIsLike</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>likePortBoard</servlet-name>
-  	<url-pattern>/likePortBoard</url-pattern>
+  	<servlet-name>portIsLike</servlet-name>
+  	<url-pattern>/portIsLike</url-pattern>
   </servlet-mapping>
-  
 
   
 </web-app>
+
 
 
 
