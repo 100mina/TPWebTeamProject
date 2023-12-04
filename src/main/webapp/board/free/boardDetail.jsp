@@ -85,10 +85,13 @@
 					            <tr>
 					                <td class="comment-info">
 					                    <b>${comment.userId }</b>
+					                   <c:if test="${user != null and user.id == comment.userId }">
+					                    
 					                    <p class="cmt-buttons">
 					                        <span class="update cmt-button" onclick="updateCmt('${comment.freeCmtNo}', '${comment.freeCmtContent}')">수정</span>
                         					<span class="delete cmt-button" onclick="deleteComment(${comment.freeCmtNo})">삭제</span>					                    
                         				</p>
+                        			   </c:if>
 					                </td>
 					                					
 					            </tr>

@@ -101,7 +101,7 @@
 			    </tr>
 			    
 			    <tr>
-			      <th><p>포트폴리오</p></th>
+			      <th><a href="../../portBoardList"><p>포트폴리오</p></a></th>
 			    </tr>
 			
 				<tr class="category" id="community">
@@ -126,9 +126,19 @@
 							
 			</table>
 			
-	
-	<a href="boardForm.jsp"><div class="message">글쓰기</div></a>
-		
+	<!-- 로그인 여부 확인 -->
+	<div class="message">
+    <c:if test="${empty user}">
+        <!-- 로그인이 안 된 경우 -->
+        <a href="../../user/loginForm.jsp">로그인</a>
+    </c:if>
+
+    <c:if test="${not empty user}">
+        <!-- 로그인이 된 경우 -->
+        <a href="boardForm.jsp">글쓰기</a>
+    </c:if>		
+	</div>		
+			
 	<script type="text/javascript">
 	
 		document.addEventListener('DOMContentLoaded', function () {
