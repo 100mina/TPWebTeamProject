@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import board.port.model.PortBoardService;
 import board.port.model.PortBoardVO;
+import oracle.net.ns.SessionAtts;
+import user.model.UserVO;
 
 public class GetPortDetail extends HttpServlet{
 	
@@ -22,21 +24,22 @@ public class GetPortDetail extends HttpServlet{
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
 		
+		HttpSession session= req.getSession();
+		
 		PortBoardVO vo= new PortBoardVO();
 		vo.setPortNo(Integer.parseInt(req.getParameter("port_no")));
 		
+		UserVO user= (UserVO)session.getAttribute("user");
+		if(user!=null) vo.setUserId(user.getId());
 		
 		PortBoardService service= new PortBoardService();
 		PortBoardVO port= service.getPort(vo);
 		
-		HttpSession session= req.getSession();
 		session.setAttribute("port", port);
-		
 		
 		//resp.sendRedirect("board/port/portDetail.jsp");
 		RequestDispatcher dispatcher= req.getRequestDispatcher("board/port/portDetail.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
 
 }

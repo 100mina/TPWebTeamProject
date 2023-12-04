@@ -18,56 +18,92 @@ pageContext.setAttribute("nl", "\n");
 <link type="text/css" rel="stylesheet"
 	href="/TPWebTeamProject/board/port/css/portDetail.css">
 
+	<script type="text/javascript">
+		
+		//회원 비회원 여부 확인 함수
+		function checkuser() {
+			console.log('${user.id}');
+			if ( '${user}' == '') alert("로그인 후 이용해주세요.");
+		}
+	
+	</script>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 		//댓글 수정 함수
-		function updateCmt(portCmtNo, userId, portCmtContent, portNo) { //TODO: 댓글 작성자랑 현재 사용자 비교하는 조건문 걸기
-			// 다이얼로그 요소 가져오기
-			var dialog= document.getElementById("updateCmtDialog");
-			var textarea= document.getElementById("updateCmtContent");
-			var submit= document.getElementById("updateCmtSubmit");
-			var cancel= document.getElementById("updateCmtCancel");
+		function updateCmt(portCmtNo, cmtUserId, portCmtContent, portNo, userId) {
+			
+			if(userId == cmtUserId){
+		    	
+				// 다이얼로그 요소 가져오기
+				var dialog= document.getElementById("updateCmtDialog");
+				var textarea= document.getElementById("updateCmtContent");
+				var submit= document.getElementById("updateCmtSubmit");
+				var cancel= document.getElementById("updateCmtCancel");
 
-			textarea.value= portCmtContent.replace(/<br>/g, '\r\n');
+				textarea.value= portCmtContent.replace(/<br>/g, '\r\n');
+					
+				// 다이얼로그 표시
+				dialog.style.display= "block";
+
+				// 확인 버튼 클릭
+				submit.onclick = function() {
+					var content = textarea.value;
+					console.log(content);
+					//입력받은 데이터 서버로 전송 -> 디비작업
+					var xhr = new XMLHttpRequest();
+					xhr.open("POST", "updatePortCmt", true);
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					
+					xhr.onreadystatechange= function(){
+		                if(xhr.readyState==4 && xhr.status==200){
+		                    location.reload();
+		                }
+		            }
+
+					// 서버로 보낼 데이터
+					var data = "port_cmt_no=" + portCmtNo + "&port_cmt_content=" + content + "&port_no=" + portNo;
+
+					// 데이터 전송
+					xhr.send(data);	
+					dialog.style.display= "none";
+				};
+
+				// 취소 버튼 클릭
+				cancel.onclick = function() {
+					dialog.style.display= "none";
+				};
 				
-			// 다이얼로그 표시
-			dialog.style.display= "block";
-
-			// 확인 버튼 클릭
-			submit.onclick = function() {
-				var content = textarea.value;
-				console.log(content);
-				//입력받은 데이터 서버로 전송 -> 디비작업
-				var xhr = new XMLHttpRequest();
-				xhr.open("POST", "updatePortCmt", true);
-				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				
-				xhr.onreadystatechange= function(){
-	                if(xhr.readyState==4 && xhr.status==200){
-	                    location.reload();
-	                }
-	            }
-
-				// 서버로 보낼 데이터
-				var data = "port_cmt_no=" + portCmtNo + "&port_cmt_content=" + content + "&port_no=" + portNo;
-
-				// 데이터 전송
-				xhr.send(data);	
-				dialog.style.display= "none";
-			};
-
-			// 취소 버튼 클릭
-			cancel.onclick = function() {
-				dialog.style.display= "none";
-			};
+		    }else {
+		        alert("댓글 작성자만 수정할 수 있습니다.");
+		    }
+		}
+	</script>
+	
+	<script>
+		//댓글 삭제 함수
+		function deleteCmt(userId, portCmtNo, portNo, cmtUserId) {
+		console.log(userId + "/" + cmtUserId);
+			
+		if(userId == cmtUserId){
+			var result = confirm('정말 삭제하시겠습니까?');
+		
+			if (result) {
+				window.location.href = '/TPWebTeamProject/deletePortCmt?port_cmt_no=' + portCmtNo + '&port_no=' + portNo;
+				}
+			}else {
+				alert("댓글 작성자만 삭제할 수 있습니다.");
+			}
 		}
 	</script>
 	
 
 	<script type="text/javascript">
 		// 이미지 클릭 시 좋아요 기능
-		//TODO: 회원정보VO 받으면 유저 아이디 보내는 칸 user.userId 로 변경해야 함
 		function isLike() {
+			if ( '${user}' == '') {
+				alert("로그인 후 이용해주세요.");
+				return;
+			}
         	var xhr = new XMLHttpRequest();
         	xhr.open("GET", "portIsLike?user_id=${user.id}&port_no=${port.portNo}&is_like=${port.isLike}", true);
         	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -80,10 +116,6 @@ pageContext.setAttribute("nl", "\n");
         	// 데이터 전송
         	xhr.send();
     	}
-
-    	// 이미지에 클릭 이벤트 리스너 등록
-    	/* document.getElementById('like_button_on').addEventListener('click', likeOn );
-    	document.getElementById('like_button_off').addEventListener('click', likeOn ); */
 	</script>
 
 
@@ -93,19 +125,18 @@ pageContext.setAttribute("nl", "\n");
 
 
 
-	<!-- 사용자 정보? 칸? TODO: 회원정보VO 받으면 이미지, 닉네임 넣기-->
+	<!-- 사용자 정보? 칸? TODO: 회원정보VO 받으면 이미지-->
 	<div id="top">
 		<div id="user">
-			<a href=""><img alt="img"
-				src="/TPWebTeamProject/board/port/img/profile.png" id="profile"></a>
+			<a href=""><img alt="img" src="/TPWebTeamProject/getProfileImg?user_id=${port.userId }" id="profile"></a>
 			<h3>${port.userNickname }</h3>
 			<a href="">${port.userId }</a>
 		</div>
 
 		<div id="buttons">
 			<div class="image-container">
-				<img alt="img" src="/TPWebTeamProject/board/port/img/follow_off.png" class="button"><br> 
-				<span id="follow_text" class="button_text">0000명</span>
+				<img alt="img" src="/TPWebTeamProject/board/port/img/follow_off.png" class="button" onclick="javascript:checkuser()"><br> 
+				<span id="follow_text" class="button_text">0명</span>
 			</div>
 			<div class="image-container">
 				<c:if test="${port.isLike }">
@@ -114,7 +145,7 @@ pageContext.setAttribute("nl", "\n");
 				<c:if test="${not port.isLike }">
 					<img alt="img" src="/TPWebTeamProject/board/port/img/like_off.png" class="button" id="like_button_off" onclick="isLike();"><br>
 				</c:if>
-				<span id="like_text" class="button_text">${port.countFav}개</span>
+				<span id="like_text" class="button_text" >${port.countFav}개</span>
 			</div>
 			<div class="image-container">
 				<img alt="img" src="/TPWebTeamProject/board/port/img/cmt.png" class="button" id="comment_button"><br> 
@@ -122,12 +153,33 @@ pageContext.setAttribute("nl", "\n");
 			</div>
 
 			<div id="btn">
-				<a href="/TPWebTeamProject/board/port/portUpdate.jsp" id="btn_update">수정</a>
-				<a href="/TPWebTeamProject/deletePortBoard?port_no=${port.portNo }" id="btn_delete">삭제</a>
+				<a href="" id="btn_update" onclick="navigateToUpdate('${port.portNo}', '${port.userId}', '${user.id}')">수정</a>
+    			<a href="" id="btn_delete" onclick="deletePort('${port.portNo}', '${port.userId}', '${user.id}')">삭제</a>
 			</div>
 		</div>
 
 	</div>
+	
+	<script type="text/javascript">
+    function navigateToUpdate(portNo, portUserId, userId) {
+        if (userId === portUserId) {
+            window.location.href = '/TPWebTeamProject/board/port/portUpdate.jsp?port_no=' + portNo;
+        } else {
+            alert("게시물 작성자만 수정할 수 있습니다.");
+        }
+    }
+
+    function deletePort(portNo, portUserId, userId) {
+        if (userId === portUserId) {
+            var result = confirm('정말 삭제하시겠습니까?');
+            if (result) {
+                window.location.href = '/TPWebTeamProject/deletePortBoard?port_no=' + portNo;
+            }
+        } else {
+            alert("게시물 작성자만 삭제할 수 있습니다.");
+        }
+    }
+	</script>
 
 	<script>
 		// 이미지를 클릭하면 스크롤을 가장 아래로 내리는 함수
@@ -174,9 +226,8 @@ pageContext.setAttribute("nl", "\n");
 	<div id="comment_container">
 
 		<c:forEach var="cmt" items="${port.portCmtList }">
-			<!-- TODO: 이미지 넣기 -->
 			<div id="comment_item">
-				<a href=""><img alt="img" src="/TPWebTeamProject/board/port/img/profile.png" id="comment_profile"></a>
+				<a href=""><img alt="img" src="/TPWebTeamProject/getProfileImg?user_id=${cmt.userId }" id="comment_profile"></a>
 				<h5>${cmt.userNickname }</h5>
 				<span id="date">${cmt.portCmtDate }</span>
 
@@ -186,8 +237,8 @@ pageContext.setAttribute("nl", "\n");
 
 				<!-- 본인일 경우 수정 / 삭제 기능 -->
 				<div id="cmt_button">
-					<a href="javascript:updateCmt('${cmt.portCmtNo }','${cmt.userId }','${formattedCmtContent}',${cmt.portNo })">수정</a>&nbsp;&nbsp;&nbsp;
-					<a class="deleteLink" href="/TPWebTeamProject/deletePortCmt?port_cmt_no=${cmt.portCmtNo }&port_no=${cmt.portNo }">삭제</a>
+					<a href="javascript:updateCmt('${cmt.portCmtNo }','${cmt.userId }','${formattedCmtContent}',${cmt.portNo }, '${user.id }')">수정</a>&nbsp;&nbsp;&nbsp;
+					<a class="deleteLink" href="javascript:deleteCmt('${user.id }','${cmt.portCmtNo }','${cmt.portNo }','${cmt.userId }')">삭제</a>
 				</div>
 
 				<p id="comment">${formattedCmtContent}</p>
@@ -196,29 +247,15 @@ pageContext.setAttribute("nl", "\n");
 
 		<div id="input_container">
 			<form action="/TPWebTeamProject/insertPortCmt" method="post" enctype="application/x-www-form-urlencoded" style="margin: 20px 40px;">
-				<textarea rows="5" placeholder="댓글 남기기" maxlength="1000" name="port_cmt_content"></textarea><br> 
+				<textarea rows="5" placeholder="댓글 남기기" maxlength="1000" name="port_cmt_content" onclick="javascript:checkuser()" required></textarea><br> 
 				<input type="hidden" name="port_no" value="${port.portNo}">
 				<input type="hidden" name="user_id" value="${user.id }">
-				<input type="submit" value="완료" class="input_button" id="scrollTarget">&nbsp;&nbsp;&nbsp; <input type="reset" value="취소" class="input_button">
+				<input type="submit" value="완료" class="input_button" id="scrollTarget" onclick="javascript:checkuser()">&nbsp;&nbsp;&nbsp; 
+				<input type="reset" value="취소" class="input_button" onclick="javascript:checkuser()">
 			</form>
 		</div>
 
-		<script>
-    		// 삭제 링크 클릭 시 다이얼로그 표시
-   			var deleteLinks = document.querySelectorAll('.deleteLink');
-    		deleteLinks.forEach(function (deleteLink) {
-        		deleteLink.addEventListener('click', function (event) {
-            		event.preventDefault(); // 링크의 기본 동작(페이지 이동)을 막음
-            		// 다이얼로그 표시
-            		var result = confirm('정말 삭제하시겠습니까?');
-
-            		// 확인 버튼을 눌렀을 때 링크 실행
-            		if (result) {
-                		window.location.href = this.href;
-            		}
-        		});
-    		});
-		</script>
+		
 
 		<!-- 댓글 수정 다이얼로그 모양 -->
 		<div id="updateCmtDialog" style="display: none;">

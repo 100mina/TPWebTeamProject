@@ -29,7 +29,6 @@ public class PortBoardService {
 		return dao.getPortList();
 	}
 
-	// 상세 게시물 검색 TODO: 로그인 중인 유저의 정보 받아서 좋아요 여부 확인에 사용
 	public PortBoardVO getPort(PortBoardVO vo) {
 		PortBoardVO port = dao.getPort(vo);
 

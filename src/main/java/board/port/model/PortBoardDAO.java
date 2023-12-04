@@ -13,6 +13,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import user.model.UserVO;
+
 public class PortBoardDAO {
 
 	DataSource dataSource;
@@ -463,7 +465,7 @@ public class PortBoardDAO {
 		try {
 			Connection conn = dataSource.getConnection();
 
-			String sql = "INSERT INTO PORT_FAVORITE VALUES(SEQ_FAV_NO.NEXTVAL, ?, ?)";
+			String sql = "INSERT INTO PORT_FAVORITE VALUES(SEQ_PORT_FAV_NO.NEXTVAL, ?, ?)";
 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getPortNo());
@@ -551,6 +553,34 @@ public class PortBoardDAO {
 			e.printStackTrace();
 		}
 		return isLike;
+	}
+	
+	
+	public UserVO getUser(UserVO vo) {
+		UserVO user = null;
+		try {
+			Connection conn = dataSource.getConnection();
+			String sql = "SELECT * FROM USERS WHERE USER_ID=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				user = new UserVO();
+				user.setId(rs.getString("USER_ID"));
+				user.setPw(rs.getString("USER_PW"));
+				user.setNickName(rs.getString("USER_NICKNAME"));
+				user.setProfilePath(rs.getString("USER_PROFILE_PATH"));
+				user.setUserLevel(rs.getString("USER_LEVEL"));
+			}
+			rs.close();	
+			pstmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 	
 	
