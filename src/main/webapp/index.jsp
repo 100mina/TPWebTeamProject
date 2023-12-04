@@ -5,10 +5,24 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>취업의 신</title>
 	<link href="./css/index.css" rel="stylesheet">
+	<!-- jQuery를 사용하기 위해 CDN 추가 -->
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	
+	<script>
+	    $(document).ready(function() {
+	        $("#user").hover(
+	            function() {
+	                $("#container").show();
+	            },
+	            function() {
+	                $("#container").hide();
+	            }
+	        );
+	    });
+	</script>	
 	</head>
 	<body>
 		<div>
@@ -63,7 +77,9 @@
 							src="./fileLoad?userId=${sessionScope.user.id}" id="profile"></a>&nbsp;&nbsp;
 						<p>${sessionScope.user.nickName}님</p>
 						&nbsp;환영합니다!
-	
+						
+						<jsp:include page="./user/profileHover.jsp"></jsp:include>
+						
 						<script type="text/javascript">
 		    		  	var loginText = document.getElementById("logintext");
 		    		  	loginText.style.display = "none";
