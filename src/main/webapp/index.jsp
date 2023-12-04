@@ -8,8 +8,24 @@
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>취업의 신</title>
-	
 	<link href="./css/index.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js">
+            $(document).ready(function(){
+            // AJAX 요청 보내기
+            $.ajax({
+                url: './loadPortList', // API 엔드포인트 또는 원하는 URL
+                method: 'GET',
+                dataType: 'json',
+                success: function(data){
+                    
+                },
+                error: function(xhr, status, error){
+                    // AJAX 요청이 실패했을 때 실행되는 함수
+                    
+                }
+            });
+        });
+    </script>
 	</head>
 	<body>
 		<div>
@@ -83,11 +99,7 @@
 		</p>
 		<h2>인기 포트폴리오 게시물</h2>
 		<div class="portWraper">
-			<a href="#" class="user_id"> <img class="user_image" alt="이미지"
-				src="../../image/portimage1.png" width="25">id
-			</a> <img alt="이미지" src="../../image/eye.png" style="margin-left: 20px">view
-			count <img alt="이미지" src="../../image/favo.png"
-				style="margin-left: 10px">like count
+			
 		</div>
 	
 		<h2>인기 취업신 랭킹</h2>

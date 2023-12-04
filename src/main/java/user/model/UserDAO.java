@@ -52,7 +52,7 @@ public class UserDAO {
 		UserVO user = null;
 		try {
 			Connection conn = dataSource.getConnection();
-			String sql = "SELECT * FROM USERS WHERE ID=? AND PW=?";
+			String sql = "SELECT * FROM USERS WHERE USER_ID=? AND USER_PW=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
 			pstmt.setString(2, vo.getPw());
@@ -79,10 +79,12 @@ public class UserDAO {
 	public void updateUserProfile(UserVO vo) {
 		try {
 			Connection conn = dataSource.getConnection();
-			String sql = "UPDATE USERS SET USER_PROFILE_PATH=? WHERE=?";
+			String sql = "UPDATE USERS SET USER_PROFILE_PATH=? WHERE USER_ID=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getUserLevel());
+			pstmt.setString(1, vo.getProfilePath());
 			pstmt.setString(2, vo.getId());
+			
+			pstmt.executeUpdate();
 	
 			pstmt.close();
 			conn.close();
