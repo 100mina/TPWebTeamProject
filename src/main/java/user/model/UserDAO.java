@@ -52,10 +52,10 @@ public class UserDAO {
 		UserVO user = null;
 		try {
 			Connection conn = dataSource.getConnection();
-			String sql = "SELECT * FROM USERS WHERE USER_ID=? AND USER_PW=?";
+
+			String sql = "SELECT * FROM USERS WHERE USER_ID=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
-			pstmt.setString(2, vo.getPw());
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {

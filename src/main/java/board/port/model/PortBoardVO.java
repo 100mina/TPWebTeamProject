@@ -10,7 +10,17 @@ public class PortBoardVO {
 	private String userId;
 	private Date portDate;
 	private int portView;
+	private String portWriterProfilePathString;
+	private String thumbnailImgPath;
 	
+	
+	
+	public String getThumbnailImgPath() {
+		return thumbnailImgPath;
+	}
+	public void setThumbnailImgPath(String thumbnailImgPath) {
+		this.thumbnailImgPath = thumbnailImgPath;
+	}
 	//해당 게시물의 첨부파일 리스트
 	private List<PortBoardImgVO> portImgList;
 	
@@ -30,6 +40,13 @@ public class PortBoardVO {
 	private int countFav;
 	
 	
+	
+	public String getPortWriterProfilePathString() {
+		return portWriterProfilePathString;
+	}
+	public void setPortWriterProfilePathString(String portWriterProfilePathString) {
+		this.portWriterProfilePathString = portWriterProfilePathString;
+	}
 	public int getCountFav() {
 		return countFav;
 	}

@@ -9,23 +9,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>취업의 신</title>
 	<link href="./css/index.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js">
-            $(document).ready(function(){
-            // AJAX 요청 보내기
-            $.ajax({
-                url: './loadPortList', // API 엔드포인트 또는 원하는 URL
-                method: 'GET',
-                dataType: 'json',
-                success: function(data){
-                    
-                },
-                error: function(xhr, status, error){
-                    // AJAX 요청이 실패했을 때 실행되는 함수
-                    
-                }
-            });
-        });
-    </script>
 	</head>
 	<body>
 		<div>
@@ -35,7 +18,7 @@
 	
 				<div id="category">
 					<ul class="first">
-						<li><a href="portBoardList">포트폴리오</a></li>
+						<li><a href="./board/port/portlist.jsp">포트폴리오</a></li>
 					</ul>
 					<ul class="first">
 						<li><a href="">취업신</a></li>
@@ -77,7 +60,7 @@
 				<c:if test="${not empty sessionScope.user}">
 					<div id="user">
 						<a href="userPage?userId=${sessionScope.user.id}"><img alt=""
-							src="./fileLoad" id="profile"></a>&nbsp;&nbsp;
+							src="./fileLoad?userId=${sessionScope.user.id}" id="profile"></a>&nbsp;&nbsp;
 						<p>${sessionScope.user.nickName}님</p>
 						&nbsp;환영합니다!
 	
@@ -99,7 +82,6 @@
 		</p>
 		<h2>인기 포트폴리오 게시물</h2>
 		<div class="portWraper">
-			
 		</div>
 	
 		<h2>인기 취업신 랭킹</h2>
