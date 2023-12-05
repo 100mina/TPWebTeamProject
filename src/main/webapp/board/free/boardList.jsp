@@ -166,8 +166,9 @@
         $.get('../../getFreeBoardByCategory', { category: encodeURIComponent(category) }, function(data) {
         	
         	// 포워딩하기 전에 기존 테이블 삭제
-            $('.head').empty();  
+            $('.head').remove();  
     		$('.message').remove();
+
             // 서버에서 받은 데이터로 테이블 업데이트
             $('#table-container').html(data);
         });
