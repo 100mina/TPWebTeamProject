@@ -97,6 +97,30 @@ public class UserDAO {
 	}// updateUserProfile..-------------------------------------------------------------------------
 	
 	
+	//해당 회원의 총 좋아요 개수
+	public int totalFav(UserVO vo) {
+		int totalFav=0;
+		try {
+			Connection conn = dataSource.getConnection();
+			String sql = "SELECT COUNT(pf.PORT_FAV_NO) AS TOTAL_FAV FROM PORT_BOARD pb "
+					+ "LEFT JOIN PORT_FAVORITE pf ON pb.PORT_NO = pf.PORT_NO WHERE pb.USER_ID = ? GROUP BY pb.USER_ID";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			
+			ResultSet rs= pstmt.executeQuery();
+			if(rs.next()) {
+				totalFav= rs.getInt("TOTAL_FAV");
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return totalFav;
+	}
 	
 	
 	

@@ -1,6 +1,10 @@
 
 package user.model;
 
+import java.util.List;
+
+import board.port.model.PortBoardVO;
+
 public class UserVO {
 	
 	private String id;
@@ -9,7 +13,20 @@ public class UserVO {
 	private String profilePath;
 	private String userLevel;
 	
+	//총 좋아요
+	private int totalFav;
+	//즐겨찾기
+	private int totalFollow;
+	//이 회원의 게시물 목록
+	private List<PortBoardVO> userPort;
 	
+	
+	public List<PortBoardVO> getUserPort() {
+		return userPort;
+	}
+	public void setUserPort(List<PortBoardVO> userPort) {
+		this.userPort = userPort;
+	}
 	public String getId() {
 		return id;
 	}
@@ -21,6 +38,18 @@ public class UserVO {
 	}
 	public void setPw(String pw) {
 		this.pw = pw;
+	}
+	public int getTotalFav() {
+		return totalFav;
+	}
+	public void setTotalFav(int totalFav) {
+		this.totalFav = totalFav;
+	}
+	public int getTotalFollow() {
+		return totalFollow;
+	}
+	public void setTotalFollow(int totalFollow) {
+		this.totalFollow = totalFollow;
 	}
 	public String getNickName() {
 		return nickName;
