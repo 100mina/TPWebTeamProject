@@ -35,14 +35,7 @@ public class InsertPortBoard extends HttpServlet{
 		PortBoardVO vo= new PortBoardVO();
 		vo.setPortTitle(portTitle);
 		vo.setPortContent(portContent);
-<<<<<<< HEAD
-		
-		//TODO: 회원 정보 사용해서 유저 아이디 넣기
-		vo.setUserId("SAM");
-=======
 		vo.setUserId(userId);
->>>>>>> refs/heads/민아
-
 		
 		PortBoardService service= new PortBoardService();
 		List<PortBoardVO> boardList= service.insertPortBoard(vo);
