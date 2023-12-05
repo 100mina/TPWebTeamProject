@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import board.free.model.FreeBoardService;
 import board.free.model.FreeCommentVO;
+import user.model.UserVO;
 
 @WebServlet("/addFreeCmt")
 public class FreeCmtAddServlet extends HttpServlet{
@@ -22,30 +23,42 @@ public class FreeCmtAddServlet extends HttpServlet{
 		
 		req.setCharacterEncoding("UTF-8");
 		
-		// 요청에서 댓글 내용과 게시글 번호 가져오기
-        String freeNo = req.getParameter("free_no");
-        String userNickname = req.getParameter("user_nickname");
-        String freeCmtContent = req.getParameter("free_cmt_content");
-        
+		HttpSession session= req.getSession();
+		UserVO user= (UserVO) session.getAttribute("user");
+		    
         // 가져온 데이터를 FreeCommentVO에 설정
-        FreeCommentVO vo = new FreeCommentVO();
-        vo.setFreeNo(Integer.parseInt(freeNo));
-        vo.setUserNickname(userNickname);
-        vo.setFreeCmtContent(freeCmtContent);
+        String freeNo = req.getParameter("free_no");
+        String userId = (user != null) ? user.getId() : null; // user가 null이면 userId도 null로 설정
+        String freeCmtContent = req.getParameter("free_cmt_content");
 
         // FreeBoardService를 이용하여 댓글 추가
-        FreeBoardService freeBoardService = new FreeBoardService();
-        freeBoardService.addComment(vo);
-        
-		HttpSession session= req.getSession();
-		List<FreeCommentVO> freeCmtList = freeBoardService.getFreeCmtList(vo);
-		session.setAttribute("freeCmtList", freeCmtList);
+        if (user != null) {
+            // 가져온 데이터를 FreeCommentVO에 설정
+            FreeCommentVO vo = new FreeCommentVO();
+            vo.setFreeNo(Integer.parseInt(freeNo));
+            vo.setUserId(userId);
+            vo.setFreeCmtContent(freeCmtContent);
 
-        
-		System.out.println("댓글이 등록되었습니다");
+            // FreeBoardService를 이용하여 댓글 추가
+            FreeBoardService freeBoardService = new FreeBoardService();
+            freeBoardService.addComment(vo);
 
-        // 댓글 등록 후, 다시 상세 페이지로 리다이렉트
-        resp.sendRedirect("board/free/boardDetail.jsp?free_no=" + freeNo);
+            List<FreeCommentVO> freeCmtList = freeBoardService.getFreeCmtList(vo);
+            session.setAttribute("freeCmtList", freeCmtList);
+
+            System.out.println("댓글이 등록되었습니다");
+
+            // 댓글 등록 후, 다시 상세 페이지로 리다이렉트
+            resp.sendRedirect("board/free/boardDetail.jsp?free_no=" + freeNo);
+        }else {
+        	System.out.println("로그인후 댓글을 작성해주세요");
+        	resp.sendRedirect("user/loginForm.jsp");
+        }
+        
+        
+        
+        
+		
 	}
 	
 }

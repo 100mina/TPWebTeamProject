@@ -38,14 +38,14 @@
 						<li><a href="">취업신</a></li>
 					</ul>
 					<ul id="info">
-						<li><a href="./board/free/boardList.jsp">정보마당</a></li>
+						<li><a href="./freeBoard">정보마당</a></li>
 					</ul>
 				</div>
 				<ul class="second">
-					<li><a href="">전체게시판</a></li>
-					<li><a href="">자유게시판</a></li>
-					<li><a href="">면접/취업</a></li>
-					<li><a href="">자기소개서/이력서</a></li>
+					<li><a href="./freeBoard">전체게시판</a></li>
+					<li><a href="./freeBoard">자유게시판</a></li>
+					<li><a href="./freeBoard">면접/취업</a></li>
+					<li><a href="./freeBoard">자기소개서/이력서</a></li>
 				</ul>
 	
 				<script>
