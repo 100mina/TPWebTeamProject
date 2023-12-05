@@ -32,10 +32,7 @@
 }
 
 #containerWraper>div:nth-child(2)>div {
-	display: grid;
-	grid-template-columns: repeat(5, 24px); /* 5개의 열을 가진 그리드 */
-	gap: 30px;
-	width: 100%;
+	
 }
 </style>
 </head>

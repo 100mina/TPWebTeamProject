@@ -71,16 +71,13 @@
 					<a href="user/loginForm.jsp">로그인</a>&nbsp;&nbsp;&nbsp; <a
 						href="user/signupForm.jsp">회원가입</a>
 				</div>
-				<c:if test="${not empty sessionScope.user}">
+			<c:if test="${not empty sessionScope.user}">
 					<div id="user">
-						<a href="userPage?userId=${sessionScope.user.id}"><img alt=""
-							src="./fileLoad?userId=${sessionScope.user.id}" id="profile"></a>&nbsp;&nbsp;
-
+						<a href="userPage?user_id=${sessionScope.user.id}"><img alt=""
+							src="./fileLoad" id="profile"></a>&nbsp;&nbsp;
 						<p>${sessionScope.user.nickName}님</p>
 						&nbsp;환영합니다!
-						
-						<jsp:include page="./user/profileHover.jsp"></jsp:include>
-						
+	
 						<script type="text/javascript">
 		    		  	var loginText = document.getElementById("logintext");
 		    		  	loginText.style.display = "none";

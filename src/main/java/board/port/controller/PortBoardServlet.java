@@ -46,9 +46,11 @@ public class PortBoardServlet extends HttpServlet{
 			userVO.setId(portBoardList.get(i).getUserId());
 			List<PortBoardImgVO> imgVOs= portBoardDAO.getPortImgs(portBoardList.get(i));
 			PortBoardImgVO imgVO = portBoardDAO.getImg(imgVOs.get(0));
+			
 			// 썸네일 이미지 no 전달
 			portBoardList.get(i).setThumbnailImageNo(imgVO.getImgNo());
 			portBoardList.get(i).setCountFav(portBoardDAO.countFav(portBoardList.get(i)));
+			portBoardList.get(i).setPortNo(imgVO.getPortNo());
 			
 		}
 		
