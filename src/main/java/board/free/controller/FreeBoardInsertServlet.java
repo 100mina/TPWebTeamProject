@@ -33,23 +33,29 @@ public class FreeBoardInsertServlet extends HttpServlet{
 		HttpSession session= req.getSession();
 		UserVO user= (UserVO) session.getAttribute("user");
 		
-		String freeTitle= req.getParameter("free_title");
-		String freeContent= req.getParameter("free_content");
-		String freeId= user.getId();
-		String freeCategory= req.getParameter("free_category");
-	
-		FreeBoardVO vo= new FreeBoardVO();
-		vo.setFreeTitle(freeTitle);
-		vo.setFreeContent(freeContent);
-		vo.setUserId(freeId);
-		vo.setFreeCategory(freeCategory);
+		// 사용자가 로그인한 상태인지 확인
+        if (user != null) {
+            String freeTitle = req.getParameter("free_title");
+            String freeContent = req.getParameter("free_content");
+            String freeId = user.getId();
+            String freeCategory = req.getParameter("free_category");
 
-		FreeBoardService freeBoardService= new FreeBoardService();
-		List<FreeBoardVO> freeBoardList= freeBoardService.insertFreeBoard(vo);
-		
-		session.setAttribute("freeBoardList", freeBoardList); //갱신된 게시글 리스트를 세션에 저장
-		resp.sendRedirect("board/free/boardList.jsp");	
-		
-	}
+            FreeBoardVO vo = new FreeBoardVO();
+            vo.setFreeTitle(freeTitle);
+            vo.setFreeContent(freeContent);
+            vo.setUserId(freeId);
+            vo.setFreeCategory(freeCategory);
+
+            FreeBoardService freeBoardService = new FreeBoardService();
+            List<FreeBoardVO> freeBoardList = freeBoardService.insertFreeBoard(vo);
+
+            session.setAttribute("freeBoardList", freeBoardList); // 갱신된 게시글 리스트를 세션에 저장
+            resp.sendRedirect("board/free/boardList.jsp");
+        } else {
+            System.out.println("로그인 후 글을 작성해주세요");
+        	resp.sendRedirect("user/loginForm.jsp");
+
+        }
+    }
 
 }

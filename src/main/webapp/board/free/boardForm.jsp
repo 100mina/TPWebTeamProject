@@ -28,9 +28,9 @@
 			<td class="align-left">
         	   <p>카테고리 선택 (필수)</p>
         	   <select required="required" name="free_category">
-            	  <option value="자유">자유게시판</option>
-            	  <option value="취업">면접/취업</option>
-            	  <option value="자기소개서">자기소개서/이력서</option>
+            	  <option value="자유게시판">자유게시판</option>
+            	  <option value="면접/취업">면접/취업</option>
+            	  <option value="자기소개서/이력서">자기소개서/이력서</option>
        		   </select>
     		</td>
 		</tr>
