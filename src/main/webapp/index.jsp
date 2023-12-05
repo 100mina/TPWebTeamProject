@@ -75,6 +75,7 @@
 					<div id="user">
 						<a href="userPage?userId=${sessionScope.user.id}"><img alt=""
 							src="./fileLoad?userId=${sessionScope.user.id}" id="profile"></a>&nbsp;&nbsp;
+
 						<p>${sessionScope.user.nickName}님</p>
 						&nbsp;환영합니다!
 						

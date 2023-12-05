@@ -5,12 +5,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import board.port.model.PortBoardDAO;
+import board.port.model.PortBoardVO;
+import user.model.UserDAO;
 import user.model.UserVO;
 
 
@@ -29,26 +34,27 @@ public class UserServlet extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=utf-8");
 		
-		String s = req.getPathInfo();
-		// s.split();
+		String userId= req.getParameter("user_id");
 		
-		UserVO user = (UserVO)req.getSession().getAttribute("user");
-		// PortBoardVO pbVO;
-		// BoardDAO bDAO; bDAO.getUserPosting
-		class PBVO {
-			String userNickName= "홍길동";
-			String profilePath= user.getProfilePath();
-			int viewCount= 999;
-			int like = 999;
-			String thumbnailImgPath;
-		}
-		List<PBVO> pbvos = new ArrayList<PBVO>();
-		for(int i=0;i<20;i++){
-			pbvos.add(new PBVO());
-		}
+		UserVO vo= new UserVO();
+		vo.setId(userId);
 		
-		req.setAttribute("userPortPost", pbvos);
-		resp.sendRedirect("user/userMyPage.jsp?size="+pbvos.size());
+		PortBoardDAO dao= new PortBoardDAO();
+		UserVO user= dao.getUser(vo);
+		System.out.println(user.getNickName()+","+user.getId());
 		
+		PortBoardVO boardvo= new PortBoardVO();
+		boardvo.setUserId(userId);
+		
+		user.setUserPort(dao.getUserPort(boardvo));
+		
+		UserDAO userDao= new UserDAO();
+		user.setTotalFav(userDao.totalFav(vo));
+		
+		HttpSession session= req.getSession();
+		session.setAttribute("userPage", user);
+		
+		RequestDispatcher dispatcher= req.getRequestDispatcher("user/userMyPage.jsp");
+		dispatcher.forward(req, resp);		
 	}
 }

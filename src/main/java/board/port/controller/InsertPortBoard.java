@@ -29,14 +29,19 @@ public class InsertPortBoard extends HttpServlet{
 		
 		String portTitle= req.getParameter("port_title");
 		String portContent= req.getParameter("port_content");
+		String userId= req.getParameter("user_id");
 		
 		
 		PortBoardVO vo= new PortBoardVO();
 		vo.setPortTitle(portTitle);
 		vo.setPortContent(portContent);
+<<<<<<< HEAD
 		
 		//TODO: 회원 정보 사용해서 유저 아이디 넣기
 		vo.setUserId("SAM");
+=======
+		vo.setUserId(userId);
+>>>>>>> refs/heads/민아
 
 		
 		PortBoardService service= new PortBoardService();

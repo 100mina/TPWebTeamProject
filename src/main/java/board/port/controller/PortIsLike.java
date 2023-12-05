@@ -1,45 +1,35 @@
 package board.port.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import board.port.model.PortBoardService;
 import board.port.model.PortBoardVO;
-import oracle.net.ns.SessionAtts;
-import user.model.UserVO;
 
-public class GetPortDetail extends HttpServlet{
+public class PortIsLike extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
 		
-		HttpSession session= req.getSession();
+		System.out.println(req.getParameter("user_id")+"/"+req.getParameter("port_no")+"/"+req.getParameter("is_like"));
 		
 		PortBoardVO vo= new PortBoardVO();
+		vo.setUserId(req.getParameter("user_id"));
 		vo.setPortNo(Integer.parseInt(req.getParameter("port_no")));
-		
-		UserVO user= (UserVO)session.getAttribute("user");
-		if(user!=null) vo.setUserId(user.getId());
+		vo.setIsLike(Boolean.parseBoolean(req.getParameter("is_like")));
 		
 		PortBoardService service= new PortBoardService();
-		PortBoardVO port= service.getPort(vo);
+		service.isLike(vo);
 		
-		session.setAttribute("port", port);
+		System.out.println("좋아요");
 		
-		//resp.sendRedirect("board/port/portDetail.jsp");
-		RequestDispatcher dispatcher= req.getRequestDispatcher("board/port/portDetail.jsp");
-		dispatcher.forward(req, resp);
 	}
 
 }
