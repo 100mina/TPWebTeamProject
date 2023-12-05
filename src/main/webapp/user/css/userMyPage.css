@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
 	font-family: 'webfont';
-	src: url(./font/notosans.ttf), format('truetype');
+	src: url(../../font/notosans.ttf), format('truetype');
 }
 @font-face {
 	font-family: 'titleFont';
@@ -9,8 +9,8 @@
 }
 html {
 	background-color: #FCFEFC;
-
 }
+
 * {
 	padding: 0;
 	margin: 0;
@@ -26,9 +26,10 @@ html {
 	display: inline;	
 }
 body {
-	width: 70%;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 100px; 
+	margin-right: 100px; 
+	position: relative;
+	margin-bottom: 80px;
 }
 ul {
 	list-style: none;
@@ -42,9 +43,8 @@ li {
 	align-content: center;
 }
 #aicon {
-	position: absolute;
-	top: 0;
-	left: 320px;
+	position: relative;
+	top: 80px;
 }
 header {
 	display: flex;
@@ -55,7 +55,6 @@ header {
 	position: absolute;
 	display: flex;
 	left: 300px;
-	top: 48px;
 	justify-content: space-between;
 }
 
@@ -129,85 +128,79 @@ a {
    margin: 10px, 0, 10px, 0;
 }
 
-#postWraper {
-	display: grid;
-	grid-template-rows: 1fr 500px 1fr;
-	gap: 24px;
-	text-align: center;
-}
-div>#postItem>img {
-	width: 250px;
-	height: 150px;
-}
-#postBody {
-	display: grid;
-    grid-template-columns: repeat(4, 250px);
-    grid-template-rows: repeat(2, 150px);
-    grid-column-gap: 16px; /* 열 간의 간격 설정 */
-    grid-row-gap: 32px; /* 행 간의 간격 설정 */
-    text-align: center;
-    justify-content: center; /* 수평 방향 가운데 정렬 */
-
-}
 #userProfile {
 	position: relative;
 	display: inline;	
 }
+
 #mid_profile {
 	position: absolute;
 	top: 35px;
-	left: 440px;
+	left: 50%;
+    transform: translateX(-50%);
 	width: 250px;
 	height: 250px;
+	border-radius: 50%;
+	border: 1px solid lightgray;
 }
-#userProfile>span {
-	position: absolute;
-}
+
+
 #nickName {
+	position: absolute;
 	top: 300px;
-	left: 515px;
+	left: 50%;
+    transform: translateX(-50%);
 	z-index: 1;
-	font-size: 24px;
+	font-size: 20px;
 	font-weight: bold;
 }	
-#like {
-	top: 330px;
-	left: 350px;
-	z-index: 1;
-	font-size: 16px;
-	font-weight: bold;
-}
-#bookMark {
-	top: 330px;
-	right: 370px;
-	z-index: 1;
-	font-size: 16px;
-	font-weight: bold;
-	
-}
-#postItem {
-	display: inline;
-	border: 0.2px solid #888888;
+
+#follFav{
+	position: absolute;
+	top: 350px;
+	left: 50%;
+    transform: translateX(-50%);
 	text-align: center;
 }
-h5 {
-	display: inline;
-	margin-left: auto;
-	margin-right: auto;
+
+#like, #bookMark {
+	font-size: 16px;
 }
-posthead {
-	display: inline;
-	padding: 8px;
-}
-h1 {
-	display: inline;
-}
+
 #bg {
 	width: 100%;
+	height: 450px;
 }	
 	
+#port{
+	text-align: center;
+	margin: 30px;
+}
 	
 	
+#port_all_container{ 
+	display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center; 
+	border: 1px solid lightgray; 
+	border-radius: 10px; 
+	width: 100%;
+}
+ 
+.port_all {
+      flex: 0 0 15vh;
+      height: 150px;
+      box-sizing: border-box;
+      margin: 10px;
+      border: 1px solid lightgray;
+      border-radius: 4px;
+    }
+	
+#noPort{
+	text-align: center;
+	margin-top: 10px;
+}
 	
 	
 	

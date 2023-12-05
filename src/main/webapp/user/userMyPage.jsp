@@ -9,12 +9,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>userID / 취업의 신</title>
-<link rel="stylesheet" href="./css/userMyPage.css">
+<title>취업신 ${userPage.nickName }님</title>
+<link rel="stylesheet" href="/TPWebTeamProject/user/css/userMyPage.css">
 </head>
 <body>
 <div id="wraper">
-<a id="aicon"><img alt="icon" src="../image/icon.png" id="icon"></a>
+<a href="/" id="aicon"><img alt="icon" src="/TPWebTeamProject/image/icon.png" id="icon"></a>
 
 	<header>
 			<div id="category">
@@ -56,56 +56,35 @@
 	</header>
 
 	<div id="userProfile">
-		<img alt="bg" src="./image/bg_myProfile.png" id="bg">
-		<img alt="" src="./default_profile/profile.png" id="mid_profile">
-		<span id="nickName">${requestScope.pbvos.userNickName}님</span>
-		<span id="bookMark">즐겨찾기 00 명</span>
-		<span id="like">총 좋아요 00 개</span>	
+		<img alt="bg" src="/TPWebTeamProject/user/image/bg_myProfile.png" id="bg">
+		<div id="profileImg">
+			<img alt="" src="/TPWebTeamProject/getProfileImg?user_id=${userPage.id }" id="mid_profile">
+		</div>
+		
+		<span id="nickName">${userPage.nickName } 님</span>
+		
+		<div id="follFav">
+			<!-- <span id="bookMark">즐겨찾기 00 명</span>&nbsp;&nbsp;&middot;&nbsp; -->
+			<span id="like">총 좋아요 ${userPage.totalFav } 개</span>	
+		</div>
+		
 	</div>
 	<div id="postWraper">
-		<span id="posthead"><h2>포트폴리오</h2></span>
-		<div id="postBody">
-			<script>
-				var k;
-				function changePage(pageNo) {
-					var itemCount = pageNo * 8	
-					switch (pageNo) {
-					case 1 : k=0;
-					break;
-					case 2 : k=8;
-					break;
-					case 3 : k=16;
-					break;
-					case 4 : k=24;
-					break;
-					case 5 : k=32;
-					break;
-					case 6 : k=40;
-					break;
-					case 7 : k=48;
-					break;
-					case 8 : k=56;
-					break;
-					case 9 : k=64;
-					break;
-					case 10: k=72
-					break;
-					}
-					for (var i = k; i < itemCount-1; i++) {
-			</script>
-				<div id="postItem">
-					<img alt="thumbnailIMG" src="./image/bg_myProfile.png"><br>
-					<h5>title</h5>
-				</div>						
-			<script>															
-					}
-				}
-			</script>
-			<script>
-				changePage(1)
-			</script>
+		<div id="port"><strong>포트폴리오</strong></div>
+		<div id="port_all_container">
+			<c:forEach var="port" items="${userPage.userPort }">
+				<div style="text-align: center; margin: 20px 10px;">
+					<a href="/TPWebTeamProject/getPortDetail?port_no=${port.portNo} ">
+					<img src="/TPWebTeamProject/getImg?img_no=${port.portImg.imgNo}" alt="" class="port_all"></a>
+					<br><span id="portTitle">${port.portTitle }</span>
+				</div>
+			</c:forEach>
 		</div>
-		<div id="postFooter">
+		<c:if test="${userPage.userPort.size() == 0 }">
+			<p id="noPort">아직 작성하신 게시물이 없습니다.</p>
+		</c:if>
+		
+		<%-- <div id="postFooter">
 			<script>
 				  var s = ${param.size};
 				  var size = s + 1;
@@ -116,7 +95,7 @@
 			<script>
 				  }
 			</script>
-		</div>
+		</div> --%>
 	</div>
 </div>
 </body>

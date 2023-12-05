@@ -125,19 +125,19 @@ pageContext.setAttribute("nl", "\n");
 
 
 
-	<!-- 사용자 정보? 칸? TODO: 회원정보VO 받으면 이미지-->
+	<!-- 사용자 정보? 칸?-->
 	<div id="top">
 		<div id="user">
-			<a href=""><img alt="img" src="/TPWebTeamProject/getProfileImg?user_id=${port.userId }" id="profile"></a>
+			<a href="/TPWebTeamProject/userPage?user_id=${port.userId }"><img alt="img" src="/TPWebTeamProject/getProfileImg?user_id=${port.userId }" id="profile"></a>
 			<h3>${port.userNickname }</h3>
 			<a href="">${port.userId }</a>
 		</div>
 
 		<div id="buttons">
-			<div class="image-container">
+			<!-- <div class="image-container">
 				<img alt="img" src="/TPWebTeamProject/board/port/img/follow_off.png" class="button" onclick="javascript:checkuser()"><br> 
 				<span id="follow_text" class="button_text">0명</span>
-			</div>
+			</div> -->
 			<div class="image-container">
 				<c:if test="${port.isLike }">
 					<img alt="img" src="/TPWebTeamProject/board/port/img/like_on.png" class="button" id="like_button_on" onclick="isLike();"><br>
@@ -227,7 +227,7 @@ pageContext.setAttribute("nl", "\n");
 
 		<c:forEach var="cmt" items="${port.portCmtList }">
 			<div id="comment_item">
-				<a href=""><img alt="img" src="/TPWebTeamProject/getProfileImg?user_id=${cmt.userId }" id="comment_profile"></a>
+				<a href="/TPWebTeamProject/userPage?user_id=${cmt.userId }"><img alt="img" src="/TPWebTeamProject/getProfileImg?user_id=${cmt.userId }" id="comment_profile"></a>
 				<h5>${cmt.userNickname }</h5>
 				<span id="date">${cmt.portCmtDate }</span>
 
