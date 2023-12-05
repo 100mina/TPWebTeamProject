@@ -29,7 +29,7 @@
 
 </head>
 <body>
-	
+	 	
 	 <!-- 각 게시물 전체에 대한 링크 -->
         <!-- 게시판 화면 디자인 -->
         
@@ -126,6 +126,7 @@
 			    </tr>
 							
 			</table>
+			
 	<!-- 로그인 여부 확인 -->
 	<div class="message">
     <c:if test="${empty user}">
@@ -137,12 +138,14 @@
         <!-- 로그인이 된 경우 -->
         <a href="boardForm.jsp">글쓰기</a>
     </c:if>		
-	</div>		
+	</div>
+	</body>
+			
 			
 	<script type="text/javascript">
 	
 	    var selectedCategory = "";
-	
+		
 		document.addEventListener('DOMContentLoaded', function () {
 		  const categoryRow = document.getElementById('community');
 		  categoryRow.addEventListener('click', function () {
@@ -154,25 +157,22 @@
 		  });
 		});
 		
-		 // 추가된 부분
 	    function selectCategory(category) {
+			 
         // 선택한 카테고리 설정
         selectedCategory = category;
+        
         // 서버에 선택한 카테고리에 대한 글 요청
         $.get('../../getFreeBoardByCategory', { category: encodeURIComponent(category) }, function(data) {
         	
         	// 포워딩하기 전에 기존 테이블 삭제
-			$('.index').empty();
-            $('.head').empty();    
-            
+            $('.head').empty();  
+    		$('.message').remove();
             // 서버에서 받은 데이터로 테이블 업데이트
             $('#table-container').html(data);
         });
     }
-
-		
+	    
 	</script>
 
-
-</body>
 </html>

@@ -23,14 +23,12 @@ public class FreeBoardCategory extends HttpServlet{
 		System.out.println("카테고리별 게시글 분류를 요청하셨습니다");
 		String encodedCategory = request.getParameter("category");
 		String category = URLDecoder.decode(encodedCategory, "UTF-8");
-        System.out.println("요청한 카테고리 : "+category);
         
         FreeBoardDAO freeBoardDao = new FreeBoardDAO();
 
         // 카테고리에 해당하는 게시글 목록을 데이터베이스에서 가져오는 로직 수행 (예시)
         List<FreeBoardVO> freeBoardList = freeBoardDao.getFreeBoardListByCategory(category);
         
-        System.out.println(freeBoardList.size()+"text");
         // 데이터를 request에 attribute로 추가
         request.setAttribute("freeBoardList", freeBoardList);
 

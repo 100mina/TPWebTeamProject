@@ -8,11 +8,12 @@
 	
 	body{
 		 font-family: 'notosans', 'Times New Roman', Times, serif; padding: 3em;
-		 height: max-content;
+		 height: 100%;
 		 max-height: max-content;
 		 margin: 0;
 		 overflow: auto;
 		 }
+	html{height: max-content;}	 
 	
 	#content{height: 7em; text-align: start; vertical-align: text-top;} 
 	
@@ -44,7 +45,9 @@
 	    width: 200px;
 	    position: fixed;
 	    display: inline-block;
-	    right: 1400px;
+	    right: 1400px; /* 원하는 위치로 조정 */
+   		top: 200px; /* 화면 상단에 고정되도록 설정 */
+	    
 	}
 	
 	.index th{
@@ -103,13 +106,21 @@
 	    color: rgb(0, 0, 0); /* 마우스 오버 시 색상 변경 */
 	}
 	
-	#table-container{
-		display: inline-block;
-		width: 700px;
-		position: fixed;
-		margin: 0 auto;
-		left: 717px;
+	#table-container {
+    display: inline-block;
+    width: 700px;
+    position: absolute;
+    margin: 0 auto;
+    left: 50%; /* 가운데 정렬을 위해 left를 50%로 지정 */
+    transform: translateX(-50%);
 	}
+
+	#table-container a {
+	    display: inline; /* 링크를 인라인으로 설정하여 내용만큼만 차지하도록 함 */
+	    color: black;
+	    text-decoration: none;
+	}
+
 	
 	 div.pagination {
 	     display: inline-block;
