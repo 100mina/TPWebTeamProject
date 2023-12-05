@@ -49,7 +49,7 @@ public class UserDAO {
 		}
 	}// insertUser Method
 	public UserVO getUser(UserVO vo) {
-		UserVO user = null;
+		
 		try {
 			Connection conn = dataSource.getConnection();
 
@@ -59,12 +59,11 @@ public class UserDAO {
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				user = new UserVO();
-				user.getId();
-				user.getPw();
-				user.getNickName();
-				user.getProfilePath();
-				user.getUserLevel();
+				vo.setId(rs.getString("USER_ID"));
+				vo.setPw(rs.getString("USER_PW"));
+				vo.setNickName(rs.getString("USER_NICKNAME"));
+				vo.setProfilePath(rs.getString("USER_PROFILE_PATH"));
+				vo.setUserLevel(rs.getString("USER_LEVEL"));
 			}
 			rs.close();	
 			pstmt.close();
@@ -73,7 +72,7 @@ public class UserDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return user;
+		return vo;
 	}// getUser Methods----------------------------------------------------------------------------
 	
 	public void updateUserProfile(UserVO vo) {
