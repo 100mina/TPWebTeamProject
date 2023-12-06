@@ -32,10 +32,13 @@
 	</nav>
 
 
+	
+
+
 
 	<section style="text-align: center;">
-		<div style="margin: 40px; padding: 10px; overflow: hidden;">
-			<jsp:include page="../../portList.jsp"></jsp:include>		
+		<div>
+			<jsp:include page="../../portList.jsp"></jsp:include>
 		</div>
 	</section>
 

@@ -116,6 +116,88 @@ public class PortBoardDAO {
 		return boardList;
 	}// 전체 게시물 리스트 검색 //
 
+	// 전체 게시물 리스트 조회수순 검색
+	public List<PortBoardVO> getPortListView() {
+
+		List<PortBoardVO> boardList = new ArrayList<PortBoardVO>();
+
+		try {
+			Connection conn = dataSource.getConnection();
+
+			String sql = "SELECT * FROM PORT_BOARD ORDER BY PORT_VIEW DESC";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				PortBoardVO vo = new PortBoardVO();
+				vo.setPortNo(rs.getInt("PORT_NO"));
+				vo.setPortTitle(rs.getString("PORT_TITLE"));
+				vo.setPortContent(rs.getString("PORT_CONTENT"));
+				vo.setUserId(rs.getString("USER_ID"));
+				vo.setPortDate(rs.getDate("PORT_DATE"));
+				vo.setPortView(rs.getInt("PORT_VIEW"));
+
+				boardList.add(vo);
+
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return boardList;
+	}// 전체 게시물 리스트 조회수순 검색 //
+	
+	
+	
+	
+	// 전체 게시물 리스트 조회수순 검색
+	public List<PortBoardVO> getPortListFav() {
+
+		List<PortBoardVO> boardList = new ArrayList<PortBoardVO>();
+
+		try {
+			Connection conn = dataSource.getConnection();
+
+			String sql = "SELECT pb.*, COUNT(pf.PORT_FAV_NO) AS TOTAL_FAV "
+					+ "FROM PORT_BOARD pb "
+					+ "LEFT JOIN PORT_FAVORITE pf ON pb.PORT_NO = pf.PORT_NO "
+					+ "GROUP BY pb.PORT_NO, PB.PORT_TITLE, PB.PORT_CONTENT, PB.USER_ID, PB.PORT_DATE, PB.PORT_VIEW "
+					+ "ORDER BY TOTAL_FAV DESC";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				PortBoardVO vo = new PortBoardVO();
+				vo.setPortNo(rs.getInt("PORT_NO"));
+				vo.setPortTitle(rs.getString("PORT_TITLE"));
+				vo.setPortContent(rs.getString("PORT_CONTENT"));
+				vo.setUserId(rs.getString("USER_ID"));
+				vo.setPortDate(rs.getDate("PORT_DATE"));
+				vo.setPortView(rs.getInt("PORT_VIEW"));
+
+				boardList.add(vo);
+
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return boardList;
+	}// 전체 게시물 리스트 조회수순 검색 //
+	
+	
+	
+	
+	
+
 	// 상세 게시물 검색
 	public PortBoardVO getPort(PortBoardVO vo) {
 
@@ -527,11 +609,11 @@ public class PortBoardDAO {
 		}
 		return countFav;
 	}// 좋아요 갯수 카운트//
-	
-	//좋아요 여부 검색
+
+	// 좋아요 여부 검색
 	public boolean isLike(PortBoardVO vo) {
-		boolean isLike= false;
-		
+		boolean isLike = false;
+
 		try {
 			Connection conn = dataSource.getConnection();
 
@@ -542,11 +624,12 @@ public class PortBoardDAO {
 			pstmt.setString(2, vo.getUserId());
 
 			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) isLike= true;
+			if (rs.next())
+				isLike = true;
 
 			pstmt.close();
 			conn.close();
-			System.out.println(vo.getPortNo()+"."+vo.getUserId()+"."+isLike);
+			System.out.println(vo.getPortNo() + "." + vo.getUserId() + "." + isLike);
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -554,8 +637,7 @@ public class PortBoardDAO {
 		}
 		return isLike;
 	}
-	
-	
+
 	public UserVO getUser(UserVO vo) {
 		UserVO user = null;
 		try {
@@ -563,9 +645,9 @@ public class PortBoardDAO {
 			String sql = "SELECT * FROM USERS WHERE USER_ID=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
-			
+
 			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				user = new UserVO();
 				user.setId(rs.getString("USER_ID"));
 				user.setPw(rs.getString("USER_PW"));
@@ -573,7 +655,7 @@ public class PortBoardDAO {
 				user.setProfilePath(rs.getString("USER_PROFILE_PATH"));
 				user.setUserLevel(rs.getString("USER_LEVEL"));
 			}
-			rs.close();	
+			rs.close();
 			pstmt.close();
 			conn.close();
 		} catch (SQLException e) {
@@ -582,14 +664,11 @@ public class PortBoardDAO {
 		}
 		return user;
 	}
-	
-	
-	
+
 } // DAO Class...
 
-
-/* 은지 DAO
- * mport java.util.ArrayList; import java.util.List;
+/*
+ * 은지 DAO mport java.util.ArrayList; import java.util.List;
  * 
  * import javax.naming.Context; import javax.naming.InitialContext; import
  * javax.naming.NamingException; import javax.sql.DataSource;
@@ -640,7 +719,7 @@ public class PortBoardDAO {
  * PortBoardVO imagePath=null;
  * 
  * 
- */		
+ */
 /*
  * try { Connection conn=dataSource.getConnection(); String
  * sql="SELECT IMG_PATH FROM PORT_BOARD_IMG WHERE PORT_NO=?"; PreparedStatement
@@ -740,12 +819,3 @@ public class PortBoardDAO {
  * 
  * }
  */
-
-
-
-
-
-
-
-
-

@@ -41,20 +41,4 @@ public class FileOutputStreamServlet extends HttpServlet{
 	        }
 	    }
 } 
-
-/*
-	 * else { // 요청된 아이디에 해당하는 프로필 사진 찾기 UserVO reqUser = new UserVO();
-	 * reqUser.setId(reqUserId); UserDAO dao = new UserDAO(); reqUser =
-	 * dao.getUser(reqUser);
-	 * 
-	 * String imgPath = reqUser.getProfilePath(); File imageFile = new
-	 * File(imgPath); FileInputStream fileInputStream = new
-	 * FileInputStream(imageFile); OutputStream oStream = resp.getOutputStream();
-	 * 
-	 * byte[] buffer = new byte[1024];
-	 * 
-	 * int byteRead; while ((byteRead = fileInputStream.read(buffer)) != -1) {
-	 * oStream.write(buffer, 0, byteRead);
-	 */
-
 			

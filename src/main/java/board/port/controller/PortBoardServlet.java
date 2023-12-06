@@ -3,6 +3,7 @@ package board.port.controller;
 import java.io.IOException;
 import java.lang.ProcessBuilder.Redirect;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -33,14 +34,31 @@ public class PortBoardServlet extends HttpServlet{
 	}
 	
 	void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		List<PortBoardVO> portBoardList = new ArrayList<PortBoardVO>();
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json; charset=utf-8");
+		
+		int pageNo= Integer.parseInt(req.getParameter("no"));
 		
 		PortBoardService portBoardService = new PortBoardService();
 		PortBoardDAO portBoardDAO = new PortBoardDAO();
 		UserDAO userDAO = new UserDAO();
-		List<PortBoardVO> portBoardList = portBoardService.getPortList();
+		switch (pageNo) {
+		case 1:
+			portBoardList.clear();
+			portBoardList = portBoardService.getPortList();
+			break;
+		case 2:
+			portBoardList.clear();
+			portBoardList = portBoardDAO.getPortListView();
+			break;
+		case 3:
+			portBoardList.clear();
+			portBoardList = portBoardDAO.getPortListFav();
+			break;
+			
+		}
+		 
 		for(int i=0;i<portBoardList.size();i++) {
 			UserVO userVO = new UserVO();
 			userVO.setId(portBoardList.get(i).getUserId());

@@ -96,16 +96,11 @@
 		</p>
 		<h2>인기 포트폴리오 게시물</h2>
 		<div class="portWraper">
+		
+			<jsp:include page="./popularPort.jsp"></jsp:include>
+		
 		</div>
-	
-		<h2>인기 취업신 랭킹</h2>
-		<div class="sinWraper">
-			<a href="#" class="user_id"> <img class="user_image" alt="이미지"
-				src="../../image/portimage1.png" width="25">id
-			</a> <img alt="이미지" src="../../image/eye.png" style="margin-left: 20px">view
-			count <img alt="이미지" src="../../image/favo.png"
-				style="margin-left: 10px">like count
-		</div>
+
 		<div id="bg">
 			<h1>
 				지금 취업의神의 가입 하고<br> 인기 취업신에 도전해 보세요!
@@ -115,13 +110,10 @@
 						신 가입하기</button></a>
 			</span>
 		</div>
-		<div class="postWraper">
-			<a href="#" class="user_id"> <img class="user_image" alt="이미지"
-				src="../../image/portimage1.png" width="25">id
-			</a> <img alt="이미지" src="../../image/eye.png" style="margin-left: 20px">view
-			count <img alt="이미지" src="../../image/favo.png"
-				style="margin-left: 10px">like count
-		</div>
-		<footer> </footer>
+		<hr>	
+		<footer>
+			
+		
+		</footer>
 	</body>
 </html>
