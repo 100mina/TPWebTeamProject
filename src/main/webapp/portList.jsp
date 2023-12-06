@@ -34,6 +34,9 @@
 #containerWraper>div:nth-child(2)>div {
 	
 }
+#proImg:hover :first-child{
+	
+}
 </style>
 </head>
 <body>
