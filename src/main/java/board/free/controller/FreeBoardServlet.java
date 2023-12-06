@@ -76,7 +76,7 @@ public class FreeBoardServlet extends HttpServlet{
 				List<FreeCommentVO> freeCmtList = freeBoardService.getFreeCmtList(vo2);
 				FreeBoardDAO freeDao= new FreeBoardDAO();
 				String freeNickname = freeDao.getUserNickname(freeBoard.getUserId());
-
+				System.out.println("유저 닉네임" + freeNickname);
 				// 새로운 댓글이 추가되었을 때 세션을 갱신
 				HttpSession session = req.getSession();
 				

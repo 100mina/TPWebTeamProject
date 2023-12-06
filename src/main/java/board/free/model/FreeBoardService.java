@@ -56,6 +56,8 @@ public class FreeBoardService {
 		
 		//#6. 댓글 읽어오기 기능
 		public List<FreeCommentVO> getFreeCmtList(FreeCommentVO vo){
+			String userNickname = freeBoardDao.getUserNicknameFromFreeComment(vo.getUserId());
+	        vo.setUserNickname(userNickname);
 			return freeBoardDao.getFreeCmtList(vo);
 		}
 		

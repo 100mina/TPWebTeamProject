@@ -87,7 +87,7 @@
 					        <table class="cmt">
 					            <tr>
 					                <td class="comment-info">
-					                    <b>${comment.userId }</b>
+					                    <b>${freeNickname}</b>         
 					                   <c:if test="${user != null and user.id == comment.userId }">
 					                    
 					                    <p class="cmt-buttons">
@@ -95,6 +95,7 @@
                         					<span class="delete cmt-button" onclick="deleteComment(${comment.freeCmtNo})">삭제</span>					                    
                         				</p>
                         			   </c:if>
+                        			   
 					                </td>
 					                					
 					            </tr>

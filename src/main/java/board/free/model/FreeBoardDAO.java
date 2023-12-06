@@ -440,5 +440,44 @@ public class FreeBoardDAO {
         // 사용자를 찾지 못한 경우 또는 오류 발생 시 null 반환
         return null;
     }
+    
+
+	public String getUserNicknameFromFreeComment(String userId) {
+	    Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    String userNickname = null;
+
+	
+	    try {
+	        conn = dataSource.getConnection();
+
+	        String sql = "SELECT U.USER_NICKNAME " +
+	                     "FROM FREE_COMMENT FC " +
+	                     "JOIN USERS U ON FC.USER_ID = U.USER_ID " +
+	                     "WHERE FC.USER_ID = ?";
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setString(1, userId);
+
+	        rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	            userNickname = rs.getString("USER_NICKNAME");
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace(); // 예외 출력
+	    } finally {
+	        try {
+	            conn.close();
+	            pstmt.close();
+	            rs.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return userNickname; // 사용자 정보가 없을 경우 null 반환
+	}
 }
 	
