@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $.ajax({
-        url: "./portBoardList",  // 요청을 보낼 API 엔드포인트
+        url: "./portBoardList?no=2",  // 요청을 보낼 API 엔드포인트
         method: 'GET',  // HTTP 메소드 (GET, POST 등)
         dataType: 'json',  // 응답 데이터 형식 (JSON, XML 등)
         success: function(data){
