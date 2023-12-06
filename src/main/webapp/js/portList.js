@@ -9,7 +9,7 @@ $(document).ready(function(){
 				var container = $("#containner");
                 var item = data[i];
                 var html = 
-                "<div id='containerWraper'><div><a href='../../getPortDetail?port_no='><img alt='게시물 이미지' src='../../imgLoad?imageNo=" + item.thumbnailImageNo + "' id='portImg'></a></div>" +
+                "<div id='containerWraper'><div><a href='../../getPortDetail?port_no="+item.portNo+"'><img alt='게시물 이미지' src='../../imgLoad?imageNo=" + item.thumbnailImageNo + "' id='portImg'></a></div>" +
                     "<div><div><a><img alt='작성자 프로필' src='../../fileLoad?userId=" + item.userId + "' id='profile'>" + item.userId + "</a>" +
                     "<img alt='좋아요' src='../../image/favo.png'>" + item.countFav +
                     "<img alt='조회수' src='../../image/eye.png'>" + item.portView + "</div></div></div>";

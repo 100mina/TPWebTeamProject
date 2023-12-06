@@ -50,8 +50,7 @@ public class PortBoardServlet extends HttpServlet{
 			// 썸네일 이미지 no 전달
 			portBoardList.get(i).setThumbnailImageNo(imgVO.getImgNo());
 			portBoardList.get(i).setCountFav(portBoardDAO.countFav(portBoardList.get(i)));
-			portBoardList.get(i).setPortNo(imgVO.getPortNo());
-			
+			System.out.println(portBoardList.get(i).getPortNo()+"");
 		}
 		
 		Gson gson = new Gson();
