@@ -13,6 +13,8 @@
 <link type="text/css" rel="stylesheet" href="css/portlist.css">
 </head>
 <body>
+	<jsp:include page="../../header.jsp"></jsp:include>
+
 	<header>
 		<div class="search">
 			<input type="text" placeholder="검색어를 입력하세요."> <img alt="이미지"
@@ -21,7 +23,6 @@
 	</header>
 
 	<nav>
-
 		<div class="portp">
 			<select class="port">
 				<option value="1">최신순</option>
@@ -53,7 +54,6 @@
 					href="./portUpload.jsp"><input type="button" value="글쓰기"
 					onclick="#" style="margin-left: 70px; padding: 0.5em"></a>
 			</p>
-
 		</div>
 	</footer>
 
