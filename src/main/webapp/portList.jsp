@@ -15,8 +15,8 @@
 }
 
 #portImg {
-	width: 220px;
-	height: 220px;
+	width: 230px;
+	height: 230px;
 }
 
 #containner {
@@ -26,16 +26,30 @@
 	gap: 10px;
 }
 #containerWraper {
-	border-radius: 16px;
-	border: 1px solid #333; /* 각 아이템에 테두리 추가 */
   	padding: 16px;          /* 내용과 테두리 간의 여백 설정 */
+  	border-radius: 10%;
+  	color: #888888;
+}
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
 }
 
 #containerWraper>div:nth-child(2)>div {
 	
 }
-#proImg:hover :first-child{
-	
+#proImg {
+	display: flex;
+	 
+}
+#proImg>a{
+	f1ex:3;
+	margin-right:4.5em; 
+}
+#proImg>span{
+	flex:none;
+	margin-left: 1em;
+	margin-top: 1em;
 }
 </style>
 </head>
