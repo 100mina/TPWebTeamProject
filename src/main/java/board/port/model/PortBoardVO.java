@@ -10,6 +10,10 @@ public class PortBoardVO {
 	private String userId;
 	private Date portDate;
 	private int portView;
+	private int thumbnailImageNo;
+	
+
+	
 	
 	//해당 게시물의 첨부파일 리스트
 	private List<PortBoardImgVO> portImgList;
@@ -30,6 +34,15 @@ public class PortBoardVO {
 	private int countFav;
 	
 	
+	
+	
+
+	public int getThumbnailImageNo() {
+		return thumbnailImageNo;
+	}
+	public void setThumbnailImageNo(int thumbnailImageNo) {
+		this.thumbnailImageNo = thumbnailImageNo;
+	}
 	public int getCountFav() {
 		return countFav;
 	}

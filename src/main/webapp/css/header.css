@@ -1,0 +1,62 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'webfont';
+	src: url(../font/notosans.ttf), format('truetype');
+}
+@font-face {
+	font-family: 'titleFont';
+	src: url(../font/KoPubWorld\ Batang\ Bold.ttf), format('truetype');
+}
+/*@keyframes {
+	
+}*/
+
+html {
+	background-color: #FCFEFC;
+}
+* {
+	font-family: 'webfont';
+	box-sizing: border-box;
+}
+#container {
+	position: absolute;
+	width: 200px;
+	height: 320px;
+	background: ghostwhite;
+	border-radius: 24px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	right: 22%;
+	top: 120px;
+	transition: opacity 0.3s ease-in-out;
+}
+#container div{
+	padding-top: 1.5em;
+}
+#item1{
+	text-align: center;
+}
+#item2 hr {
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+#profile {
+	width: 55px;
+	height: 55px;
+}
+a{
+	text-decoration: none;
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+	
