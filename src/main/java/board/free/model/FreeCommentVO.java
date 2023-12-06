@@ -8,6 +8,14 @@ public class FreeCommentVO {
 	private int freeCmtNo;           //댓글번호
 	private int freeNo;              //댓글달린 게시글 번호
 	private String userId;	 //댓글단 유저 닉네임
+	private String userNickname;
+	
+	public String getUserNickname() {
+		return userNickname;
+	}
+	public void setUserNickname(String userNickname) {
+		this.userNickname = userNickname;
+	}
 	public String getUserId() {
 		return userId;
 	}

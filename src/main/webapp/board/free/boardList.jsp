@@ -57,7 +57,7 @@
                     <table id="freelist">
                     	
                         <tr>
-                            <td style="padding-top: 30px">${freeBoard.freeCategory}</td>
+                            <td id="category">${freeBoard.freeCategory}</td>
                         </tr>
                         
                         <tr>
@@ -69,7 +69,7 @@
                         </tr>
                         
                         <tr>
-                            <td>${freeBoard.userId}</td>        
+                            <td>${freeBoard.freeNickname}</td>        
                         </tr>
                         
                         <tr>     

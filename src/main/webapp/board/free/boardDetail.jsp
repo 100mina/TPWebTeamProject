@@ -33,10 +33,13 @@
 			</td>
 				
 		</tr>
+		
 		<tr>
-			<td>${freeBoard.userId }</td>
-		</tr>
+			<td>${freeNickname}</td>
+		</tr>	
+			
 		<tr>
+		
 			<td> 
                 <img src="./image/viewicon.png" alt="Comment Icon" style="width: 16px"> <p>${freeBoard.freeView}</p>
                 <img src="./image/comment.png" alt="Comment Icon" class="listicon"> <p>${fn:length(freeCmtList)}</p>

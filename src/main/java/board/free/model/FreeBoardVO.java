@@ -13,8 +13,17 @@ public class FreeBoardVO {
 	private int freeView;          //조회수
 	private String freeCategory;       //카테고리
 	private int commentCount;
+	private String freeNickname;
 
-    // getter 및 setter 추가
+    public String getFreeNickname() {
+		return freeNickname;
+	}
+
+	public void setFreeNickname(String freeNickname) {
+		this.freeNickname = freeNickname;
+	}
+
+	// getter 및 setter 추가
     public int getCommentCount() {
         return commentCount;
     }

@@ -122,6 +122,19 @@
 	    color: black;
 	    text-decoration: none;
 	}
+	
+	#category {
+		display: inline-block;
+		text-align: center;
+	    background-color: #88888888;
+	    padding: 8px;
+	    border-radius: 12px;
+	    font-size: 10px;
+	    color: white;
+	    border: none;
+	    width: 9em;
+	    margin: 15px ;
+	}
 
 	
 	 div.pagination {

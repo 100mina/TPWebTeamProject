@@ -81,17 +81,21 @@ public class FreeBoardService {
 		//#10. 페이지 설정 기능
 		public List<FreeBoardVO> getFreeBoardListPaging(int pageNo, int pageSize) {
 			List<FreeBoardVO> pagedFreeBoardList = freeBoardDao.getFreeBoardListPaging(pageNo, pageSize);
-
+			
 		    // 각 게시글에 댓글 수 추가
 		    for (FreeBoardVO board : pagedFreeBoardList) {
 		        int freeNo = board.getFreeNo();
 		        int commentCount = freeBoardDao.getCommentCountForBoard(freeNo);
 		        board.setCommentCount(commentCount);
+		        
+		        // 유저 닉네임 추가
+		        String userNickname = freeBoardDao.getUserNickname(board.getUserId());
+		        board.setFreeNickname(userNickname);
+		        
 		    }
-
+		  
 		    return pagedFreeBoardList;
 	    }
-		
 		
 		
 }

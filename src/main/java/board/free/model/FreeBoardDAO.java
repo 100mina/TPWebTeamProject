@@ -406,4 +406,39 @@ public class FreeBoardDAO {
 	    
 	    return freeBoardList;
 	}
+	
+	// 특정 사용자의 닉네임 가져오기
+    public String getUserNickname(String userId) {
+    	
+    	Connection conn = null;
+    	
+		try {
+			conn = dataSource.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+        String query = "SELECT U.USER_NICKNAME " +
+                       "FROM FREE_BOARD F " +
+                       "JOIN USERS U ON F.USER_ID = U.USER_ID " +
+                       "WHERE F.USER_ID = ?";
+        
+        
+        try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+            preparedStatement.setString(1, userId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("USER_NICKNAME");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // 사용자를 찾지 못한 경우 또는 오류 발생 시 null 반환
+        return null;
+    }
 }
+	
