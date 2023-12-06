@@ -99,5 +99,11 @@ public class FreeBoardService {
 		    return pagedFreeBoardList;
 	    }
 		
+		// 전체 게시글 수 조회 메서드
+	    public int getTotalFreeBoardCount() {
+	        return freeBoardDao.getTotalFreeBoardCount();
+	    }
+
+		
 		
 }

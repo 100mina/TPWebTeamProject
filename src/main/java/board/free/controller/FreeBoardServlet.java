@@ -51,11 +51,14 @@ public class FreeBoardServlet extends HttpServlet{
 			if(freeNo==null) {
 				System.out.println("전체 게시글 리스트 검색을 요청하셨습니다.");
 				
+				int totalFreeBoardCount = freeBoardService.getTotalFreeBoardCount();
+		        int totalPages = (int) Math.ceil((double) totalFreeBoardCount / pageSize);
+				
                 List<FreeBoardVO> freeBoardList = freeBoardService.getFreeBoardListPaging(pageNo, pageSize);
                 
 				//리다이렉트될 화면에서 게시글 리스트를 사용하기 위해 session 객체를 활용
 				HttpSession session= req.getSession();
-
+		        session.setAttribute("totalPages", totalPages);
 				session.setAttribute("freeBoardList", freeBoardList);
 
 				

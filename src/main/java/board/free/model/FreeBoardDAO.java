@@ -334,7 +334,7 @@ public class FreeBoardDAO {
 	}
 	
 
-	
+	//리스트 페이징 기능 구현
 	public List<FreeBoardVO> getFreeBoardListPaging(int pageNo, int pageSize) {
 	    List<FreeBoardVO> resultList = new ArrayList<>();
 
@@ -479,5 +479,25 @@ public class FreeBoardDAO {
 
 	    return userNickname; // 사용자 정보가 없을 경우 null 반환
 	}
+	
+	// 전체 게시글 수 조회 메서드
+    public int getTotalFreeBoardCount() {
+        int totalFreeBoardCount = 0;
+
+        try (Connection conn = dataSource.getConnection()) {
+            String query = "SELECT COUNT(*) FROM free_board";
+            
+            try (PreparedStatement pstmt = conn.prepareStatement(query);
+                 ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    totalFreeBoardCount = rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalFreeBoardCount;
+    }
 }
 	
