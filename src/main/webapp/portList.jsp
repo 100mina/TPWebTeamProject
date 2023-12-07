@@ -9,11 +9,20 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+@font-face{
+	font-family: "notosans";
+	src: url("../../../font/notosans.ttf");
+}
+
+*{ margin: 0px; padding: 0; font-family: "notosans";}
+
 #profile {
 	width: 40px;
 	height: 40px;
 	border: 1px solid lightgray;
 	border-radius: 50%;
+	position: relative;
+	right: 70px;
 }
 
 #portImg {
@@ -21,41 +30,66 @@
 	height: 230px;
 	border-radius: 10%;
 	border: 1px solid lightgray;
+	margin-bottom: 10px;
 }
 
 #containner {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr); /* 5개의 열을 가진 그리드 */
-	grid-template-rows: repeat(6, 1fr); /* 6개의 행을 가진 그리드 */
-	gap: 10px;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap: 100px;
+	justify-items: center;
+	margin: 50px 80px;
 }
 #containerWraper {
   	padding: 16px;          /* 내용과 테두리 간의 여백 설정 */
   	border-radius: 10%;
   	color: #888888;
-}
-img {
-    overflow-clip-margin: content-box;
-    overflow: clip;
+  	border: 1px solid lightgray;
+  	position: relative;
+  	margin: 0px 30px;
 }
 
-#containerWraper>div:nth-child(2)>div {
-	
-}
 #proImg {
-	display: flex;
-	 
+	position: relative;
 }
-#proImg>a{
-	f1ex:3;
-	padding-left:0.5em;
-	margin-right:4em; 
+
+
+#userid{
+	display: inline-block;
+	position: relative;
+	bottom: 15px;
+	right: 60px;
 }
-#proImg>span{
-	flex:none;
-	margin-left: 1em;
-	margin-top: 1em;
+
+.favView{
+	text-align: right;
 }
+
+.countFavView{
+	margin-top: 13px;
+	margin-left: 8px;
+	margin-right: 8px; 
+}
+
+#button{
+	position: absolute;
+	top: 0px;
+	right: 80px;
+	text-align: center;
+	background-color: #88888888;
+	padding: 8px;
+	border-radius: 12px;
+	font-size: 13px;
+	color: white;
+	font-weight: bold;
+	width: 7em;
+	border: none;
+	margin: 10px, 0, 10px, 0;
+}
+
+#button:hover{cursor: pointer; }
+
+
 </style>
 </head>
 <body>
