@@ -17,7 +17,7 @@ header {
 	display: inline-block;
 	margin-left: 40%;
 	margin-right: auto;
-	padding-top: 100px;
+	padding-top: 50px;
 }
 
 header #text_div {
@@ -69,8 +69,11 @@ footer {
    border: none;
    margin: 10px, 0, 10px, 0;
 }
-hr {
-	
+#hr {
+	size: 10px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 100); /* 그림자 추가 */
+	height: 2px;
+	background-color: #88888888;
 }
 form {
 	padding-top: 16px;

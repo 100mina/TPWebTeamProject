@@ -92,6 +92,43 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}// updateUserProfile..-------------------------------------------------------------------------
+	public void loadUserProfile(UserVO vo) {
+		try {
+			Connection conn = dataSource.getConnection();
+			String sql = "UPDATE USERS SET USER_PROFILE_PATH=? WHERE=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getUserLevel());
+			pstmt.setString(2, vo.getId());
+	
+			pstmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} // loadUserProfile ---------------------------------
+	// 특정유저 팔로워 숫자
+	public void getFollowerCount(UserVO vo) {
+		try {
+			Connection conn = dataSource.getConnection();
+			String sql = "SELECT * FROM FOLLOW WHERE USER_ID=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			ResultSet rs = pstmt.executeQuery();
+			int count = 0;
+			while(rs.next()) {
+				count++;
+			}
+			vo.setFollowerCount(count);
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	} // getFollwerCount ---------------------------------
+	
 	
 	
 	//해당 회원의 총 좋아요 개수

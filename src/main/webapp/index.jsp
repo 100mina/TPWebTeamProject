@@ -1,3 +1,7 @@
+<%@page import="java.util.Collections"%>
+<%@page import="board.port.model.PortBoardVO"%>
+<%@page import="java.util.List"%>
+<%@page import="board.port.model.PortBoardService"%>
 <%@ page language="java" contentType="text/html; UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
