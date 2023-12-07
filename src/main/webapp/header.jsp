@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- jQuery를 사용하기 위해 CDN 추가 -->
-<link href="./css/index.css" rel="stylesheet">
 <link href="<%=request.getContextPath()%>/css/header.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
@@ -60,6 +59,7 @@
 			<a href="<%=request.getContextPath()%>/user/loginForm.jsp">로그인</a>&nbsp;&nbsp;&nbsp;
 			<a href="<%=request.getContextPath()%>/user/signupForm.jsp">회원가입</a>
 		</div>
+	</div>
 		<c:if test="${not empty sessionScope.user}">
 			<div id="user">
 				<a
@@ -76,7 +76,6 @@
 				</script>
 			</div>
 		</c:if>
-	</div>
 	<div id="container">
 		<div id="item1">
 			<a

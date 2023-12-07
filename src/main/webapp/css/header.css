@@ -28,7 +28,7 @@ html {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	right: 22%;
+	right: 10%;
 	top: 120px;
 	transition: opacity 0.3s ease-in-out;
 }
@@ -50,6 +50,41 @@ a{
 	text-decoration: none;
 	color: black;
 }
+ul, li {
+	list-style: none;
+}
+#rootContainer {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	align-items: center;
+}
+#category{
+	display: flex;
+	flex-grow: 0;
+}
+aicon {
+	align-items:  flex-start;
+	flex-grow: 0;
+}
+#logintext{
+	text-align: right;
+	flex-grow: 1;
+	
+}
+.second {
+    list-style: none;
+    position: absolute;
+    background-color: #FCFEFC;
+    border: 0.5px solid #888888;
+    text-align: center;
+    top: 80px;
+    left: 570px;
+    padding: 8px;
+    /*display: none;*/
+}
+
 
 
 
