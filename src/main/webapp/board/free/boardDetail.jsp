@@ -100,7 +100,7 @@
 					                					
 					            </tr>
 					            <tr>
-					                <td class="content">${comment.freeCmtContent }</td>
+					                <td class="cmtcontent">${comment.freeCmtContent }</td>
 					            </tr>
 					            <tr>
 					                <td class="comment-date">
@@ -122,9 +122,40 @@
 					    </div>
 					</c:forEach>
                 </c:otherwise>
-                	
                 
             </c:choose>
+            
+            <table class="index">
+			
+				<tr>
+			      <th><a href=../../><p>홈</p></a></th>
+			    </tr>
+			    
+			    <tr>
+			      <th><a href="../../portBoardList"><p>포트폴리오</p></a></th>
+			    </tr>
+			
+				<tr class="category" id="community">
+        			<th><p>커뮤니티</p></th>
+		    	</tr>
+		    	
+			    <tr class="content" id="allPosts">
+			        <td><a href="../../freeBoard"><p>전체게시판</p></a></td>
+			    </tr>
+			    
+			    <tr class="content" id="freePosts">
+			        <td><a href="#" onclick="selectCategory('자유게시판')"><p>자유게시판</p></a></td>
+			    </tr>
+			    
+			    <tr class="content" id="resume">
+			        <td><a href="#" onclick="selectCategory('자기소개서/이력서')"><p>이력서/자기소개서</p></a></td>
+			    </tr>
+			    
+			    <tr class="content" id="interview">
+			        <td><a href="#" onclick="selectCategory('면접/취업')"><p>면접/취업</p></a></td>
+			    </tr>
+							
+			</table>
             
             <br>
 	
@@ -244,6 +275,44 @@
             });
         }
     }
+    
+    var selectedCategory = "";
+	
+    document.addEventListener('DOMContentLoaded', function () {
+        const categoryRow = document.getElementById('community');
+        categoryRow.addEventListener('click', function () {
+            // Toggle the display of content rows
+            const contentRows = document.getElementsByClassName('content');
+            for (const row of contentRows) {
+                row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+            }
+        });
+    });
+
+    // 초기에 숨겨져 있도록 설정
+    document.addEventListener('DOMContentLoaded', function () {
+        const contentRows = document.getElementsByClassName('content');
+        for (const row of contentRows) {
+            row.style.display = 'none';
+        }
+    });
+	
+    function selectCategory(category) {
+		 
+    // 선택한 카테고리 설정
+    selectedCategory = category;
+    
+    // 서버에 선택한 카테고리에 대한 글 요청
+    $.get('../../getFreeBoardByCategory', { category: encodeURIComponent(category) }, function(data) {
+    	
+    	// 포워딩하기 전에 기존 테이블 삭제
+        $('.head').remove();  
+		$('.message').remove();
+
+        // 서버에서 받은 데이터로 테이블 업데이트
+        $('#table-container').html(data);
+    });
+}
  
  	
 </script>

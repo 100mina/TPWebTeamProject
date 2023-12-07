@@ -177,8 +177,6 @@
 	    //페이지 클릭했을때 리스트 바뀌게 하기
 	    function changePage(pageNo) {
 	    	
-	        console.log("FreeBoardChangePage Servlet Called - PageNo: " + pageNo);
-
 	        // 서버로 요청을 보냄
 	        $.get('../../changePage', { pageNo: pageNo }, function(data) {
 	        	

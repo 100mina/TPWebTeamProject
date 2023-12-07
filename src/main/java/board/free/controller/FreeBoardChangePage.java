@@ -27,9 +27,7 @@ public class FreeBoardChangePage extends HttpServlet{
         // 게시글 목록을 가져오는 로직을 구현 (예: FreeBoardService의 getFreeBoardListPaging 메서드 활용)
         List<FreeBoardVO> pagedFreeBoardList;
 		pagedFreeBoardList = freeBoardService.getFreeBoardListPaging(pageNo, pageSize);
-		
-        System.out.println("FreeBoardChangePage 서블릿 호출 - 페이지 번호: " + pageNo);
-		
+				
         // 가져온 데이터를 JSP로 전달
         request.setAttribute("freeBoardList", pagedFreeBoardList);
 
