@@ -334,7 +334,7 @@ public class FreeBoardDAO {
 	}
 	
 
-	
+	//리스트 페이징 기능 구현
 	public List<FreeBoardVO> getFreeBoardListPaging(int pageNo, int pageSize) {
 	    List<FreeBoardVO> resultList = new ArrayList<>();
 
@@ -406,4 +406,98 @@ public class FreeBoardDAO {
 	    
 	    return freeBoardList;
 	}
+	
+	// 특정 사용자의 닉네임 가져오기
+    public String getUserNickname(String userId) {
+    	
+    	Connection conn = null;
+    	
+		try {
+			conn = dataSource.getConnection();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+        String query = "SELECT U.USER_NICKNAME " +
+                       "FROM FREE_BOARD F " +
+                       "JOIN USERS U ON F.USER_ID = U.USER_ID " +
+                       "WHERE F.USER_ID = ?";
+        
+        
+        try (PreparedStatement preparedStatement = conn.prepareStatement(query)) {
+            preparedStatement.setString(1, userId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("USER_NICKNAME");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // 사용자를 찾지 못한 경우 또는 오류 발생 시 null 반환
+        return null;
+    }
+    
+
+	public String getUserNicknameFromFreeComment(String userId) {
+	    Connection conn = null;
+	    PreparedStatement pstmt = null;
+	    ResultSet rs = null;
+	    String userNickname = null;
+
+	
+	    try {
+	        conn = dataSource.getConnection();
+
+	        String sql = "SELECT U.USER_NICKNAME " +
+	                     "FROM FREE_COMMENT FC " +
+	                     "JOIN USERS U ON FC.USER_ID = U.USER_ID " +
+	                     "WHERE FC.USER_ID = ?";
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setString(1, userId);
+
+	        rs = pstmt.executeQuery();
+
+	        if (rs.next()) {
+	            userNickname = rs.getString("USER_NICKNAME");
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace(); // 예외 출력
+	    } finally {
+	        try {
+	            conn.close();
+	            pstmt.close();
+	            rs.close();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    return userNickname; // 사용자 정보가 없을 경우 null 반환
+	}
+	
+	// 전체 게시글 수 조회 메서드
+    public int getTotalFreeBoardCount() {
+        int totalFreeBoardCount = 0;
+
+        try (Connection conn = dataSource.getConnection()) {
+            String query = "SELECT COUNT(*) FROM free_board";
+            
+            try (PreparedStatement pstmt = conn.prepareStatement(query);
+                 ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    totalFreeBoardCount = rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return totalFreeBoardCount;
+    }
 }
+	
