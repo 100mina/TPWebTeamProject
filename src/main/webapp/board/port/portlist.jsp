@@ -15,10 +15,7 @@
 <body>
 	<jsp:include page="../../header.jsp"></jsp:include>
 	<header>
-		<div class="search">
-			<input type="text" placeholder="검색어를 입력하세요."> <img alt="이미지"
-				src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-		</div>
+		
 	</header>
 
 	<nav>
@@ -29,10 +26,12 @@
 				<option value="3">좋아요순</option>
 			</select>
 		</div>
+		
+		<a href="./portUpload.jsp">
+			<input type="button" value="글쓰기" id="button">
+		</a>
+		
 	</nav>
-
-
-	
 
 
 
@@ -41,7 +40,6 @@
 			<jsp:include page="../../portList.jsp"></jsp:include>
 		</div>
 	</section>
-
 
 
 	<footer style="margin-top: 40px; text-align: center;">
@@ -58,7 +56,6 @@
 			</p>
 		</div>
 	</footer>
-
 
 </body>
 </html>
