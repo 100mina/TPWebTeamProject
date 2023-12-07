@@ -69,12 +69,12 @@ public class FreeSortingServlet extends HttpServlet{
             tableHTML.append("<td>").append(data.getFreeNo()).append("</td>");
             tableHTML.append("<td>").append(data.getFreeTitle()).append("</td>");
             tableHTML.append("<td>").append(data.getFreeCategory()).append("</td>");
-            tableHTML.append("<td>").append(data.getUserNickname()).append("</td>");
+            // tableHTML.append("<td>").append(data.getUserNickname()).append("</td>");
             tableHTML.append("<td>").append(data.getFreeDate()).append("</td>");
             tableHTML.append("<td>").append(data.getFreeView()).append("</td>");
             // 추가된 부분: 댓글 수 및 추천 수
             tableHTML.append("<td>").append(data.getCommentCount()).append("</td>");
-            tableHTML.append("<td>").append(data.getRecommendCount()).append("</td>");
+            // tableHTML.append("<td>").append(data.getRecommendCount()).append("</td>");
             tableHTML.append("</tr>");
         }
         tableHTML.append("</table>");

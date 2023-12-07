@@ -2,6 +2,7 @@ package board.free.model;
 
 import java.net.http.HttpConnectTimeoutException;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class FreeBoardDAO {
+	
 	
 	DataSource dataSource;
 	
@@ -45,7 +47,7 @@ public class FreeBoardDAO {
 				board.setFreeNo(rs.getInt("FREE_NO"));
 				board.setFreeTitle(rs.getString("FREE_TITLE"));
 				board.setFreeContent(rs.getString("FREE_CONTENT"));
-				board.setUserNickname(rs.getString("USER_NICKNAME"));
+				board.setUserId(rs.getString("USER_ID"));
 				board.setFreeDate(rs.getDate("FREE_DATE"));
 				board.setFreeView(rs.getInt("FREE_VIEW"));
 				board.setFreeCategory(rs.getString("FREE_CATEGORY"));
@@ -83,7 +85,7 @@ public class FreeBoardDAO {
 				board.setFreeNo(rs.getInt("FREE_NO"));
 				board.setFreeTitle(rs.getString("FREE_TITLE"));
 				board.setFreeContent(rs.getString("FREE_CONTENT"));
-				board.setUserNickname(rs.getString("USER_NICKNAME"));
+				board.setUserId(rs.getString("USER_ID"));
 				board.setFreeDate(rs.getDate("FREE_DATE"));
 				board.setFreeView(rs.getInt("FREE_VIEW"));
 				board.setFreeCategory(rs.getString("FREE_CATEGORY"));			
@@ -131,12 +133,12 @@ public class FreeBoardDAO {
 		try {
 			Connection conn= dataSource.getConnection();
 			
-			String sql="INSERT INTO FREE_BOARD(FREE_NO,FREE_TITLE,FREE_CONTENT,USER_NICKNAME,FREE_CATEGORY) VALUES(SEQ_FREE_BNO.NEXTVAL,?,?,?,?";
-			PreparedStatement pstmt= conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getFreeTitle());
-			pstmt.setString(2, vo.getFreeContent());
-			pstmt.setString(3, vo.getUserNickname());
-			pstmt.setString(4, vo.getFreeCategory());
+			String sql = "INSERT INTO FREE_BOARD(FREE_NO, FREE_TITLE, FREE_CONTENT, USER_ID, FREE_CATEGORY) VALUES(SEQ_FREE_NO.NEXTVAL, ?, ?, ?, ?)";
+	        PreparedStatement pstmt = conn.prepareStatement(sql);
+	        pstmt.setString(1, vo.getFreeTitle());
+	        pstmt.setString(2, vo.getFreeContent());
+	        pstmt.setString(3, vo.getUserId());
+	        pstmt.setString(4, vo.getFreeCategory());
 			
 			pstmt.executeUpdate();
 			
@@ -213,7 +215,7 @@ public class FreeBoardDAO {
 				
 				board.setFreeCmtNo(rs.getInt("FREE_CMT_NO"));
 				board.setFreeNo(rs.getInt("FREE_NO"));
-				board.setUserNickname(rs.getString("USER_NICKNAME"));
+				board.setUserId(rs.getString("USER_ID"));
 				board.setFreeCmtContent(rs.getString("FREE_CMT_CONTENT"));
 				board.setFreeCmtDate(rs.getTimestamp("FREE_CMT_DATE"));
 			   
@@ -239,12 +241,12 @@ public class FreeBoardDAO {
         Connection conn = null;
         try {
             conn = dataSource.getConnection();
-            String sql = "INSERT INTO FREE_COMMENT (FREE_CMT_NO, FREE_NO, USER_NICKNAME, FREE_CMT_CONTENT, FREE_CMT_DATE)"
+            String sql = "INSERT INTO FREE_COMMENT (FREE_CMT_NO, FREE_NO, USER_ID, FREE_CMT_CONTENT, FREE_CMT_DATE)"
             		+ " VALUES (SEQ_FREE_CMT_NO.NEXTVAL"
             		+ ", ?, ?, ?, SYSDATE)";
             PreparedStatement pstmt = conn.prepareStatement(sql, new String[]{"FREE_CMT_NO"});
             pstmt.setInt(1, vo.getFreeNo());
-            pstmt.setString(2, vo.getUserNickname());
+            pstmt.setString(2, vo.getUserId());
             pstmt.setString(3, vo.getFreeCmtContent());
             pstmt.executeUpdate();
 
@@ -305,6 +307,7 @@ public class FreeBoardDAO {
 		
 	}//...............................................................
 	
+	//댓글 수 읽어오기
 	public int getCommentCountForBoard(int freeNo) {
 	    int commentCount = 0;
 
@@ -329,5 +332,78 @@ public class FreeBoardDAO {
 
 	    return commentCount;
 	}
+	
 
+	
+	public List<FreeBoardVO> getFreeBoardListPaging(int pageNo, int pageSize) {
+	    List<FreeBoardVO> resultList = new ArrayList<>();
+
+	    try (Connection conn = dataSource.getConnection()) {
+	        // 쿼리 작성
+	        String query = "SELECT * FROM (SELECT ROWNUM AS rnum, f.* FROM free_board f ORDER BY FREE_NO DESC) WHERE rnum BETWEEN ? AND ?";
+	        int startRow = (pageNo - 1) * pageSize + 1;
+	        int endRow = pageNo * pageSize;
+
+	        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+	            pstmt.setInt(1, startRow);
+	            pstmt.setInt(2, endRow);
+
+	            try (ResultSet rs = pstmt.executeQuery()) {
+	                // 결과 처리
+	                while (rs.next()) {
+	                    FreeBoardVO board = new FreeBoardVO();
+	                    board.setFreeNo(rs.getInt("FREE_NO"));
+	                    board.setFreeTitle(rs.getString("FREE_TITLE"));
+	                    board.setFreeContent(rs.getString("FREE_CONTENT"));
+	    				board.setUserId(rs.getString("USER_ID"));
+	    				board.setFreeDate(rs.getDate("FREE_DATE"));
+	    				board.setFreeView(rs.getInt("FREE_VIEW"));
+	    				board.setFreeCategory(rs.getString("FREE_CATEGORY"));
+
+	                    resultList.add(board);
+	                }
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return resultList;
+	}
+	
+	//카테고리별로 글 가져오는 기능
+	public List<FreeBoardVO> getFreeBoardListByCategory(String category) {
+	    List<FreeBoardVO> freeBoardList = new ArrayList<>();
+
+	    try (Connection conn = dataSource.getConnection()) {
+	        // 쿼리 작성
+
+	        String query = "SELECT * FROM FREE_BOARD WHERE FREE_CATEGORY = ? ORDER BY FREE_NO DESC";
+
+	        try (PreparedStatement pstmt = conn.prepareStatement(query)) {
+	            pstmt.setString(1, category);
+
+	            try (ResultSet rs = pstmt.executeQuery()) {
+	                // 결과 처리
+	                while (rs.next()) {
+	                    FreeBoardVO board = new FreeBoardVO();
+	                    board.setFreeNo(rs.getInt("FREE_NO"));
+	                    board.setFreeTitle(rs.getString("FREE_TITLE"));
+	                    board.setFreeContent(rs.getString("FREE_CONTENT"));
+	                    board.setUserId(rs.getString("USER_ID"));
+	                    board.setFreeDate(rs.getDate("FREE_DATE"));
+	                    board.setFreeView(rs.getInt("FREE_VIEW"));
+	                    board.setFreeCategory(rs.getString("FREE_CATEGORY"));
+
+	                    freeBoardList.add(board);
+	                }
+	            }
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+	    
+	    
+	    return freeBoardList;
+	}
 }

@@ -15,25 +15,21 @@ import javax.servlet.http.Part;
 import user.model.UserDAO;
 import user.model.UserVO;
 
-
-
-@MultipartConfig(
-		   fileSizeThreshold = 1024 * 1024, // 1 MB
-		   maxFileSize = 1024 * 1024 * 5,    // 5 MB
-		   maxRequestSize = 1024 * 1024 * 5 * 5  // 25 MB
-		)
+@MultipartConfig(fileSizeThreshold = 1024 * 1024, // 1 MB
+		maxFileSize = 1024 * 1024 * 5, // 5 MB
+		maxRequestSize = 1024 * 1024 * 5 * 5 // 25 MB
+)
 @WebServlet("/updateProfile")
-public class UserProfileselectServlet extends HttpServlet{
+public class UserProfileselectServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// D:/TeamProject/default/profile.png
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=utf-8");
-		
+
 		Part part = req.getPart("profileImg");
-		UserVO userInfo = (UserVO)req.getSession().getAttribute("user");
-		
-		if (req.getPart("profileImg")!=null && part.getSize() > 0) {
+		UserVO userInfo = (UserVO) req.getSession().getAttribute("user");
+
+		if (req.getPart("profileImg") != null && part.getSize() > 0) {
 			String fileName = part.getSubmittedFileName().toString();
 			String savePath = "D:/TeamProject/" + userInfo.getId() + "/profile";
 			File file = new File(savePath);
@@ -41,27 +37,27 @@ public class UserProfileselectServlet extends HttpServlet{
 				file.mkdirs();
 			}
 			// 저장 경로
-			String filePath = savePath+"\\"+System.currentTimeMillis()+fileName;
+			String filePath = savePath + "\\" + System.currentTimeMillis() + fileName;
 			// 실제 저장
 			part.write(filePath);
-			// session 으로 받아온 유저 DB정보 프로필경로 null로 지정된 값 업데이트 
 			UserDAO dao = new UserDAO();
 			userInfo.setProfilePath(filePath);
 			dao.updateUserProfile(userInfo);
-			
-			PrintWriter wt = resp.getWriter();
-			wt.println("<!DOCTYPE html>");
-			wt.println("<html>");
-			wt.println("<head>");
-			wt.println("<meta charset=\"UTF-8\">");
-			wt.println("<script>");
-			wt.println("alert('프로필 설정이 완료 됐습니다!')");
-			wt.println("location.href='./index.jsp';");
-			wt.println("</script>");
-			wt.println("</head>");
-			wt.println("</html>");
 		}
+		System.out.println(userInfo.getProfilePath());
+		PrintWriter wt = resp.getWriter();
+		wt.println("<!DOCTYPE html>");
+		wt.println("<html>");
+		wt.println("<head>");
+		wt.println("<meta charset=\"UTF-8\">");
+		wt.println("<script>");
+		wt.println("alert('프로필 설정이 완료 됐습니다!')");
+		wt.println("location.href='./index.jsp';");
+		wt.println("</script>");
+		wt.println("</head>");
+		wt.println("</html>");
+		
+		
+
 	}
 }
-
-

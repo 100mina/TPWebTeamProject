@@ -49,22 +49,21 @@ public class UserDAO {
 		}
 	}// insertUser Method
 	public UserVO getUser(UserVO vo) {
-		UserVO user = null;
+		
 		try {
 			Connection conn = dataSource.getConnection();
-			String sql = "SELECT * FROM USERS WHERE ID=? AND PW=?";
+			
+			String sql = "SELECT * FROM USERS WHERE USER_ID=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getId());
-			pstmt.setString(2, vo.getPw());
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				user = new UserVO();
-				user.getId();
-				user.getPw();
-				user.getNickName();
-				user.getProfilePath();
-				user.getUserLevel();
+				vo.setId(rs.getString("USER_ID"));
+				vo.setPw(rs.getString("USER_PW"));
+				vo.setNickName(rs.getString("USER_NICKNAME"));
+				vo.setProfilePath(rs.getString("USER_PROFILE_PATH"));
+				vo.setUserLevel(rs.getString("USER_LEVEL"));
 			}
 			rs.close();	
 			pstmt.close();
@@ -73,16 +72,18 @@ public class UserDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return user;
+		return vo;
 	}// getUser Methods----------------------------------------------------------------------------
 	
 	public void updateUserProfile(UserVO vo) {
 		try {
 			Connection conn = dataSource.getConnection();
-			String sql = "UPDATE USERS SET USER_PROFILE_PATH=? WHERE=?";
+			String sql = "UPDATE USERS SET USER_PROFILE_PATH=? WHERE USER_ID=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getUserLevel());
+			pstmt.setString(1, vo.getProfilePath());
 			pstmt.setString(2, vo.getId());
+			
+			pstmt.executeUpdate();
 	
 			pstmt.close();
 			conn.close();
@@ -93,6 +94,30 @@ public class UserDAO {
 	}// updateUserProfile..-------------------------------------------------------------------------
 	
 	
+	//해당 회원의 총 좋아요 개수
+	public int totalFav(UserVO vo) {
+		int totalFav=0;
+		try {
+			Connection conn = dataSource.getConnection();
+			String sql = "SELECT COUNT(pf.PORT_FAV_NO) AS TOTAL_FAV FROM PORT_BOARD pb "
+					+ "LEFT JOIN PORT_FAVORITE pf ON pb.PORT_NO = pf.PORT_NO WHERE pb.USER_ID = ? GROUP BY pb.USER_ID";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getId());
+			
+			ResultSet rs= pstmt.executeQuery();
+			if(rs.next()) {
+				totalFav= rs.getInt("TOTAL_FAV");
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return totalFav;
+	}
 	
 	
 	

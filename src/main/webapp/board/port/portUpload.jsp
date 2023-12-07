@@ -26,6 +26,7 @@
 		<div id="button_container">
 			<input class="button" type="reset" value="다시작성">
 			<input class="button" type="submit" value="작성완료">
+			<input type="hidden" name="user_id" value="${user.id }">
 		</div>
 
 	</form>

@@ -5,11 +5,24 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>취업의 신</title>
-	
 	<link href="./css/index.css" rel="stylesheet">
+	<!-- jQuery를 사용하기 위해 CDN 추가 -->
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+	
+	<script>
+	    $(document).ready(function() {
+	        $("#user").hover(
+	            function() {
+	                $("#container").show();
+	            },
+	            function() {
+	                $("#container").hide();
+	            }
+	        );
+	    });
+	</script>	
 	</head>
 	<body>
 		<div>
@@ -19,20 +32,20 @@
 	
 				<div id="category">
 					<ul class="first">
-						<li><a href="portBoardList">포트폴리오</a></li>
+						<li><a href="./board/port/portlist.jsp">포트폴리오</a></li>
 					</ul>
 					<ul class="first">
 						<li><a href="">취업신</a></li>
 					</ul>
 					<ul id="info">
-						<li><a href="./board/free/boardList.jsp">정보마당</a></li>
+						<li><a href="./freeBoard">정보마당</a></li>
 					</ul>
 				</div>
 				<ul class="second">
-					<li><a href="">전체게시판</a></li>
-					<li><a href="">자유게시판</a></li>
-					<li><a href="">면접/취업</a></li>
-					<li><a href="">자기소개서/이력서</a></li>
+					<li><a href="./freeBoard">전체게시판</a></li>
+					<li><a href="./freeBoard">자유게시판</a></li>
+					<li><a href="./freeBoard">면접/취업</a></li>
+					<li><a href="./freeBoard">자기소개서/이력서</a></li>
 				</ul>
 	
 				<script>
@@ -58,9 +71,9 @@
 					<a href="user/loginForm.jsp">로그인</a>&nbsp;&nbsp;&nbsp; <a
 						href="user/signupForm.jsp">회원가입</a>
 				</div>
-				<c:if test="${not empty sessionScope.user}">
+			<c:if test="${not empty sessionScope.user}">
 					<div id="user">
-						<a href="userPage?userId=${sessionScope.user.id}"><img alt=""
+						<a href="userPage?user_id=${sessionScope.user.id}"><img alt=""
 							src="./fileLoad" id="profile"></a>&nbsp;&nbsp;
 						<p>${sessionScope.user.nickName}님</p>
 						&nbsp;환영합니다!
@@ -83,21 +96,11 @@
 		</p>
 		<h2>인기 포트폴리오 게시물</h2>
 		<div class="portWraper">
-			<a href="#" class="user_id"> <img class="user_image" alt="이미지"
-				src="../../image/portimage1.png" width="25">id
-			</a> <img alt="이미지" src="../../image/eye.png" style="margin-left: 20px">view
-			count <img alt="이미지" src="../../image/favo.png"
-				style="margin-left: 10px">like count
+		
+			<jsp:include page="./popularPort.jsp"></jsp:include>
+		
 		</div>
-	
-		<h2>인기 취업신 랭킹</h2>
-		<div class="sinWraper">
-			<a href="#" class="user_id"> <img class="user_image" alt="이미지"
-				src="../../image/portimage1.png" width="25">id
-			</a> <img alt="이미지" src="../../image/eye.png" style="margin-left: 20px">view
-			count <img alt="이미지" src="../../image/favo.png"
-				style="margin-left: 10px">like count
-		</div>
+
 		<div id="bg">
 			<h1>
 				지금 취업의神의 가입 하고<br> 인기 취업신에 도전해 보세요!
@@ -107,13 +110,10 @@
 						신 가입하기</button></a>
 			</span>
 		</div>
-		<div class="postWraper">
-			<a href="#" class="user_id"> <img class="user_image" alt="이미지"
-				src="../../image/portimage1.png" width="25">id
-			</a> <img alt="이미지" src="../../image/eye.png" style="margin-left: 20px">view
-			count <img alt="이미지" src="../../image/favo.png"
-				style="margin-left: 10px">like count
-		</div>
-		<footer> </footer>
+		<hr>	
+		<footer>
+			
+		
+		</footer>
 	</body>
 </html>

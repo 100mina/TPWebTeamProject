@@ -24,22 +24,18 @@ public class LoginServlet extends HttpServlet{
 		
 		String id = req.getParameter("id");
 		String pw = req.getParameter("pw");
-		System.out.println("user : " + id +","+ pw);
-		
-		UserVO vo = new UserVO();
-		vo.setId(id);
-		vo.setPw(pw);
-		
+	
 		UserDAO dao = new UserDAO();
-		UserVO user = dao.getUser(vo);
+		UserVO user = new UserVO();
+		user.setId(id);
+		user.setPw(pw);
+		user = dao.getUser(user);
+		System.out.println("profile : "+user.getProfilePath());
 		
 		if(user!=null) {
 			HttpSession session = req.getSession();
 			session.setAttribute("user", user);
-			System.out.println("user : " + user.getId() + "," + user.getNickName() + "," + user.getProfilePath());
-			
-			resp.sendRedirect("./index.jsp");
-			PrintWriter wt = resp.getWriter();			
+			resp.sendRedirect("./index.jsp");						
 		}else {
 			PrintWriter wt = resp.getWriter();
 			wt.println("<!DOCTYPE html>");
