@@ -26,6 +26,7 @@ public class PortBoardService {
 
 	// 전체 게시물 검색
 	public List<PortBoardVO> getPortList() {
+		
 		return dao.getPortList();
 	}
 

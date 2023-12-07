@@ -36,7 +36,6 @@ public class InsertPortBoard extends HttpServlet{
 		vo.setPortTitle(portTitle);
 		vo.setPortContent(portContent);
 		vo.setUserId(userId);
-
 		
 		PortBoardService service= new PortBoardService();
 		List<PortBoardVO> boardList= service.insertPortBoard(vo);

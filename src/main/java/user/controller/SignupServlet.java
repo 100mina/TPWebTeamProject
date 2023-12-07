@@ -30,7 +30,7 @@ public class SignupServlet extends HttpServlet{
 		vo.setId(id);
 		vo.setPw(pw);
 		vo.setNickName(nickName);
-			
+		vo.setProfilePath("D:/TeamProject/default/profile.png");
 			
 		UserDAO dao = new UserDAO();
 		dao.insertMember(vo);

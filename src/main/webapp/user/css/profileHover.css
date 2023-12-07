@@ -1,0 +1,40 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'webfont';
+	src: url(../../font/notosans.ttf), format('truetype');
+}
+@font-face {
+	font-family: 'titlefont';
+	src: url(../../font/KoPubWorld\ Batang\ Bold.ttf), format('truetype')
+}
+img {
+	width: 75px;
+	height: 75px;
+}
+*{
+	font-family: 'webfont';
+}
+#container {
+	width: 250px;
+	height: 400px;
+	display: flex;
+	flex-direction: column;
+	border: none;
+	border-radius: 16px;
+	background-color: ghostwhite;
+	padding: 32px;
+	z-index: 1;
+	
+}
+#item1 {
+	text-align: center;
+	margin-top: 70px;
+}
+#item2 {
+	text-align: left;
+	margin-top: 30px;
+}
+a {
+	text-decoration: none;
+	color: black;
+}

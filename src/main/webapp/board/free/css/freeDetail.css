@@ -84,8 +84,8 @@ hr {
     align-items: center;
     position: relative;
     width: 700px;
-    left: 410px;
     border: solid 1px black;
+    margin: 0 auto;
 
 }
 
@@ -145,7 +145,7 @@ hr {
 
 .cmt-buttons {
     display: none;
-    left: 470px;
+    left: 505px;
     font-size: inherit; /* 다른 스타일 변경 없도록 상속 받음 */
 
 }
