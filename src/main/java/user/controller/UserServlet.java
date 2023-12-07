@@ -13,15 +13,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
 import board.port.model.PortBoardDAO;
 import board.port.model.PortBoardVO;
+=======
+import board.port.model.PortBoardService;
+import board.port.model.PortBoardVO;
+import user.model.FollowerVO;
+>>>>>>> refs/heads/정훈
 import user.model.UserDAO;
 import user.model.UserVO;
 
 
 
 public class UserServlet extends HttpServlet{
-	// user/signup
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doHandle(req, resp);
@@ -35,14 +40,14 @@ public class UserServlet extends HttpServlet{
 		resp.setContentType("text/html; charset=utf-8");
 		
 		String userId= req.getParameter("user_id");
-		
+
 		UserVO vo= new UserVO();
 		vo.setId(userId);
-		
+
 		PortBoardDAO dao= new PortBoardDAO();
 		UserVO user= dao.getUser(vo);
 		System.out.println(user.getNickName()+","+user.getId());
-		
+
 		PortBoardVO boardvo= new PortBoardVO();
 		boardvo.setUserId(userId);
 		

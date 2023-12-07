@@ -28,8 +28,6 @@
 				});
 			}	
 		</script>
-		
-		<c:set var="vo" scope="session"/>
 	</head>
 	<body onload="init()">
 		<a href="../index.jsp"><img alt="icon" src="../image/icon.png" id="home"></a>

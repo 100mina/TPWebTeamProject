@@ -12,6 +12,7 @@ public class UserVO {
 	private String nickName;
 	private String profilePath;
 	private String userLevel;
+	private int followerCount;
 	
 	//총 좋아요
 	private int totalFav;
@@ -26,6 +27,7 @@ public class UserVO {
 	}
 	public void setUserPort(List<PortBoardVO> userPort) {
 		this.userPort = userPort;
+
 	}
 	public String getId() {
 		return id;

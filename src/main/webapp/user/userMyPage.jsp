@@ -4,7 +4,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,22 +82,10 @@
 		<c:if test="${userPage.userPort.size() == 0 }">
 			<p id="noPort">아직 작성하신 게시물이 없습니다.</p>
 		</c:if>
-		
-		<%-- <div id="postFooter">
-			<script>
-				  var s = ${param.size};
-				  var size = s + 1;
-				  var maxPageNo = Math.ceil(size / 8); // 3
-				  for (var i = 0; i < pageNo ; i++) {
-			</script>
-				<a onclick="changePage(${i+1})">${i+1}</a>
-			<script>
-				  }
-			</script>
-		</div> --%>
 	</div>
 </div>
 </body>
 </html>
+<script type="text/javascript" src="./js/userMyPage.js"></script>
 
 
