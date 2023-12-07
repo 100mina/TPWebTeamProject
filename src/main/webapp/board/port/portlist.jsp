@@ -13,9 +13,8 @@
 <link type="text/css" rel="stylesheet" href="css/portlist.css">
 </head>
 <body>
-	<jsp:include page="../../header.jsp"></jsp:include>
 	<header>
-		
+		<jsp:include page="../../header.jsp"></jsp:include>		
 	</header>
 
 	<nav>
@@ -40,22 +39,6 @@
 			<jsp:include page="../../portList.jsp"></jsp:include>
 		</div>
 	</section>
-
-
-	<footer style="margin-top: 40px; text-align: center;">
-		<div style="margin-top: 40px;">
-			<p>
-				<input type="button" value="1" onclick="#"> <input
-					type="button" value="2" onclick="#"> <input type="button"
-					value="3" onclick="#"> <input type="button" value="4"
-					onclick="#"> <input type="button" value="5" onclick="#">
-				<input type="button" value="6" onclick="#"> <input
-					type="button" value="7" onclick="#"> <a
-					href="./portUpload.jsp"><input type="button" value="글쓰기"
-					onclick="#" style="margin-left: 70px; padding: 0.5em"></a>
-			</p>
-		</div>
-	</footer>
 
 </body>
 </html>
