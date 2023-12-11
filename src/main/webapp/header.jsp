@@ -63,7 +63,7 @@
 		<c:if test="${not empty sessionScope.user}">
 			<div id="user">
 				<a
-					href="<%=request.getContextPath()%>/userPage?userId=${sessionScope.user.id}"><img
+					href="<%=request.getContextPath()%>/userPage?user_id=${sessionScope.user.id}"><img
 					alt=""
 					src="<%=request.getContextPath()%>/fileLoad?userId=${sessionScope.user.id}"
 					id="profile"></a>&nbsp;&nbsp;
