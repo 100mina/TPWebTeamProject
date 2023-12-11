@@ -21,8 +21,7 @@
 	height: 40px;
 	border: 1px solid lightgray;
 	border-radius: 50%;
-	position: relative;
-	right: 70px;
+	position: relative;	
 }
 
 #portImg {
@@ -88,6 +87,19 @@
 }
 
 #button:hover{cursor: pointer; }
+#proImg :nth-child(2) {
+	padding-left: 3em;
+	padding-right: 1em;
+}
+div#cate :nth-child(2) {
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+}
+div#cate :nth-child(1) {
+	padding-left: 1.5em;
+}
+
+
 
 
 </style>

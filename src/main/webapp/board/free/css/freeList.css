@@ -12,6 +12,7 @@
 		 max-height: max-content;
 		 margin: 0;
 		 overflow: auto;
+		 padding-top: 0;
 		 }
 	html{height: max-content;}	 
 	
@@ -160,3 +161,8 @@ a {
 a:hover, a:active {
   color: black;
 }
+
+#wraper{
+	
+}
+

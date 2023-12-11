@@ -13,15 +13,18 @@ import javax.servlet.http.HttpSession;
 public class LogoutServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			
-        // 세션을 얻어옵니다.
-        HttpSession session = req.getSession(false);
+		
+		HttpSession session = req.getSession(false); // 세션이 없으면 새로 생성하지 않음
 
-        // 세션이 존재하면 세션을 무효화하고 로그인 페이지로 이동합니다.
         if (session != null) {
-            session.invalidate();
+            session.invalidate(); // 세션 무효화
         }
-        resp.sendRedirect(req.getContextPath());
-    }
-}
 
+        // 로그인 페이지로 리다이렉트 또는 다른 작업을 수행할 수 있음
+        resp.sendRedirect(req.getContextPath() + "/index.jsp");
+		
+		
+		
+		
+	}
+}

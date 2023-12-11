@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- jQuery를 사용하기 위해 CDN 추가 -->
-<link href="<%=request.getContextPath()%>/css/header.css"
+<link href="<%=request.getContextPath()%>/css/header.css?after"	
 	rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
@@ -35,7 +35,7 @@
 	<div id="rootContainer">
 		<a id="aicon" href="<%=request.getContextPath()%>"><img alt="icon"
 			src="<%=request.getContextPath()%>/image/icon.png" id="icon"> </a>
-		<div id="category">
+		<div id="cate">
 			<ul class="first">
 				<li><a
 					href="<%=request.getContextPath()%>/board/port/portlist.jsp">포트폴리오</a></li>
@@ -70,7 +70,7 @@
 				<div id="container">
 					<div id="item1">
 						<a
-							href="<%=request.getContextPath()%>/userPage?userId=${sessionScope.user.id}"><img
+							href="<%=request.getContextPath()%>/userPage?user_id=${sessionScope.user.id}"><img
 							alt=""
 							src="<%=request.getContextPath()%>/fileLoad?userId=${sessionScope.user.id}"
 							id="profile"></a>

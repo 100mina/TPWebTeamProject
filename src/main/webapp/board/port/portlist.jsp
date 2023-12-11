@@ -13,9 +13,9 @@
 <link type="text/css" rel="stylesheet" href="css/portlist.css">
 </head>
 <body>
-	<header>
+	
 		<jsp:include page="../../header.jsp"></jsp:include>		
-	</header>
+	
 
 	<nav>
 		<div class="portp">

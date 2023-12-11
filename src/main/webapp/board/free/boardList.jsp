@@ -11,7 +11,7 @@
 <title>자유게시판</title>
 
 <!-- 외부스티일시트 -->
-<link type="text/css" rel="stylesheet" href="css/freeList.css">
+<link type="text/css" rel="stylesheet" href="css/freeList.css?after">
 
 <!-- jQuery 추가 -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -29,10 +29,12 @@
 
 </head>
 <body>
+	 
+	 <jsp:include page="../../header.jsp"></jsp:include>	
 	 	
 	 <!-- 각 게시물 전체에 대한 링크 -->
         <!-- 게시판 화면 디자인 -->
-        
+        <div id="wraper">
         <table class="head">
             <tr>
 				<th onclick="sortTable('latest')">최신글</th>
@@ -138,6 +140,7 @@
         <!-- 로그인이 된 경우 -->
         <a href="boardForm.jsp">글쓰기</a>
     </c:if>		
+	</div>
 	</div>
 	</body>
 			

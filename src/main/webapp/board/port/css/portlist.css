@@ -16,7 +16,7 @@ li {
 }
 @font-face {
 	font-family: 'webfont';
-	src: url(../font/notosans.ttf), format('truetype'),format('truetype');
+	src: url(../../../font/notosans.ttf), format('truetype'),format('truetype');
 }
 * {
 	font-family: 'webfont';
@@ -88,8 +88,7 @@ ul, li {
 	align-items: center;
 }
 #category{
-	display: flex;
-	flex-grow: 0;
+	left: 300px;
 }
 #aicon {
 	align-items:  flex-start;
