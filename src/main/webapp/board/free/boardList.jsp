@@ -57,7 +57,7 @@
                     <table id="freelist">
                     	
                         <tr>
-                            <td style="padding-top: 30px">${freeBoard.freeCategory}</td>
+                            <td id="category">${freeBoard.freeCategory}</td>
                         </tr>
                         
                         <tr>
@@ -69,7 +69,7 @@
                         </tr>
                         
                         <tr>
-                            <td>${freeBoard.userId}</td>        
+                            <td>${freeBoard.freeNickname}</td>        
                         </tr>
                         
                         <tr>     
@@ -91,7 +91,7 @@
 			
 			<div class="pagination">
 			    <c:forEach var="i" begin="1" end="${totalPages}">
-			        <a href="?pageNo=${i}">${i}</a>
+        			<a href="#" onclick="changePage(${i})">${i}</a>
 			    </c:forEach>
 			</div>
 			
@@ -166,12 +166,28 @@
         $.get('../../getFreeBoardByCategory', { category: encodeURIComponent(category) }, function(data) {
         	
         	// 포워딩하기 전에 기존 테이블 삭제
-            $('.head').empty();  
+            $('.head').remove();  
     		$('.message').remove();
+
             // 서버에서 받은 데이터로 테이블 업데이트
             $('#table-container').html(data);
         });
     }
+	    
+	    //페이지 클릭했을때 리스트 바뀌게 하기
+	    function changePage(pageNo) {
+	    	
+	        // 서버로 요청을 보냄
+	        $.get('../../changePage', { pageNo: pageNo }, function(data) {
+	        	
+	        	// 포워딩하기 전에 기존 테이블 삭제
+	            $('.head').remove();  
+	    		$('.message').remove();
+	    		
+	            // 서버에서 받은 데이터로 테이블 업데이트
+	            $('#table-container').html(data);
+	        });
+	    }
 	    
 	</script>
 

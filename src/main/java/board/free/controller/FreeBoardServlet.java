@@ -14,6 +14,7 @@ import board.free.model.FreeBoardDAO;
 import board.free.model.FreeBoardService;
 import board.free.model.FreeBoardVO;
 import board.free.model.FreeCommentVO;
+import user.model.UserVO;
 
 public class FreeBoardServlet extends HttpServlet{
 	
@@ -40,6 +41,7 @@ public class FreeBoardServlet extends HttpServlet{
 		//1. 요청 파라미터 확인 - RESTful 기법을 위한 데이터들..
 		String method= req.getParameter("method");
 		String freeNo= req.getParameter("free_no");
+		
 		int pageNo = req.getParameter("pageNo") != null ? Integer.parseInt(req.getParameter("pageNo")) : 1;
 		int pageSize = 8;
 		
@@ -49,11 +51,14 @@ public class FreeBoardServlet extends HttpServlet{
 			if(freeNo==null) {
 				System.out.println("전체 게시글 리스트 검색을 요청하셨습니다.");
 				
+				int totalFreeBoardCount = freeBoardService.getTotalFreeBoardCount();
+		        int totalPages = (int) Math.ceil((double) totalFreeBoardCount / pageSize);
+				
                 List<FreeBoardVO> freeBoardList = freeBoardService.getFreeBoardListPaging(pageNo, pageSize);
-		
+                
 				//리다이렉트될 화면에서 게시글 리스트를 사용하기 위해 session 객체를 활용
 				HttpSession session= req.getSession();
-
+		        session.setAttribute("totalPages", totalPages);
 				session.setAttribute("freeBoardList", freeBoardList);
 
 				
@@ -72,13 +77,18 @@ public class FreeBoardServlet extends HttpServlet{
 				
 				FreeBoardVO freeBoard= freeBoardService.getFreeBoard(vo);
 				List<FreeCommentVO> freeCmtList = freeBoardService.getFreeCmtList(vo2);
-				
-				int size = freeCmtList.size();
-
+				FreeBoardDAO freeDao= new FreeBoardDAO();
+				String freeNickname = freeDao.getUserNickname(freeBoard.getUserId());
+				System.out.println("유저 닉네임" + freeNickname);
 				// 새로운 댓글이 추가되었을 때 세션을 갱신
 				HttpSession session = req.getSession();
-				session.setAttribute("freeBoard", freeBoard);
 				
+				// 서블릿에서 세션에 값을 저장할 때
+				session.setAttribute("freeNickname", freeNickname);
+
+				// JSP에서 세션에서 값을 가져올 때
+				
+				session.setAttribute("freeBoard", freeBoard);
 				session.setAttribute("freeCmtList", freeCmtList);
 	
 				resp.sendRedirect("board/free/boardDetail.jsp"); //상세글 화면으로 이동				
