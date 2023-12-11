@@ -41,11 +41,9 @@ li {
 	display: flex;	
 	flex-direction: column;
 	align-content: center;
+	padding-top: 10%;
 }
-#aicon {
-	position: relative;
-	top: 80px;
-}
+
 header {
 	display: flex;
 	position: relative;
