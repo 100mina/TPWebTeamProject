@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-<<<<<<< HEAD
+
 import board.port.model.PortBoardDAO;
 import board.port.model.PortBoardVO;
-=======
+
 import board.port.model.PortBoardService;
 import board.port.model.PortBoardVO;
 import user.model.FollowerVO;
->>>>>>> refs/heads/정훈
+
 import user.model.UserDAO;
 import user.model.UserVO;
 

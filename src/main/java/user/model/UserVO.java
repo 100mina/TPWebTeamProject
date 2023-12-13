@@ -71,6 +71,12 @@ public class UserVO {
 	public void setUserLevel(String userLevel) {
 		this.userLevel = userLevel;
 	}
+	public int getFollowerCount() {
+		return followerCount;
+	}
+	public void setFollowerCount(int followerCount) {
+		this.followerCount = followerCount;
+	}
 	
 	
 	
