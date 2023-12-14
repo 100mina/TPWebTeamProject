@@ -33,7 +33,7 @@ public class PortBoardServlet extends HttpServlet{
 		doHandle(req,resp);
 	}
 	
-	void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	void doHandle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		List<PortBoardVO> portBoardList = new ArrayList<PortBoardVO>();
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("application/json; charset=utf-8");
@@ -58,17 +58,22 @@ public class PortBoardServlet extends HttpServlet{
 			break;
 			
 		}
-		 
-		for(int i=0;i<portBoardList.size();i++) {
-			UserVO userVO = new UserVO();
-			userVO.setId(portBoardList.get(i).getUserId());
-			List<PortBoardImgVO> imgVOs= portBoardDAO.getPortImgs(portBoardList.get(i));
-			PortBoardImgVO imgVO = portBoardDAO.getImg(imgVOs.get(0));
-			
-			// 썸네일 이미지 no 전달
-			portBoardList.get(i).setThumbnailImageNo(imgVO.getImgNo());
-			portBoardList.get(i).setCountFav(portBoardDAO.countFav(portBoardList.get(i)));
-			System.out.println(portBoardList.get(i).getPortNo()+"");
+		
+		if(portBoardList.size()!=0) {
+			for(int i=0;i<portBoardList.size();i++) {
+				UserVO userVO = new UserVO();
+				userVO.setId(portBoardList.get(i).getUserId());
+				List<PortBoardImgVO> imgVOs= portBoardDAO.getPortImgs(portBoardList.get(i));
+				
+				if (!imgVOs.isEmpty()) {
+					PortBoardImgVO imgVO = portBoardDAO.getImg(imgVOs.get(0));
+					
+					// 썸네일 이미지 no 전달
+					portBoardList.get(i).setThumbnailImageNo(imgVO.getImgNo());
+					portBoardList.get(i).setCountFav(portBoardDAO.countFav(portBoardList.get(i)));
+					System.out.println(portBoardList.get(i).getPortNo()+"");
+				}
+			}	
 		}
 		
 		Gson gson = new Gson();

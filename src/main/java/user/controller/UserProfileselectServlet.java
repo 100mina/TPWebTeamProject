@@ -31,7 +31,7 @@ public class UserProfileselectServlet extends HttpServlet {
 
 		if (req.getPart("profileImg") != null && part.getSize() > 0) {
 			String fileName = part.getSubmittedFileName().toString();
-			String savePath = "D:/TeamProject/" + userInfo.getId() + "/profile";
+			String savePath = "C:/Users/user1/Desktop/img/TeamProject/" + userInfo.getId() + "/profile";
 			File file = new File(savePath);
 			if (!file.exists()) {
 				file.mkdirs();

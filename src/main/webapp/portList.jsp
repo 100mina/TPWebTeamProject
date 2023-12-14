@@ -9,20 +9,31 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-@font-face{
-	font-family: "notosans";
-	src: url("../../../font/notosans.ttf");
+*{ margin: 0px; padding: 0; }
+
+body{ margin-left: 150px; margin-right: 150px; position: relative;}
+
+ul {
+	list-style: none;
+}
+li {
+	list-style: none;
 }
 
-*{ margin: 0px; padding: 0; font-family: "notosans";}
+#nav{
+	position: relative;
+	margin-top: 50px;
+}
 
-#profile {
+#port_profile {
 	width: 40px;
 	height: 40px;
 	border: 1px solid lightgray;
 	border-radius: 50%;
-	position: relative;	
+	position: relative;
+	right: 85px;
 }
+
 
 #portImg {
 	width: 230px;
@@ -37,7 +48,7 @@
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	grid-gap: 100px;
 	justify-items: center;
-	margin: 50px 80px;
+	margin: 50px 0px;
 }
 #containerWraper {
   	padding: 16px;          /* 내용과 테두리 간의 여백 설정 */
@@ -57,7 +68,7 @@
 	display: inline-block;
 	position: relative;
 	bottom: 15px;
-	right: 60px;
+	right: 80px;
 }
 
 .favView{
@@ -73,7 +84,7 @@
 #button{
 	position: absolute;
 	top: 0px;
-	right: 80px;
+	right: 0px;
 	text-align: center;
 	background-color: #88888888;
 	padding: 8px;
@@ -87,17 +98,6 @@
 }
 
 #button:hover{cursor: pointer; }
-#proImg :nth-child(2) {
-	padding-left: 3em;
-	padding-right: 1em;
-}
-div#cate :nth-child(2) {
-	padding-left: 1.5em;
-	padding-right: 1.5em;
-}
-div#cate :nth-child(1) {
-	padding-left: 1.5em;
-}
 
 
 

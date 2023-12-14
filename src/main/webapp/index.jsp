@@ -29,7 +29,9 @@
 	</script>	
 	</head>
 	<body>
-		<div>
+	
+		<jsp:include page="./header.jsp"></jsp:include>
+		<%-- <div>
 			<a id="aicon" href="./index.jsp"><img alt="icon"
 				src="./image/icon.png" id="icon"></a>
 			<header>
@@ -89,32 +91,33 @@
 					</div>
 				</c:if>
 			</header>
-		</div>
+		</div> --%>
 		<div id="mainImg">
 			<img alt="" src="./image/bg_main.png">
-		</div>
-		<p id="mainText">
+			<p id="mainText">
 			취업의 명당 취업의 신<br> <br> 취업의 신은... 취준생 끼리 모여 정보를 공유하고 의견을 주고 받을
 			수 있는 사이트 입니다.<br> 여러분이 추천하고 따르는 취준생은 순위의 오르게 되며 취업신 이라는 등급이
 			부여됩니다.<br> 적극적으로 활동하고 취업신에 도전해 보세요.
-		</p>
+			</p>
+		</div>
+		<br><br>
 		<h2>인기 포트폴리오 게시물</h2>
 		<div class="portWraper">
 		
 			<jsp:include page="./popularPort.jsp"></jsp:include>
 		
 		</div>
-
+		<br><br>
 		<div id="bg">
 			<h1>
-				지금 취업의神의 가입 하고<br> 인기 취업신에 도전해 보세요!
+				지금 취업의 神에 가입 하고<br> 인기 취업신에 도전해 보세요!
 			</h1>
 			<span> <a href=""><button class="btn">인기 포트폴리오
 						둘러보기</button></a> <a href="./user/signupForm.jsp"><button class="btn">취업의
 						신 가입하기</button></a>
 			</span>
 		</div>
-		<hr>	
+		<br><hr><br>	
 		<footer>
 			
 		

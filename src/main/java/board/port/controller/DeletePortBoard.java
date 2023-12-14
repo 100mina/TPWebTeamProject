@@ -24,6 +24,7 @@ public class DeletePortBoard extends HttpServlet{
 		service.deletePortBoard(vo);
 		
 		//TODO: 게시판 목록으로 돌아가기..
+		resp.sendRedirect("./board/port/portlist.jsp");
 		
 	}
 

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
 	font-family: 'webfont';
-	src: url(../font/notosans.ttf), format('truetype');
+	src: url(../font/notosans.ttf);
 }
 @font-face {
 	font-family: 'titleFont';
@@ -17,30 +17,31 @@ html {
 * {
 	font-family: 'webfont';
 	box-sizing: border-box;
+	font-size: 17px;
 }
 #container {
 	position: absolute;
-	width: 200px;
-	height: 320px;
-	background: ghostwhite;
+	width: 100px;
+	height: 50px;
+	background: floralwhite;
 	border-radius: 24px;
 	padding: 16px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	right: 15%;
+	right: 8%;
 	transition: opacity 0.3s ease-in-out;
 	opacity: 0;
 	visibility: hidden;
 	z-index: 1;
-	text-align: left;
-}
-#container div{
-	padding-top: 1.5em;
+	text-align: center;
 }
 #item1{
 	text-align: center;
+	position: relative;
+	bottom: 10px;
 }
+
 #item2 hr {
 	margin-top: 1em;
 	margin-bottom: 1em;
@@ -69,7 +70,6 @@ ul, li {
 #aicon {
 	align-items:  flex-start;
 	flex-grow: 0;
-	padding-left: 10%;
 }
 #login{
 	text-align: right;
@@ -90,10 +90,11 @@ ul, li {
 #user{
 	flex-grow: 1;
 	text-align: right;
-	margin-right: 10%;
 }
 #user>p{
 	display: inline;
+	position: relative;
+	bottom: 10px;
 }
 #contianer#item2 {
 	align-self: flex-start;	
@@ -103,20 +104,38 @@ ul, li {
 	opacity: 1;
 	visibility: visible;
 }
-#info:hover .second,
-#cate:hover .second{
+#info:hover .second{
 	opacity: 1;
 	visibility: visible;
-	top: 8%;
-	left: 31.5%;
-	padding-left: 16px;
-	padding-right: 16px;
-	line-height: 2em;	
 }
 #cate{
 	display: flex;
 	flex-grow: 0;
 }
+
+#profile{
+	border: 1px solid lightgray;
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+}
+
+#cate *{
+	padding-left: 1.5em;
+}
+
+
+#item2{
+	bottom: 0px;
+}
+
+#logintext{
+	position: absolute;
+	right: 0;
+}
+
+
+
 
 
 

@@ -68,22 +68,18 @@
 					src="<%=request.getContextPath()%>/fileLoad?userId=${sessionScope.user.id}"
 					id="profile"></a>&nbsp;&nbsp;
 				<div id="container">
-					<div id="item1">
-						<a
-							href="<%=request.getContextPath()%>/userPage?user_id=${sessionScope.user.id}"><img
-							alt=""
-							src="<%=request.getContextPath()%>/fileLoad?userId=${sessionScope.user.id}"
-							id="profile"></a>
+					<%-- <div id="item1">
+						<a href="<%=request.getContextPath()%>/userPage?user_id=${sessionScope.user.id}">
+							<img alt="" src="<%=request.getContextPath()%>/fileLoad?userId=${sessionScope.user.id}"	id="profile">
+						</a>
 						<p>${sessionScope.user.id}</p>
-					</div>
+					</div> --%>
 					<div id="item2">
-						<a href="#">설정</a>
-						<hr>
+						<!-- <a href="#">설정</a><hr> -->
 						<a href="<%=request.getContextPath()%>/logout">로그아웃</a>
 					</div>
 				</div>
-				<p>${sessionScope.user.nickName}님</p>
-				&nbsp;환영합니다!
+				<p id="mmm">${sessionScope.user.nickName}님 환영합니다!</p>
 			</div>
 		</c:if>
 	</div>

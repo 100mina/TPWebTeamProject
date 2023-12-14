@@ -127,6 +127,7 @@ pageContext.setAttribute("nl", "\n");
 
 	<!-- 사용자 정보? 칸?-->
 	<div id="top">
+		<a href="/TPWebTeamProject/board/port/portlist.jsp" id="x"><img id="xx" alt="x" src="/TPWebTeamProject/board/port/img/xx.png"></a>
 		<div id="user">
 			<a href="/TPWebTeamProject/userPage?user_id=${port.userId }"><img alt="img" src="/TPWebTeamProject/getProfileImg?user_id=${port.userId }" id="profile"></a>
 			<h3>${port.userNickname }</h3>
@@ -153,24 +154,24 @@ pageContext.setAttribute("nl", "\n");
 			</div>
 
 			<div id="btn">
-				<a href="" id="btn_update" onclick="navigateToUpdate('${port.portNo}', '${port.userId}', '${user.id}')">수정</a>
-    			<a href="" id="btn_delete" onclick="deletePort('${port.portNo}', '${port.userId}', '${user.id}')">삭제</a>
+				<a href="#" id="btn_update" onclick="updatePort('${port.portNo}', '${port.userId}', '${user.id}')">수정</a>
+    			<a href="#" id="btn_delete" onclick="deletePort('${port.portNo}', '${port.userId}', '${user.id}')">삭제</a>
 			</div>
 		</div>
 
 	</div>
 	
 	<script type="text/javascript">
-    function navigateToUpdate(portNo, portUserId, userId) {
-        if (userId === portUserId) {
-            window.location.href = '/TPWebTeamProject/board/port/portUpdate.jsp?port_no=' + portNo;
+    function updatePort(portNo, portUserId, userId) {
+        if (userId == portUserId) {
+            window.location.href = '/TPWebTeamProject/board/port/portUpdate.jsp';
         } else {
             alert("게시물 작성자만 수정할 수 있습니다.");
         }
     }
 
     function deletePort(portNo, portUserId, userId) {
-        if (userId === portUserId) {
+        if (userId == portUserId) {
             var result = confirm('정말 삭제하시겠습니까?');
             if (result) {
                 window.location.href = '/TPWebTeamProject/deletePortBoard?port_no=' + portNo;

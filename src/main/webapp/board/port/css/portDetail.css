@@ -7,9 +7,20 @@
 
 *{ margin: 0px; padding: 0; font-family: "notosans";}
 
-body{ margin-left: 100px; margin-right: 100px; position: relative;}
+body{ margin-left: 150px; margin-right: 150px; position: relative;}
 
-#user{ height: 60px; width: 180px; position: relative; left: 120px; margin-top: 10px;}
+#user{ height: 60px; width: 180px; position: relative; left: 50px; margin-top: 10px;}
+
+#x{
+	float: left;
+	margin: 17px 0px 0px 30px;
+}
+
+#xx{
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+}
 
 #profile{
 	border-radius: 50%;
@@ -153,6 +164,8 @@ textarea {
 }
 
 #btn a{ font-size: 0.8em; margin: 5px; }
+
+
 
 
 

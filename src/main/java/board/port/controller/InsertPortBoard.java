@@ -44,7 +44,7 @@ public class InsertPortBoard extends HttpServlet{
 		//멀티파트 파일 데이터 받기(첨부파일)
 		Collection<Part> parts= req.getParts();
 
-		File path= new File("D:/WebTeamProjectImg");
+		File path= new File("C:/Users/user1/Desktop/img/WebTeamProjectImg");
 		
 		// 부모 폴더가 존재하지 않으면 생성
 		//if (!path.getParentFile().isDirectory()) path.getParentFile().mkdirs();

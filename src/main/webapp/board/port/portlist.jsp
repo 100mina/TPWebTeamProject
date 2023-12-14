@@ -10,27 +10,25 @@
 <meta charset="UTF-8">
 <title>포트폴리오 목록</title>
 
-<link type="text/css" rel="stylesheet" href="css/portlist.css">
 </head>
 <body>
 	
 		<jsp:include page="../../header.jsp"></jsp:include>		
 	
 
-	<nav>
-		<div class="portp">
-			<select class="port">
-				<option value="1">최신순</option>
-				<option value="2">조회수순</option>
-				<option value="3">좋아요순</option>
-			</select>
-		</div>
+	<div id="nav">
+		<select class="port">
+			<option value="1">최신순</option>
+			<option value="2">조회수순</option>
+			<option value="3">좋아요순</option>
+		</select>
 		
 		<a href="./portUpload.jsp">
 			<input type="button" value="글쓰기" id="button">
 		</a>
+	</div>
 		
-	</nav>
+	
 
 
 
