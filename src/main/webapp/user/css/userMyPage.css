@@ -26,8 +26,8 @@ html {
 	display: inline;	
 }
 body {
-	margin-left: 100px; 
-	margin-right: 100px; 
+	margin-left: 150px; 
+	margin-right: 150px; 
 	position: relative;
 	margin-bottom: 80px;
 }
@@ -61,55 +61,9 @@ header {
 	right: 250px;
 	top: 48px;
 }
-#user {
-	display: flex;
-	position: absolute;
-	right: 16px;
-	top: 48px;
-}
-#mainImg {
-	width: 100%;
-}
-#mainImg>img{
-	width: 100%;
-}
 a {
 	text-decoration: none;
 	color: black;
-	font-weight: bold;
-	font-size: 16px;
-}
-.first {
-	margin: 0 1.5em 0 1.5em;
-}
-#info {
-	margin-left: 1em;
-}
-
-.second {
-    list-style: none;
-    position: absolute;
-    background-color: #FCFEFC;
-    border: 0.5px solid #888888;
-    text-align: center;
-    top: 90px;
-    left: 620px;
-    padding: 8px;
- 	display: none;
-}
-.second>:nth-child(2), .second>:nth-child(3), .second>:nth-child(4) {
-	margin-top: 1em;
-}
-#mainText {
-	position: absolute;
-	font-family: 'titleFont';
-	top: 30%;
-	left: 30%;
-	font-weight: bold;
-}
-#mainText>{
-	padding: 8px;
-	margin-top: 1em;
 }
 
 .btn{
@@ -178,12 +132,13 @@ a {
 	
 #port_all_container{ 
 	display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 5px;
     justify-content: center; 
 	border: 1px solid lightgray; 
 	border-radius: 10px; 
 	width: 100%;
+	padding: 10px;
 }
  
 .port_all {
@@ -194,6 +149,12 @@ a {
       border: 1px solid lightgray;
       border-radius: 4px;
     }
+    
+#port_container{
+	width: 350px;
+	margin: 10px 0px;
+	text-align: center;
+}
 	
 #noPort{
 	text-align: center;

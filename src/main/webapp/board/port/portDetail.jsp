@@ -201,6 +201,8 @@ pageContext.setAttribute("nl", "\n");
 				class="content_img">
 		</c:forEach>
 	</div>
+	
+	<br><br><br>
 
 
 
@@ -219,6 +221,7 @@ pageContext.setAttribute("nl", "\n");
 		</div>
 	</div>
 
+	<br>
 
 	<!-- 댓글 창 -->
 	<p id="cmt_title">

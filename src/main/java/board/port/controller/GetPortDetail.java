@@ -37,8 +37,6 @@ public class GetPortDetail extends HttpServlet{
 		
 		session.setAttribute("port", port);
 		
-		System.out.println(port.getUserId() + user.getId());
-		
 		//resp.sendRedirect("board/port/portDetail.jsp");
 		RequestDispatcher dispatcher= req.getRequestDispatcher("board/port/portDetail.jsp");
 		dispatcher.forward(req, resp);

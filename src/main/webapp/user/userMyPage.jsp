@@ -33,7 +33,7 @@
 		<div id="port"><strong>포트폴리오</strong></div>
 		<div id="port_all_container">
 			<c:forEach var="port" items="${userPage.userPort }">
-				<div style="text-align: center; margin: 20px 10px;">
+				<div id="port_container">
 					<a href="/TPWebTeamProject/getPortDetail?port_no=${port.portNo} ">
 					<img src="/TPWebTeamProject/getImg?img_no=${port.portImg.imgNo}" alt="" class="port_all"></a>
 					<br><span id="portTitle">${port.portTitle }</span>
